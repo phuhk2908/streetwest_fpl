@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-// import { SliderComponent } from './components/slider/slider.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
@@ -22,13 +21,14 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    // SliderComponent,
     HomeComponent,
     ShopComponent,
     ProductDetailComponent,
@@ -44,11 +44,13 @@ import { RegisterComponent } from './pages/register/register.component';
     BlogComponent,
     BreadcrumbComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeCarouselComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
