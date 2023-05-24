@@ -1,0 +1,81 @@
+h2{
+    background-color: var(--whiteColor);
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 36px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.ptb-100{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.pb-100{
+    padding-bottom: 100px;
+}
+.faq-sidebar ul{
+    padding: 30px;
+    margin-bottom: 0;
+    list-style-type: none;
+    border: 1px solid #eeeeee;
+}
+.faq-sidebar ul li{
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee;
+    list-style-type: none;
+}
+.faq-sidebar ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    display: inline-block;
+}
+.subscribe-inner{
+    z-index: 1;
+    padding: 100px;
+    position: relative;
+    background-color: var(--blackColor);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.subscribe-inner .content{
+    max-width: 580px;
+    margin-left: auto;
+}
+.subscribe-inner h2{
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 36px;
+}
+.subscribe-inner .newsletter-form{
+    margin-top: 30px;
+    position: relative;
+}
+.subscribe-inner .newsletter-form .input-newsletter{
+    border: 0;
+    width: 100%;
+    height: 55px;
+    display: block;
+    background-color:white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.subscribe-inner .newsletter-form button{
+    background-color: black;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: white;
+    position: absolute;
+    height: 55px;
+    border: 0;
+    right: 0;
+    top: 0;
+    padding: 0 25px 0 50px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.accordion-header{
+    width:100%
+}
+
