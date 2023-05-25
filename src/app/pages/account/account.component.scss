@@ -1,0 +1,55 @@
+.ptb-100{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.login-form h2{
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 700;
+    color: black;
+}
+.login-form form .form-group label{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.form-control{
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+    box-shadow: unset!important;
+    font-size: 16px;
+    color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.form-check .form-check-input{
+    border-radius: 0;
+}
+.form-check .form-check-input:checked{
+    background-color: red;
+    border: none;
+}
+.login-form form button{
+    border: none;
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background-color: red;
+    transition: var(--transition);
+    border-radius: 5px;
+    padding: 14px 30px;
+    width: 100%;
+    font-weight: 700;
+    font-size: var(--fontSize);
+}
+.login-form form button:hover{
+    background-color: black;
+}
+.description{
+    font-style: italic;
+    font-size: 14.5px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
