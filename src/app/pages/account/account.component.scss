@@ -53,3 +53,41 @@
     margin-top: 10px;
     margin-bottom: 0;
 }
+.login-form form .lost-your-password-wrap a{
+    display: inline-block;
+    position: relative;
+    line-height: 1.5;
+    transition: calc(.5s);
+    color: var(--blackColor);
+    text-decoration: none;
+    outline: 0!important;
+}
+.login-form form .lost-your-password-wrap{
+    text-align: end;
+}
+.login-form form .lost-your-password-wrap a::before{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    content: "";
+    position: absolute;
+    transition: calc(.5s);
+    background-color: #eee;
+}
+.login-form form .lost-your-password-wrap a::after{
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    transition: calc(.5s);
+    bottom: 0;
+    content: "";
+    background-color: red;
+}
+.login-form form .lost-your-password-wrap a:hover{
+    color: red;
+}
+.login-form form .lost-your-password-wrap a:hover:after{
+    width: 100%;
+}
