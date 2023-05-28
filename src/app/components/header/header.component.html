@@ -1,65 +1,67 @@
 <div class="container-fluid container-menu ">
-    <div class="row justify-content-xl-center box-menu">
-        <div class="col-md-1 col-sm-2 box-logo">
-            <a class=" h-100 w-100 w-100" href="/"><img class="" width="100" src="assets/HAD.png">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="/"><img class="ms-4" width="75" src="assets/HAD.png">
             </a>
-        </div>
-        <div class="box-page col-lg-6 col-xl-6">
-            <div class="">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
-                </li>
-                <li class="nav-item menu">
-                    <a class="nav-link active " aria-current="page" href="#">Sản phẩm</a>
-                    <div class="sub-menu  ">
-                        <a href="#" class=" border-bottom border-2">Shop </a>
-                        <a href="#">Shop đồ nữ</a>
-                        <a href="#">Shop đồ name</a>
-                        <a href="#">Shop đồ bêde</a>
+            <div class="navbar-toggler border-0 me-4" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false">
+                <i class="fa-solid fa-bars fa-xl"></i>
+            </div>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item  box_menu">
+                        <a class="nav-link active " href="#" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <ul class="box_menu_sub">
+                            <li style="border-bottom: 1px solid saddlebrown;padding: 5px;"><a class="" href="#">Shop</a>
+                            </li>
+                            <li><a class="" href="#">Shop nam</a></li>
+                            <li><a class="" href="#">Shop nữ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Bài viết</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Về chúng tôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">FAQ</a>
+                    </li>
+                </ul>
+                <div class="d-flex order-option me-md-4 gap-3">
+                    <div class="option-item">
+                        <div class="search-box  ">
+                            <input type="text" placeholder="Tìm kiếm sản phẩm">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Bài viết</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Liên hệ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Về chúng tôi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">FAQ</a>
-                </li>
-            </div>
-        </div>
-        <div class="order-option col-lg-5 col-xl-4 ">
-            <div class="option-item">
-                <div class="search-box  ">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm">
-                    <button><i class="fas fa-search"></i></button>
+                    <div class="option-item position-relative">
+                        <a class="fa fa-cart-shopping  badge-box">
+
+                        </a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            2
+                        </span>
+                    </div>
+                    <div class="option-item position-relative">
+                        <a class="fa-regular fa-heart badge-box"></a> <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            2
+                        </span>
+                    </div>
+                    <div class="option-item ">
+                        <a class=" fa-regular fa-user"></a>
+                    </div>
                 </div>
             </div>
-            <div class="option-item position-relative">
-                <div class="fa fa-cart-shopping  badge-box">
-
-                </div>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    2
-                </span>
-            </div>
-            <div class="option-item position-relative">
-                <div class="fa-regular fa-heart badge-box"></div> <span
-                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    2
-                </span>
-            </div>
-            <div class="option-item">
-                <div class=" fa-regular fa-user"></div>
-            </div>
         </div>
-        <div class="box-bar d-none navbar-toggler">
-            <i class=" fa-solid fa-bars fa-2xl navbar-toggler-icon "></i>
-        </div>
-    </div>
-
+    </nav>
 </div>
