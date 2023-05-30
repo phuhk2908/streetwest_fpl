@@ -23,6 +23,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
+import {HomeModule} from "./pages/home/home.module";
 
 @NgModule({
   declarations: [
@@ -45,14 +47,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BreadcrumbComponent,
     LoginComponent,
     RegisterComponent,
-    HomeCarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
