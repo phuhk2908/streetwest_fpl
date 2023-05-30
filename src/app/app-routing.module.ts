@@ -8,7 +8,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, data: { breadcrumb: 'Dự án' } },
   { path: 'product', component: ShopComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
