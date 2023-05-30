@@ -6,14 +6,26 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, data: { breadcrumb: 'Dự án' } },
-  { path: 'product', component: ShopComponent },
-  { path: 'blog', component: BlogComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'faq', component: FAQComponent },
+  { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
+  {
+    path: 'product', component: ShopComponent, data: { breadcrumb: 'Sản phẩm' },
+    children: [
+      {
+        path: 'shop-nam', component: ShopComponent
+      },
+      {
+        path: 'shop-nu', component: ShopComponent
+      }
+    ]
+  },
+  { path: 'product/:id', component: ProductDetailComponent, data: { breadcrumb: 'Chi tiết sản phẩm' } },
+  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
+  { path: 'contact', component: ContactComponent, data: { breadcrumb: 'Liên Hệ' } },
+  { path: 'about-us', component: AboutUsComponent, data: { breadcrumb: 'Về chúng tôi' } },
+  { path: 'faq', component: FAQComponent, data: { breadcrumb: 'Câu hỏi thường gặp' } },
 ];
 
 @NgModule({
