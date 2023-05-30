@@ -10,10 +10,10 @@
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                        <a class="nav-link active" aria-current="page" href="/">Trang chủ</a>
                     </li>
                     <li class="nav-item  box_menu">
-                        <a class="nav-link active " href="#" aria-expanded="false">
+                        <a class="nav-link active " [routerLink]="['product']" href="#" aria-expanded="false">
                             Sản phẩm
                         </a>
                         <ul class="box_menu_sub">
@@ -24,21 +24,22 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Bài viết</a>
+                        <a class="nav-link active" aria-current="page" [routerLink]="['blog']" href="#">Bài viết</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Liên hệ</a>
+                        <a class="nav-link active" aria-current="page" [routerLink]="['contact']" href="#">Liên hệ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Về chúng tôi</a>
+                        <a class="nav-link active" aria-current="page" [routerLink]="['about-us']" href="#">Về chúng
+                            tôi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">FAQ</a>
+                        <a class="nav-link active" aria-current="page" [routerLink]="['faq']" href="#">FAQ</a>
                     </li>
                 </ul>
                 <div class="d-flex order-option me-md-4 gap-3">
-                    <div class="option-item">
-                        <div class="search-box  ">
+                    <div class="option-item ms-2">
+                        <div class="search-box ">
                             <input type="text" placeholder="Tìm kiếm sản phẩm">
                             <button><i class="fas fa-search"></i></button>
                         </div>

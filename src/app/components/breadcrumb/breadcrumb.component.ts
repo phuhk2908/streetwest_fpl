@@ -13,8 +13,13 @@ interface Breadcrumb {
 
 export class BreadcrumbComponent {
   breadcrumbs$: Observable<Breadcrumb[]>;
-
+  label: string = '';
   constructor(private readonly breadcrumbService: BreadcrumbsService) {
     this.breadcrumbs$ = breadcrumbService.breadcrumbs$;
+    this.breadcrumbs$.subscribe((item: Breadcrumb[]) => {
+      if (item.length > 0) {
+        this.label = item[0]['label'];
+      }
+    })
   }
 }
