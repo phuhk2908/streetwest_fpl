@@ -1,0 +1,68 @@
+.input-couter {
+  width: 130px;
+  input {
+    height: 47px;
+    border: 1px solid #dee2e6;
+  }
+}
+.products-add-to-cart button {
+  height: 47px;
+  padding: 11.5px 30px;
+}
+.minus,
+.plus {
+  width: 40px;
+  line-height: 40px;
+}
+.bi-instagram {
+  background-image: linear-gradient(45deg, #ff8a00, #e1306c, #405de6);
+}
+
+.tab {
+  margin-top: 30px;
+  .nav-tabs {
+    --bs-nav-tabs-border-width: 0px;
+    .nav-link {
+      border: none;
+      position: relative;
+      padding: 0;
+      margin-right: 2rem;
+      font-size: 18px;
+      font-weight: 700;
+      &:not(.active) {
+        color: rgb(204, 204, 204);
+      }
+      &::before {
+        left: 0;
+        width: 0%;
+        content: "";
+        height: 3px;
+        bottom: -2px;
+        position: absolute;
+        transition: all 0.65s;
+        background-color: #cf0018;
+      }
+      &:hover::before,
+      &.active::before {
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .tab {
+    margin-top: 50px;
+    .nav-tabs .nav-link {
+      font-size: 25px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .input-couter > input {
+    height: 41px;
+  }
+  .products-add-to-cart button {
+    height: 41px;
+    padding: 11px 20px;
+  }
+}
