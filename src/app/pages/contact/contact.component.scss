@@ -11,6 +11,7 @@
     margin-bottom: 25px;
     font-size: 64px;
     font-weight: 700;
+    line-height: normal;
 }
 
 .contact-content p {
@@ -172,4 +173,20 @@ textarea.form-control{
 }
 .accordion-header{
     width:100%
+}
+@media  only screen and (max-width: 767px){
+    .subscribe-inner {
+        padding: 60px 15px;
+    }
+    .subscribe-inner .input-newsletter{
+        height: 50px;
+    }
+    .subscribe-inner .newsletter-form button{
+        display: inline-block;
+        position: relative;
+        font-size: 13.5px;
+        margin-top: 15px;
+        height: auto;
+        padding: 12px 20px 12px 45px;
+    }
 }
