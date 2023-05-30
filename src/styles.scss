@@ -1,11 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
-html,
-body {
-    height: 100%;
+
+html, body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.owl-theme .owl-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .owl-dot:hover {
+    span {
+      background: rgb(33, 45, 81);
+    }
+  }
+
+  .owl-dot.active {
+    span {
+      background: rgb(33, 45, 81);
+    }
+  }
+}
+
+.owl-theme .owl-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin-top: 0;
+  box-sizing: content-box !important;
+
+  .owl-prev {
+    width: 30px;
+    position: absolute;
+    left: 0;
+    display: block;
+    background: none;
+    color: #6c757d;
+
+    i {
+      font-size: 40px;
+    }
+
+    &:hover {
+      color: rgb(33, 45, 71);
+      background: none;
+    }
+  }
+
+  .owl-next {
+    width: 30px;
+    position: absolute;
+    right: 0;
+    display: block;
+    background: none;
+    color: #6c757d;
+
+    i {
+      font-size: 40px;
+    }
+
+    &:hover {
+      color: rgb(33, 45, 71);
+      background: none;
+    }
+  }
+
+}
+
