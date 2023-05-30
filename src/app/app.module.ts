@@ -25,6 +25,7 @@ import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
 import {HomeModule} from "./pages/home/home.module";
+import {CarouselModule} from "ngx-owl-carousel-o";
 
 @NgModule({
   declarations: [
@@ -47,12 +48,15 @@ import {HomeModule} from "./pages/home/home.module";
     BreadcrumbComponent,
     LoginComponent,
     RegisterComponent,
+    HomeCategoryComponent,
+    HomeCarouselComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HomeModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
