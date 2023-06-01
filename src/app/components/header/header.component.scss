@@ -12,10 +12,9 @@
 .container-menu {
     width: 100%;
     min-height: 84px;
-
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 99999;
     padding: 0;
 
 
