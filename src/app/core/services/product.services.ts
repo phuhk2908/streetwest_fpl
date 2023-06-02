@@ -1,9 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
-  Firestore, addDoc, collection, collectionData,
-  doc, docData, deleteDoc, updateDoc, DocumentReference, setDoc
+  Firestore, collection, collectionData,
+  doc, docData
 } from '@angular/fire/firestore';
-import { Observable, throwError, catchError, filter, map, switchMap, takeUntil, Subject, of } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
