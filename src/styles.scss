@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 
 
 html, body {
@@ -75,6 +76,8 @@ body {
       background: none;
     }
   }
-
 }
 
+.mb-120 {
+  margin-bottom: 120px;
+}
