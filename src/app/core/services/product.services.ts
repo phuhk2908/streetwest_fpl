@@ -1,10 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
-  Firestore, addDoc, collection, collectionData,
-  doc, docData, deleteDoc, updateDoc, DocumentReference, setDoc
+  Firestore, collection, collectionData,
+  doc, docData
 } from '@angular/fire/firestore';
-import { Observable, throwError, catchError, filter, map, switchMap, takeUntil, Subject, of } from 'rxjs';
-import { docChanges } from '@angular/fire/compat/firestore';
+import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +17,12 @@ export class ProductService {
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
 
-    return collectionData(data, { idField: 'id' }) as Observable<any[]>;
+    return collectionData(data) as Observable<any[]>;
+  }
+
+  getId(id: string) {
+    const catRef = doc(this.firestore, `category/${id}`)
+    return docData(catRef) as Observable<any>
   }
 
   getProduct(id: number): any {

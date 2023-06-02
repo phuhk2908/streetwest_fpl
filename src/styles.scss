@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 
 
 html, body {
@@ -18,15 +19,16 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
+
   .owl-dot:hover {
     span {
-      background: rgb(33, 45, 81);
+      background: rgb(191, 39, 38);
     }
   }
 
   .owl-dot.active {
     span {
-      background: rgb(33, 45, 81);
+      background: rgb(191, 39, 38);
     }
   }
 }
@@ -53,7 +55,7 @@ body {
     }
 
     &:hover {
-      color: rgb(33, 45, 71);
+      color: rgb(191, 39, 38);
       background: none;
     }
   }
@@ -71,10 +73,12 @@ body {
     }
 
     &:hover {
-      color: rgb(33, 45, 71);
+      color: rgb(191, 39, 38);
       background: none;
     }
   }
-
 }
 
+.mb-120 {
+  margin-bottom: 120px;
+}
