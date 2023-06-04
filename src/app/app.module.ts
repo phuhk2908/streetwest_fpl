@@ -32,7 +32,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
