@@ -1,0 +1,22 @@
+.bg-banner {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgb(243,221,214);
+}
+
+.bg-circle {
+  background: white;
+  width: 70px;
+  height: 70px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.subtitle {
+  color: gray;
+}

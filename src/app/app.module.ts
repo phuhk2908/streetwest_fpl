@@ -23,6 +23,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
+import { HomeModule } from "./pages/home/home.module";
+import { CarouselModule } from "ngx-owl-carousel-o";
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import {HomeFeaturedProductModule} from "./pages/home/home-featured-product/home-featured-product.module";
 
 @NgModule({
   declarations: [
@@ -45,14 +53,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BreadcrumbComponent,
     LoginComponent,
     RegisterComponent,
-    HomeCarouselComponent
+    HomeCategoryComponent,
+    HomeCarouselComponent,
+    NewsletterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule,
+    CarouselModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    HomeFeaturedProductModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

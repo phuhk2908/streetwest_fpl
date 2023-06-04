@@ -7,7 +7,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-
+import { CartComponent } from './pages/cart/cart.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   {
@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, data: { breadcrumb: 'Liên Hệ' } },
   { path: 'about-us', component: AboutUsComponent, data: { breadcrumb: 'Về chúng tôi' } },
   { path: 'faq', component: FAQComponent, data: { breadcrumb: 'Câu hỏi thường gặp' } },
+  { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
 ];
 
 @NgModule({

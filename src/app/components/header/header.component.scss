@@ -12,10 +12,9 @@
 .container-menu {
     width: 100%;
     min-height: 84px;
-
-    position: sticky;
-    top: 0px;
-    z-index: 3;
+    position: fixed;
+    top: 0;
+    z-index: 99999;
     padding: 0;
 
 
@@ -69,7 +68,7 @@
 
                             position: absolute;
                             top: 80px;
-                            left: 0px;
+                            left: 0;
                             z-index: 111 !important;
                             display: flex;
                             flex-direction: column;
@@ -114,7 +113,7 @@
                         &>a {
                             color: #000;
                             text-decoration: none;
-                            margin: 0px 12px;
+                            margin: 0 12px;
                             font-size: 15px;
 
                             &:hover {

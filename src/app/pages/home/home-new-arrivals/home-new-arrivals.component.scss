@@ -1,0 +1,120 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.wrapper-category-title {
+
+}
+
+.new-arrival-title {
+  position: relative;
+  font-size: 28px;
+  width: 100%;
+  color: rgb(191, 39, 38);
+  text-align: center;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 35%;
+    height: 2px;
+    background: #000;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 35%;
+    height: 2px;
+    background: #000;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 24px;
+
+    &:before {
+      width: 30%;
+    }
+
+    &:after {
+      width: 30%;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+    padding: 0;
+    font-size: 24px;
+    &:before, &:after {
+      display: none;
+    }
+  }
+}
+
+
+.carousel-wrapper {
+  position: relative;
+
+  .carousel-img img {
+    transition: all .3s ease-in-out 0s;
+  }
+
+  &.carousel-wrapper:hover {
+    .carousel-img img {
+      transform: scale(1.1);
+      transition: all .3s ease-in-out 0s;
+    }
+
+    .home-button-wrapper {
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+
+  .home-button-wrapper {
+    width: 100%;
+    position: absolute;
+    bottom: -30px;
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
+    .home-button {
+      font-size: 14px;
+      width: 100%;
+      border: none;
+      outline: none;
+      background: rgb(0, 0, 0, 0.8);
+      color: white;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      transition: all .2s ease-in-out 0s;
+
+      &:hover {
+        background-color: rgb(191, 39, 38);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    &.carousel-wrapper:not(:hover) {
+      .carousel-img img {
+        transform: scale(1.1);
+        transition: all .3s ease-in-out 0s;
+      }
+
+      .home-button-wrapper {
+        opacity: 1;
+        bottom: 0;
+      }
+    }
+
+    .home-button-wrapper {
+      display: none;
+
+    }
+  }
+}
