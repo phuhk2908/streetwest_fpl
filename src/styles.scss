@@ -6,7 +6,8 @@
 @import "primeng/resources/primeng.css";
 
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -80,6 +81,15 @@ body {
       background: none;
     }
   }
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(224, 224, 236);
+  border-radius: 20px;
 }
 
 .mb-120 {
