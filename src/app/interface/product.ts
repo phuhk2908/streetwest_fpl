@@ -11,4 +11,5 @@ export interface Product {
       amount: number;
     };
   };
+  slug?: string;
 }

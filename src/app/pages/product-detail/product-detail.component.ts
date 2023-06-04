@@ -34,6 +34,7 @@ export class ProductDetailComponent {
     });
 
   }
+
   addToCart() { }
   plus() {
     let value = this.frm1.controls['quantity'].value;

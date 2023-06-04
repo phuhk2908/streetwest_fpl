@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { async } from '@angular/core/testing';
 import {
   Firestore,
   collection,
@@ -9,7 +10,7 @@ import {
   updateDoc,
   query, where
 } from '@angular/fire/firestore';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -35,14 +36,4 @@ export class ProductService {
     const data = doc(this.firestore, `products/${id}`);
     return docData(data, { idField: 'id' }) as Observable<any>;
   }
-  // async updateDoc() {
-  //   const collectionRef = collection(this.firestore, "products");
-  //   const q = query(collectionRef, where("idCategory", "==", '2'));
-  //   const querySnapshot = await getDocs(q);
-  //   querySnapshot.forEach((doc) => {
-  //     const docRef = doc.ref;
-  //     updateDoc(docRef, { idCategory: 'k2IG2BazToB2O61yJti2' });
-  //   });
-  // }
-
 }
