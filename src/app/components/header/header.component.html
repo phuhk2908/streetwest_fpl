@@ -1,5 +1,7 @@
-<div class="container-fluid container-menu ">
+<header>
+  <div class="container-fluid container-menu ">
     <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+<<<<<<< HEAD
         <div class="container-xl container-fluid  p-0">
             <a class="navbar-brand ms-5 logo" href="/"><img class="w-100" src="assets/images/logo.jpg">
             </a>
@@ -63,6 +65,72 @@
                     </div>
                 </div>
             </div>
+=======
+      <div class="container-fluid p-0">
+        <a class="navbar-brand" href="/"><img class="ms-4" width="75" src="assets/HAD.png">
+        </a>
+        <div class="navbar-toggler border-0 me-4" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+             aria-controls="navbarSupportedContent" aria-expanded="false">
+          <i class="fa-solid fa-bars fa-xl"></i>
+>>>>>>> 9250c53ec31edfaafea841ab4d14d78d142a84aa
         </div>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Trang chủ</a>
+            </li>
+            <li class="nav-item  box_menu">
+              <a class="nav-link active " [routerLink]="['product']" href="#" aria-expanded="false">
+                Sản phẩm
+              </a>
+              <ul class="box_menu_sub">
+                <li style="border-bottom: 1px solid saddlebrown;padding: 5px;"><a class="" href="#">Shop</a>
+                </li>
+                <li><a class="" href="#">Shop nam</a></li>
+                <li><a class="" href="#">Shop nữ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['blog']" href="#">Bài viết</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['contact']" href="#">Liên hệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['about-us']" href="#">Về chúng
+                tôi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['faq']" href="#">FAQ</a>
+            </li>
+          </ul>
+          <div class="d-flex order-option me-md-4 gap-3">
+            <div class="option-item ms-2">
+              <div class="search-box ">
+                <input type="text" placeholder="Tìm kiếm sản phẩm">
+                <button><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+            <div class="option-item position-relative">
+              <a class="fa fa-cart-shopping  badge-box " [routerLink]="['cart']">
+
+              </a>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            2
+                        </span>
+            </div>
+            <div class="option-item position-relative">
+              <a class="fa-regular fa-heart badge-box"></a> <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            2
+                        </span>
+            </div>
+            <div class="option-item ">
+              <a class=" fa-regular fa-user"></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
-</div>
+  </div>
+</header>

@@ -1,74 +1,34 @@
-.pt-100{
-    padding-top: 100px;
+.pt-100 {
+  padding-top: 100px;
 }
-.pb-70{
-    padding: 70px;
+
+.pb-70 {
+  padding: 70px;
 }
-.single-feedback{
-    background-color: white;
-    transition: var(--transition);
-    border: 1px solid #EBEBEB;
-    margin-bottom: 30px;
-    padding: 30px;
+
+.single-feedback {
+  background-color: white;
+  transition: var(--transition);
+  border: 1px solid #EBEBEB;
+  margin-bottom: 30px;
+  padding: 30px;
 }
-.single-feedback:hover{
-    border: 1px solid #CF0018;
+
+.single-feedback:hover {
+  border: 1px solid #CF0018;
 }
-.single-feedback p{
-    margin-bottom: 20px;
-    color: #666666;
-    font-size: 16px;
-    line-height: 1.8;
+
+.single-feedback p {
+  margin-bottom: 20px;
+  color: #666666;
+  font-size: 16px;
+  line-height: 1.8;
 }
-.single-feedback h3{
-    margin-bottom: 0;
-    font-size: 20px;
-    font-weight: 600;
+
+.single-feedback h3 {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 600;
 }
-.subscribe-inner{
-    z-index: 1;
-    padding: 100px;
-    position: relative;
-    background-color: var(--blackColor);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.subscribe-inner .content{
-    max-width: 580px;
-    margin-left: auto;
-}
-.subscribe-inner h2{
-    font-weight: 700;
-    margin-bottom: 15px;
-    font-size: 36px;
-}
-.subscribe-inner .newsletter-form{
-    margin-top: 30px;
-    position: relative;
-}
-.subscribe-inner .newsletter-form .input-newsletter{
-    border: 0;
-    width: 100%;
-    height: 55px;
-    display: block;
-    background-color:white;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.subscribe-inner .newsletter-form button{
-    background-color: black;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-    color: white;
-    position: absolute;
-    height: 55px;
-    border: 0;
-    right: 0;
-    top: 0;
-    padding: 0 25px 0 50px;
-    font-size: 15px;
-    font-weight: 500;
-}
-.accordion-header{
-    width:100%
-}
+
+

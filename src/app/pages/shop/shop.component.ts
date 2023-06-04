@@ -16,6 +16,10 @@ export class ShopComponent {
       this.cat = res;
       console.log(this.cat);
     })
+
+    this.pd.getId('5rcBlKhQ7evy1S3Pxayv').subscribe( (res: any) => {
+      console.log(res)
+    })
   }
 
 

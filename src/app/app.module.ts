@@ -29,6 +29,8 @@ import { CarouselModule } from "ngx-owl-carousel-o";
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import {HomeFeaturedProductModule} from "./pages/home/home-featured-product/home-featured-product.module";
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     RegisterComponent,
     HomeCategoryComponent,
     HomeCarouselComponent,
+    NewsletterComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,8 +65,9 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     CarouselModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    HomeFeaturedProductModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

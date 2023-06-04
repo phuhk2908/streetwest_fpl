@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 
 html,
@@ -10,7 +13,8 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  //font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: var(--font-family);
 }
 
 .owl-theme .owl-dots {
@@ -19,15 +23,16 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
+
   .owl-dot:hover {
     span {
-      background: rgb(33, 45, 81);
+      background: rgb(191, 39, 38);
     }
   }
 
   .owl-dot.active {
     span {
-      background: rgb(33, 45, 81);
+      background: rgb(191, 39, 38);
     }
   }
 }
@@ -54,7 +59,7 @@ body {
     }
 
     &:hover {
-      color: rgb(33, 45, 71);
+      color: rgb(191, 39, 38);
       background: none;
     }
   }
@@ -72,13 +77,13 @@ body {
     }
 
     &:hover {
-      color: rgb(33, 45, 71);
+      color: rgb(191, 39, 38);
       background: none;
     }
   }
-
 }
 
+<<<<<<< HEAD
 body::-webkit-scrollbar {
   width: 10px;
 }
@@ -87,3 +92,12 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(224, 224, 236);
   border-radius: 20px;
 }
+=======
+.mb-120 {
+  margin-bottom: 120px;
+}
+
+.mt-120 {
+  margin-top: 120px;
+}
+>>>>>>> 9250c53ec31edfaafea841ab4d14d78d142a84aa
