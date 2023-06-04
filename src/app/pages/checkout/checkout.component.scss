@@ -126,6 +126,13 @@
                 transition: .5s;
                 color: #fff;
 
+                &:disabled {
+                    background-color: #000000 !important;
+                    color: #ffffff !important;
+                    cursor: not-allowed;
+                    opacity: .8;
+                }
+
                 &:hover {
                     background-color: rgb(223, 13, 13);
                     border: unset;

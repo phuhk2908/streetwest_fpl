@@ -30,7 +30,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-import {HomeFeaturedProductModule} from "./pages/home/home-featured-product/home-featured-product.module";
+import { HomeFeaturedProductModule } from "./pages/home/home-featured-product/home-featured-product.module";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -66,8 +67,10 @@ import {HomeFeaturedProductModule} from "./pages/home/home-featured-product/home
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     HomeFeaturedProductModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
