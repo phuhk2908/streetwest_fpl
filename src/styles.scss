@@ -3,7 +3,8 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -78,3 +79,11 @@ body {
 
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(224, 224, 236);
+  border-radius: 20px;
+}

@@ -9,6 +9,21 @@
     height: 100%;
 }
 
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50% !important;
+
+    img {
+        @include fullSize;
+
+    }
+}
+
+img {
+    border-radius: 50%;
+}
+
 .container-menu {
     width: 100%;
     min-height: 84px;
@@ -24,7 +39,7 @@
         min-height: 84px;
         max-height: 200px;
 
-        &>.container-fluid {
+        &>div {
 
             .navbar-collapse {
                 flex-grow: 0.5;

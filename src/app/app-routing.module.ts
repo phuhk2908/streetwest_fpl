@@ -8,6 +8,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent, data: { breadcrumb: 'Về chúng tôi' } },
   { path: 'faq', component: FAQComponent, data: { breadcrumb: 'Câu hỏi thường gặp' } },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
+  { path: 'checkout', component: CheckoutComponent, data: { breadcrumb: 'Thanh toán' } },
 ];
 
 @NgModule({
