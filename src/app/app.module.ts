@@ -32,8 +32,11 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListboxModule } from 'primeng/listbox';
+import { StyleClassModule } from 'primeng/styleclass';
+import { VndPipe } from './core/pipe/format.pipe';
+import { PaginatorModule } from 'primeng/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeCategoryComponent,
     HomeCarouselComponent,
     NewsletterComponent,
+    VndPipe,
+
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     provideFirestore(() => getFirestore()),
     HomeFeaturedProductModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ListboxModule,
+    StyleClassModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

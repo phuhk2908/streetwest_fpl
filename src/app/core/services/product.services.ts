@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
+import { async } from '@angular/core/testing';
 import {
   Firestore,
   collection,
   collectionData,
   doc,
   docData,
+  getDocs,
+  updateDoc,
+  query, where
 } from '@angular/fire/firestore';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   private unsubscribe$ = new Subject<void>();
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore) { }
   products: any[] = [];
-
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
     return collectionData(data, { idField: 'id' }) as Observable<any[]>;

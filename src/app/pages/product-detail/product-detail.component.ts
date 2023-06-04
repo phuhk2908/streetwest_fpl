@@ -13,7 +13,7 @@ export class ProductDetailComponent {
   constructor(
     private dataService: ProductService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
@@ -32,8 +32,10 @@ export class ProductDetailComponent {
         this.availableQuantity += value.amount;
       }
     });
+
   }
-  addToCart() {}
+
+  addToCart() { }
   plus() {
     let value = this.frm1.controls['quantity'].value;
     if (value >= this.availableQuantity) return;
