@@ -2,13 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/interface/product';
 import { BehaviorSubject } from 'rxjs';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  docData,
+  getDocs,
+  updateDoc,
+  query,
+  where,
+  addDoc,
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   cartList: Product[] = [];
   productList = new BehaviorSubject<Product[]>([]);
-  constructor(private cartService: HttpClient) {}
+  constructor(private http: HttpClient, private firestore: Firestore) {}
   getCart() {
     return this.productList.asObservable();
   }
@@ -41,5 +54,20 @@ export class CartService {
   removeAllProduct() {
     this.cartList = [];
     this.productList.next(this.cartList);
+  }
+  async createOrder(data: any) {
+    const orderCollection = collection(this.firestore, 'order');
+    const docRef = await addDoc(orderCollection, data);
+    console.log('Document written with ID: ', docRef.id);
+    return docRef.id;
+  }
+  async saveOrder(idOrder: string, cart: Product[]) {
+    const orderCollection = collection(this.firestore, 'orderDetail');
+    const docRef = await addDoc(orderCollection, {
+      idOrder: idOrder,
+      cart: cart,
+    });
+    console.log('Document written with ID: ', docRef.id);
+    return docRef.id;
   }
 }
