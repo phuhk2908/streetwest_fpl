@@ -36,7 +36,7 @@ export class CartComponent {
       `input[name=quantity-${product.id}-${product.sizeSelected}]`
     ) as HTMLInputElement;
     let value = Number(inputQuantity.value);
-    if (value < 1) return;
+    if (value <= 1) return;
     inputQuantity.value = (--value).toString();
     product.quantity = value;
     this.cartService.addToCart(product);

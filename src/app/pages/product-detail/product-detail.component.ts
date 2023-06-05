@@ -29,6 +29,10 @@ export class ProductDetailComponent {
     });
   }
   fetchData() {
+    // this.dataService.getProductByID('cargo-short-tie-dye');
+    // this.dataService.getProduct().subscribe((data) => {
+    //   console.log(data);
+    // });
     this.dataService.getProductByID(this.id).subscribe((data) => {
       this.product = data;
       for (const [sizeName, value] of Object.entries(this.product.size)) {
@@ -38,8 +42,10 @@ export class ProductDetailComponent {
   }
 
   addToCart(product: Product) {
-    product.quantity = this.frm1.controls['quantity'].value;
-    product.sizeSelected = this.frm1.controls['flexRadioDefault'].value;
+    const quantity = this.frm1.controls['quantity'].value;
+    const sizeSelected = this.frm1.controls['flexRadioDefault'].value;
+    product.quantity = quantity;
+    product.sizeSelected = sizeSelected;
     this.cartService.addToCart(product);
   }
   plus(e: Event) {
@@ -49,7 +55,7 @@ export class ProductDetailComponent {
   }
   minus(e: Event) {
     let value = this.frm1.controls['quantity'].value;
-    if (value == 0) return;
+    if (value <= 1) return;
     this.frm1.controls['quantity'].setValue(--value);
   }
   ngDestroy() {

@@ -22,10 +22,9 @@ export class CartService {
     );
     if (isProduct == -1) {
       this.cartList.push({ ...product });
+    } else {
+      this.cartList[isProduct].quantity! = product.quantity!;
     }
-    // else {
-    //   this.cartList[isProduct].quantity! += product.quantity!;
-    // }
     this.productList.next(this.cartList);
     this.getTotalCart();
   }
