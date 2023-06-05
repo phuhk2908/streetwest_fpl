@@ -37,6 +37,8 @@ import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +71,7 @@ import { PaginatorModule } from 'primeng/paginator';
     BrowserAnimationsModule,
     HomeModule,
     CarouselModule,
+    ToastModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
@@ -79,7 +82,7 @@ import { PaginatorModule } from 'primeng/paginator';
     PaginatorModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
