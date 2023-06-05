@@ -30,7 +30,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
@@ -62,7 +62,6 @@ import { PaginatorModule } from 'primeng/paginator';
     HomeCarouselComponent,
     NewsletterComponent,
     VndPipe,
-
   ],
   imports: [
     BrowserModule,
@@ -78,9 +77,10 @@ import { PaginatorModule } from 'primeng/paginator';
     FormsModule,
     ListboxModule,
     StyleClassModule,
-    PaginatorModule
+    PaginatorModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

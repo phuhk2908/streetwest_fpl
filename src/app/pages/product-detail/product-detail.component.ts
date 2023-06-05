@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/core/services/product.services';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interface/product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CartService } from 'src/app/core/services/cart.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -12,8 +13,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ProductDetailComponent {
   constructor(
     private dataService: ProductService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) {}
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
@@ -32,16 +34,18 @@ export class ProductDetailComponent {
         this.availableQuantity += value.amount;
       }
     });
-
   }
 
-  addToCart() { }
-  plus() {
+  addToCart(product: Product) {
+    product.quantity = this.frm1.controls['quantity'].value;
+    this.cartService.addToCart(product);
+  }
+  plus(e: Event) {
     let value = this.frm1.controls['quantity'].value;
     if (value >= this.availableQuantity) return;
     this.frm1.controls['quantity'].setValue(++value);
   }
-  minus() {
+  minus(e: Event) {
     let value = this.frm1.controls['quantity'].value;
     if (value == 0) return;
     this.frm1.controls['quantity'].setValue(--value);
