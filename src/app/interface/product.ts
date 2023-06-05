@@ -14,4 +14,5 @@ export interface Product {
   slug?: string;
   quantity?: number;
   total?: number;
+  sizeSelected?: string;
 }

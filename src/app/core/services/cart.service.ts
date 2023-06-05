@@ -17,12 +17,15 @@ export class CartService {
     this.productList.next(this.cartList);
   }
   addToCart(product: Product) {
-    const isProduct = this.cartList.findIndex((el) => el.id === product.id);
+    const isProduct = this.cartList.findIndex(
+      (el) => el.id === product.id && el.sizeSelected === product.sizeSelected
+    );
     if (isProduct == -1) {
       this.cartList.push({ ...product });
-    } else {
-      this.cartList[isProduct].quantity! += product.quantity!;
     }
+    // else {
+    //   this.cartList[isProduct].quantity! += product.quantity!;
+    // }
     this.productList.next(this.cartList);
     this.getTotalCart();
   }

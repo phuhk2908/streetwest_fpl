@@ -25,6 +25,7 @@ export class ProductDetailComponent {
     this.fetchData();
     this.frm1 = new FormGroup({
       quantity: new FormControl(1),
+      flexRadioDefault: new FormControl('', Validators.required),
     });
   }
   fetchData() {
@@ -38,6 +39,7 @@ export class ProductDetailComponent {
 
   addToCart(product: Product) {
     product.quantity = this.frm1.controls['quantity'].value;
+    product.sizeSelected = this.frm1.controls['flexRadioDefault'].value;
     this.cartService.addToCart(product);
   }
   plus(e: Event) {
