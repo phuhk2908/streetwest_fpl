@@ -37,6 +37,7 @@ import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
+import { SliderModule } from 'primeng/slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +79,8 @@ import { PaginatorModule } from 'primeng/paginator';
     FormsModule,
     ListboxModule,
     StyleClassModule,
-    PaginatorModule
+    PaginatorModule,
+    SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],
