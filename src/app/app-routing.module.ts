@@ -8,29 +8,75 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { AccountComponent } from './pages/account/account.component';
+import { VerifyEmailComponent } from './pages/account/verify-email/verify-email.component';
+import { DashboardComponent } from './admin/pages/admin/dashboard/dashboard.component';
+import { AuthGuard } from './core/guard/auth.guard';
+import { LoginComponent } from './pages/account/login/login.component';
+import { RegisterComponent } from './pages/account/register/register.component';
+import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
+
+//route guard
+
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
+  { path: 'home', component: HomeComponent, data: { breadcrumb: 'Home' } },
   {
-    path: 'product', component: ShopComponent, data: { breadcrumb: 'Sản phẩm' },
+    path: 'product',
+    component: ShopComponent,
+    data: { breadcrumb: 'Sản phẩm' },
     children: [
       {
-        path: 'shop-nam', component: ShopComponent
+        path: 'shop-nam',
+        component: ShopComponent,
       },
       {
-        path: 'shop-nu', component: ShopComponent
-      }
-    ]
+        path: 'shop-nu',
+        component: ShopComponent,
+      },
+    ],
   },
-  { path: 'product/:id', component: ProductDetailComponent, data: { breadcrumb: 'Chi tiết sản phẩm' } },
+  {
+    path: 'product/:id',
+    component: ProductDetailComponent,
+    data: { breadcrumb: 'Chi tiết sản phẩm' },
+  },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
-  { path: 'contact', component: ContactComponent, data: { breadcrumb: 'Liên Hệ' } },
-  { path: 'about-us', component: AboutUsComponent, data: { breadcrumb: 'Về chúng tôi' } },
-  { path: 'faq', component: FAQComponent, data: { breadcrumb: 'Câu hỏi thường gặp' } },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    data: { breadcrumb: 'Liên Hệ' },
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent,
+    data: { breadcrumb: 'Về chúng tôi' },
+  },
+  {
+    path: 'faq',
+    component: FAQComponent,
+    data: { breadcrumb: 'Câu hỏi thường gặp' },
+  },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
+  {
+    path: 'account',
+    component: AccountComponent,
+    data: { breadcrumb: 'Tài khoản' },
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    data: { breadcrumb: 'Bảng điều khiển' },
+    canActivate: [AuthGuard],
+  },
+  { path: 'sign-in', component: LoginComponent },
+  { path: 'sign-up', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email-address', component: VerifyEmailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

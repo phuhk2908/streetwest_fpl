@@ -1,0 +1,23 @@
+$main-color: #bf2626;
+
+.resend-btn {
+  background-color: $main-color;
+  color: white;
+  border: 1px solid $main-color;
+
+  &:hover {
+    color: $main-color;
+    background-color: white;
+  }
+}
+
+.redirectToLogin {
+  .redirect {
+    text-decoration: none;
+    color: $main-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

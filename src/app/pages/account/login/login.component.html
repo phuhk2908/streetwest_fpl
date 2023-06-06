@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center ptb-100">
+  <div class="form-wrraper">
+    <h3 class="mb-3">Đăng nhập tài khoản</h3>
+    <div class="mb-3 text-start already-account">
+      <span>Chưa có tài khoản ? <a routerLink="/account/sign-up">Đăng ký ngay</a></span>
+    </div>
+    <div class="mb-3">
+      <label for="userEmail" class="form-label d-block">Email</label>
+      <input #userEmail type="email" class="form-control" id="userEmail">
+    </div>
+
+    <div class="mb-1">
+      <label for="userPwd" class="form-label d-block">Mật khẩu</label>
+      <input #userPwd type="password" class="form-control" id="userPwd">
+    </div>
+
+    <div class="forgot-password text-end mb-3">
+      <a routerLink="/account/forgot-password">
+        Quên mật khẩu
+      </a>
+    </div>
+
+    <button #enterBtn  *ngIf="!authService.isLoading" class="btn btn-primary w-100 login-button">Đăng nhập
+    </button>
+
+    <button *ngIf="authService.isLoading" class="btn btn-primary w-100 login-button" style="background-color: white">
+      <p-progressSpinner [style]="{width: '20px', height: '18px'}" strokeWidth="8" fill="var(--surface-ground)"
+                         animationDuration=".5s"></p-progressSpinner>
+    </button>
+
+    <div class="my-3 text-center"><span>Or</span></div>
+    <button class="btn btn-light w-100 text-center google-button" (click)="authService.GoogleAuth()">
+      <img class="me-5" width="24" height="24" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo"/>
+      <span class="">Đăng nhập với Google</span>
+    </button>
+  </div>
+
+</div>
