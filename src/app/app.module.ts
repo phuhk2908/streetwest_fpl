@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,17 +30,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
 import { HomeModule } from './pages/home/home.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,6 @@ import { PaginatorModule } from 'primeng/paginator';
     HomeCarouselComponent,
     NewsletterComponent,
     VndPipe,
-
   ],
   imports: [
     BrowserModule,
@@ -70,17 +71,18 @@ import { PaginatorModule } from 'primeng/paginator';
     BrowserAnimationsModule,
     HomeModule,
     CarouselModule,
+    ToastModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     HomeFeaturedProductModule,
-    ReactiveFormsModule,
     FormsModule,
     ListboxModule,
     StyleClassModule,
-    PaginatorModule
+    PaginatorModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
