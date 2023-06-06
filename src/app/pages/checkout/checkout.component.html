@@ -1,83 +1,120 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="checkout-area test">
-    <div class="container">
-        <form class="" [formGroup]="formCheckout">
+  <div class="container">
+    <form class="" [formGroup]="formCheckout" (submit)="order()">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="billing-details">
+            <h3><span>Thông tin đơn hàng</span></h3>
             <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="billing-details">
-                        <h3><span>Thông tin đơn hàng</span></h3>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6">
-                                <div class="form-group"><label>
-                                        Họ và tên <span class="required">*</span></label><input type="text"
-                                        formControlName="fullName" placeholder="Họ và tên " class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group"><label>Số điện thoại
-                                        <span class="required">*</span>
-
-                                    </label><input type="text" formControlName="phone" placeholder="Số điện thoại"
-                                        class="form-control">
-                                    <span class="text-danger"
-                                        *ngIf=" f['phone'].invalid &&f['phone'].errors && f['phone'].errors['pattern']">
-                                        Hãy nhập số điện thoại
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group"><label>
-                                        Địa chỉ <span class="required">*</span></label><input id="address" type="text"
-                                        formControlName="address" placeholder="Địa chỉ" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group"><label>
-                                        Thành phố <span class="required">*</span></label><input type="text"
-                                        formControlName="city" placeholder="Thành phố" class="form-control "></div>
-                            </div>
-
-                        </div>
-                    </div>
+              <div class="col-lg-12 col-md-6">
+                <div class="form-group">
+                  <label> Họ và tên <span class="required">*</span></label
+                  ><input
+                    type="text"
+                    formControlName="fullName"
+                    placeholder="Họ và tên "
+                    class="form-control"
+                  />
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="order-details">
-                        <h3><span>Đơn hàng</span></h3>
-                        <div class="order-table table-responsive">
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <td class="order-subtotal"><span>Cart
-                                                Subtotal</span></td>
-                                        <td class="order-subtotal-price"><span class="order-subtotal-amount"> $0.00
-                                            </span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="order-shipping"><span>Shipping</span></td>
-                                        <td class="shipping-price"><span>$30.00</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="total-price"><span>Order
-                                                Total</span></td>
-                                        <td class="product-subtotal"><span class="subtotal-amount"> $0.00 </span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="payment-box ">
-                            <div class="payment-method ">
-                                <div class="mota1 mb-3 fw-medium">
-                                    <div class="radio"></div>
-                                    Thanh toán khi giao hàng
-                                </div>
-                                <div class="mota2 mb-2 fst-italic"> Thanh toán bằng tiền mặt</div>
-                            </div>
-                            <button type="submit" class="default-btn fw-medium mt-3" [disabled]="!formCheckout.valid">
-                                Đặt hàng </button>
-                        </div>
-                    </div>
+              </div>
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <label>Số điện thoại <span class="required">*</span> </label
+                  ><input
+                    type="text"
+                    formControlName="phone"
+                    placeholder="Số điện thoại"
+                    class="form-control"
+                  />
+                  <span
+                    class="text-danger"
+                    *ngIf="
+                      f['phone'].invalid &&
+                      f['phone'].errors &&
+                      f['phone'].errors['pattern']
+                    "
+                  >
+                    Hãy nhập số điện thoại
+                  </span>
                 </div>
+              </div>
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <label> Địa chỉ <span class="required">*</span></label
+                  ><input
+                    id="address"
+                    type="text"
+                    formControlName="address"
+                    placeholder="Địa chỉ"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <label> Thành phố <span class="required">*</span></label
+                  ><input
+                    type="text"
+                    formControlName="city"
+                    placeholder="Thành phố"
+                    class="form-control"
+                  />
+                </div>
+              </div>
             </div>
-        </form>
-    </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="order-details">
+            <h3><span>Đơn hàng</span></h3>
+            <div class="order-table table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td class="order-subtotal"><span>Cart Subtotal</span></td>
+                    <td class="order-subtotal-price">
+                      <span class="order-subtotal-amount">
+                        {{ total | vnd }}
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="order-shipping"><span>Shipping</span></td>
+                    <td class="shipping-price"><span>Free</span></td>
+                  </tr>
+                  <tr>
+                    <td class="total-price"><span>Order Total</span></td>
+                    <td class="product-subtotal">
+                      <span class="subtotal-amount"> {{ total | vnd }} </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="payment-box">
+              <div class="payment-method">
+                <div class="mota1 mb-3 fw-medium">
+                  <div class="radio"></div>
+                  Thanh toán khi giao hàng
+                </div>
+                <div class="mota2 mb-2 fst-italic">
+                  Thanh toán bằng tiền mặt
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="default-btn fw-medium mt-3"
+                [disabled]="!formCheckout.valid"
+              >
+                Đặt hàng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+<p-toast position="top-right"></p-toast>
+<button type="button" pButton pRipple (click)="show()" label="Show"></button>

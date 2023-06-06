@@ -8,7 +8,12 @@ import {
   docData,
   getDocs,
   updateDoc,
+<<<<<<< HEAD
   query, where, orderBy, startAfter, limit, startAt, OrderByDirection,
+=======
+  query,
+  where,
+>>>>>>> 70f8dc93821a0b8708c8a7dcd030b0f028df3a7f
 } from '@angular/fire/firestore';
 import { Observable, Subject, from, map, tap } from 'rxjs';
 @Injectable({
@@ -16,7 +21,7 @@ import { Observable, Subject, from, map, tap } from 'rxjs';
 })
 export class ProductService {
   private unsubscribe$ = new Subject<void>();
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore) {}
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
