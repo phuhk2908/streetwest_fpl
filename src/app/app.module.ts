@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -30,7 +30,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-
+import { ButtonModule } from 'primeng/button';
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
@@ -38,6 +38,10 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
 import { SliderModule } from 'primeng/slider';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,9 +84,13 @@ import { SliderModule } from 'primeng/slider';
     ListboxModule,
     StyleClassModule,
     PaginatorModule,
-    SliderModule
+    SliderModule,
+    ToastModule,
+    ButtonModule,
+    CardModule,
+    DialogModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

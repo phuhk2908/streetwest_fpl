@@ -1,23 +1,39 @@
+
 import { Component } from '@angular/core';
 import { OrderByDirection } from '@angular/fire/firestore';
-import { async } from 'rxjs';
+import { MessageService } from 'primeng/api';
 import { ProductService } from 'src/app/core/services/product.services';
 import { Product } from 'src/app/interface/product';
-
+import { ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
+  providers: [MessageService],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ShopComponent {
   maxPrice: number = 1000000;
-  cat: any;
+  cat: any[] = [
+    { id: 111, name: 'Quan' },
+    { id: 111, name: 'Ao' },
+    { id: 111, name: 'Ao khoac' },
+  ]
+  // cat: any;
   search: string = '';
   filterCat: any;
-  products: Product[] = [];
-  constructor(private pd: ProductService) {
+  products: any[] = [];
+  constructor(private pd: ProductService, private messageService: MessageService) {
 
   }
+  ngOnInit(): void {
+
+    this.pd.getAllCategory().subscribe((res: any[]) => {
+      this.cat = res;
+    })
+    this.getData();
+  }
+
   page: number = 0;
   totalRecords: number = 0;
   rows: number = 10;
@@ -29,29 +45,32 @@ export class ShopComponent {
     this.getData();
   }
   selectCategory(event: any) {
-    // this.filterCat = event.value.id
-    // this.filterCat = 'k2IG2BazToB2O61yJti2';
-    this.getData();
+    if (event.cancelable) event.preventDefault();
+    if (event.value?.id) {
+      this.filterCat = event.getAttribute('data-id');
+      this.getData();
+    }
+    else {
+      this.filterCat = '';
+      this.page = 0;
+      this.getData();
+    }
+
   }
-  handleSearch() {
-    console.log(this.search);
-  }
+
   onPageChange(event: any) {
+    if (event.cancelable) event.preventDefault();
     this.page = event.first;
     console.log(this.page);
     this.rows = event.rows;
     this.getData();
   }
   handleSort(e: any) {
+    if (e.cancelable) e.preventDefault();
     this.sortPrice = e;
     this.getData();
   }
-  ngOnInit(): void {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res;
-    })
-    this.getData()
-  }
+
   async getData() {
     (await this.pd.paginator(this.filterCat, this.filterPrice, this.sortPrice, this.page)).subscribe({
       next: (res) => {

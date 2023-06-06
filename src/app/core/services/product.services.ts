@@ -38,8 +38,7 @@ export class ProductService {
   }
 
   async paginator(cat: string, filter: number[], sort: OrderByDirection, page: number): Promise<Observable<any[]>> {
-
-    const postsPerPage = 10;
+    const perPage = 10;
     const baseRef = collection(this.firestore, "products");
     let currentPageRef;
     const conditions = [];
@@ -62,13 +61,13 @@ export class ProductService {
       let lastVisibleRef = query(baseRef, ...conditions, orderBy('price', sort), limit(page));
       const lastVisibleQuerySnapshot = await getDocs(lastVisibleRef);
       const lastVisiblePost = lastVisibleQuerySnapshot.docs[lastVisibleQuerySnapshot.docs.length - 1];
-      currentPageRef = query(baseRef, ...conditions, orderBy('price', sort), startAfter(lastVisiblePost), limit(postsPerPage));
+      currentPageRef = query(baseRef, ...conditions, orderBy('price', sort), startAfter(lastVisiblePost), limit(perPage));
     }
 
     const currentPageQuerySnapshot = await getDocs(currentPageRef);
-    const documentData = currentPageQuerySnapshot.docs.map((doc) => doc.data());
+    const documentData = currentPageQuerySnapshot.docs.map((doc) => doc.data())
     const data = [documentData, count.length];
-    return from([data]);
+    return from([data]) as Observable<any>;
   }
 }
 
