@@ -4,6 +4,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { Dialog, DialogModule } from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +41,11 @@ import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
+import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
+import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +71,11 @@ import { ToastModule } from 'primeng/toast';
     HomeCarouselComponent,
     NewsletterComponent,
     VndPipe,
+    AdminComponent,
+    AdminproductComponent,
+    AdminorderComponent,
+    SidebarAdminComponent,
+    AdminaccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +93,8 @@ import { ToastModule } from 'primeng/toast';
     StyleClassModule,
     PaginatorModule,
     HttpClientModule,
+    TableModule,
+    DialogModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

@@ -1,0 +1,235 @@
+/********** Custom CSS ************/
+:root {
+    /* ===== Colors ===== */
+    --panel-color: #FFF;
+    --black-light-color: #707070;
+    --border-color: #e6e5e5;
+    --toggle-color: #DDD;
+
+    /* ====== Transition ====== */
+    --tran-05: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+    --tran-03: all 0.2s ease;
+}
+
+/* === Custom Scroll Bar CSS === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(178, 36, 36);
+}
+nav {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+    border-right: 1px solid var(--border-color);
+    transition: var(--tran-05);
+}
+
+nav.close {
+    width: 73px;
+}
+
+nav .logo-name {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo-image {
+    display: flex;
+    justify-content: center;
+    min-width: 45px;
+}
+
+nav .logo-image img {
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+nav .logo-name .logo_name {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 14px;
+    transition: var(--tran-05);
+}
+
+nav.close .logo_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+nav .menu-items {
+    margin-top: 40px;
+    height: calc(100% - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-items li {
+    list-style: none;
+}
+
+.menu-items li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-links li a:hover:before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: rgb(178, 36, 36)
+}
+
+.menu-items li a i {
+    font-size: 24px;
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.menu-items li a .link-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    transition: var(--tran-05);
+}
+
+nav.close li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+}
+.nav-links li a:hover i,
+.nav-links li a:hover .link-name {
+    color:rgb(178, 36, 36);
+}
+
+
+
+
+
+// @media (max-width: 1000px) {
+//     nav {
+//         width: 73px;
+//     }
+
+//     nav.close {
+//         width: 250px;
+//     }
+
+//     nav .logo_name {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+
+//     nav.close .logo_name {
+//         opacity: 1;
+//         pointer-events: auto;
+//     }
+
+//     nav li a .link-name {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+
+//     nav.close li a .link-name {
+//         opacity: 1;
+//         pointer-events: auto;
+//     }
+
+//     nav~.dashboard {
+//         left: 73px;
+//         width: calc(100% - 73px);
+//     }
+
+//     nav.close~.dashboard {
+//         left: 250px;
+//         width: calc(100% - 250px);
+//     }
+
+//     nav~.dashboard .top {
+//         left: 73px;
+//         width: calc(100% - 73px);
+//     }
+
+//     nav.close~.dashboard .top {
+//         left: 250px;
+//         width: calc(100% - 250px);
+//     }
+
+//     .activity .activity-data {
+//         overflow-X: scroll;
+//     }
+// }
+
+// @media (max-width: 400px) {
+//     nav {
+//         width: 0px;
+//     }
+
+//     nav.close {
+//         width: 73px;
+//     }
+
+//     nav .logo_name {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+
+//     nav.close .logo_name {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+
+//     nav li a .link-name {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+
+//     nav.close li a .link-name {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+
+//     nav~.dashboard {
+//         left: 0;
+//         width: 100%;
+//     }
+
+//     nav.close~.dashboard {
+//         left: 73px;
+//         width: calc(100% - 73px);
+//     }
+
+//     nav~.dashboard .top {
+//         left: 0;
+//         width: 100%;
+//     }
+
+//     nav.close~.dashboard .top {
+//         left: 0;
+//         width: 100%;
+//     }
+// }
+
+// section .background {
+//     background-color: rgb(250, 233, 234);
+// }

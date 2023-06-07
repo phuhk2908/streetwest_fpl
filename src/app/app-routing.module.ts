@@ -9,6 +9,10 @@ import { FAQComponent } from './pages/faq/faq.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
+import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   {
@@ -29,6 +33,10 @@ const routes: Routes = [
   { path: 'faq', component: FAQComponent, data: { breadcrumb: 'Câu hỏi thường gặp' } },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
   { path: 'checkout', component: CheckoutComponent, data: { breadcrumb: 'Thanh toán' } },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/product', component: AdminproductComponent },
+  { path: 'admin/order', component: AdminorderComponent},
+  { path: 'admin/account', component: AdminaccountComponent},
 ];
 
 @NgModule({

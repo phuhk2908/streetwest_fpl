@@ -1,5 +1,5 @@
-<app-header></app-header>
+<app-header *ngIf="showHeader"></app-header>
 <div style="margin-top: 88px">
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
+    <router-outlet (activate)="handleAdmin($event)"></router-outlet>
+    <app-footer *ngIf="showHeader"></app-footer>
 </div>
