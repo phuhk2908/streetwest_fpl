@@ -36,8 +36,11 @@ import { LoginComponent } from './pages/account/login/login.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
+import { AdminComponent } from './admin/pages/admin/admin.component';
+import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
-
+import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
+import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { AuthService } from './core/services/auth/auth.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
@@ -59,10 +62,6 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
-import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
-import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
-import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
-import {AdminComponent} from "./admin/pages/admin/admin.component";
 
 @NgModule({
   declarations: [
@@ -92,11 +91,11 @@ import {AdminComponent} from "./admin/pages/admin/admin.component";
     ForgotPasswordComponent,
     VerifyEmailComponent,
     VndPipe,
-    AdminproductComponent,
-    AdminorderComponent,
     SidebarAdminComponent,
     AdminaccountComponent,
-    AdminComponent
+    AdminComponent,
+    AdminorderComponent,
+    AdminproductComponent,
   ],
   imports: [
     BrowserModule,

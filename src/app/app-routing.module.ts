@@ -18,12 +18,12 @@ import { RegisterComponent } from './pages/account/register/register.component';
 import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
 
 //route guard
+
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { AdminComponent } from './admin/pages/admin/admin.component';
-import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
 import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
 import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
-
+import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   { path: 'home', component: HomeComponent, data: { breadcrumb: 'Home' } },
