@@ -1,1 +1,135 @@
-<p>admin works!</p>
+<app-sidebar-admin></app-sidebar-admin>
+<section class="dashboard container mx-2">
+    <div class="">
+        <div class="nav justify-content-end">
+            <header class="row">
+                <div class="col-7"><h5>Danh sách đơn hàng</h5></div>
+                <div class="col-1 pt-2 text-end"><i class="fa-solid fa-magnifying-glass mx-3"></i><i class="fa-solid fa-bell"></i></div>
+                <div class="col-2 text-end m-0">
+                    <h5 class="pt-1">Huỳnh Kim Phú</h5>
+                </div>
+                <div class="col-1 text-end"><img src="assets/images/logo.jpg" alt=""></div>
+                <div class="col-1 text-end p-0"><button class="btn bg-light shadow-sm"><i class="bi bi-envelope-at"></i> Góp ý</button>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="background border shadow rounded content mt-5 row">
+        <div class="col-lg-8">
+            <!-- <div class="card mt-2" style="width: 40rem; height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                </div>
+            </div> -->
+            <!-- trang thai don hang -->
+            <div class="accordion mt-3" id="accordionExample">
+                <div class="accordion-item shadow p-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="bi bi-journal mx-2"></i>
+                            Trạng thái đơn hàng
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="bi bi-wallet mx-2"></i>
+                                    Đơn hàng chưa thanh toán
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by
+                                    default, until the collapse plugin adds the appropriate classes that we use to
+                                    style each element. These classes control the overall appearance, as well as the
+                                    showing and hiding via CSS transitions. You can modify any of this with custom
+                                    CSS or overriding our default variables. It's also worth noting that just about
+                                    any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="bi bi-cart-x-fill mx-2"></i>
+                                    Đơn hàng chưa giao
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by
+                                    default, until the collapse plugin adds the appropriate classes that we use to
+                                    style each element. These classes control the overall appearance, as well as the
+                                    showing and hiding via CSS transitions. You can modify any of this with custom
+                                    CSS or overriding our default variables. It's also worth noting that just about
+                                    any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="bi bi-cart-check-fill mx-2"></i>
+                                    Đơn hàng đang giao
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse "
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by
+                                    default, until the collapse plugin adds the appropriate classes that we use to
+                                    style each element. These classes control the overall appearance, as well as the
+                                    showing and hiding via CSS transitions. You can modify any of this with custom
+                                    CSS or overriding our default variables. It's also worth noting that just about
+                                    any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="bi bi-trash mx-2"></i>
+                                    Đơn hàng hủy
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse "
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by
+                                    default, until the collapse plugin adds the appropriate classes that we use to
+                                    style each element. These classes control the overall appearance, as well as the
+                                    showing and hiding via CSS transitions. You can modify any of this with custom
+                                    CSS or overriding our default variables. It's also worth noting that just about
+                                    any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- <p-chart type="line" [data]="data" [options]="options"></p-chart> -->
+            <div class="card shadow p-3 mt-2 mb-3" style="width: 16rem; height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

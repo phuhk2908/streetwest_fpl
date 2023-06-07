@@ -8,7 +8,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
-import { Dialog, DialogModule } from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
@@ -36,11 +36,7 @@ import { LoginComponent } from './pages/account/login/login.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
-import { AdminComponent } from './pages/admin/admin.component';
-import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
-import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
-import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
 
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { AuthService } from './core/services/auth/auth.service';
@@ -54,7 +50,6 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DividerModule } from 'primeng/divider';
-import { AdminComponent } from './admin/pages/admin/admin.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
@@ -64,6 +59,10 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
+import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
+import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
+import {AdminComponent} from "./admin/pages/admin/admin.component";
 
 @NgModule({
   declarations: [
@@ -92,13 +91,12 @@ import { AccordionModule } from 'primeng/accordion';
     DashboardComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    AdminComponent,
     VndPipe,
-    AdminComponent,
     AdminproductComponent,
     AdminorderComponent,
     SidebarAdminComponent,
     AdminaccountComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
