@@ -21,6 +21,10 @@ import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-
 
 
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
+import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -80,6 +84,10 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
 
   { path: 'checkout', component: CheckoutComponent, data: { breadcrumb: 'Thanh toán' } },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/product', component: AdminproductComponent },
+  { path: 'admin/order', component: AdminorderComponent},
+  { path: 'admin/account', component: AdminaccountComponent},
 
 ];
 

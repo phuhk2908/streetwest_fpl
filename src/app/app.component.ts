@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,12 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  constructor(private primengConfig: PrimeNGConfig) { }
-
-  ngOnInit() {
-
+  title = 'StreetWest';
+  showHeader:boolean = true
+  handleAdmin(ComponentRef:Component){
+   const name = ComponentRef.constructor.name
+    if(name.startsWith('Admin')){
+      this.showHeader = false
+    }
   }
 }

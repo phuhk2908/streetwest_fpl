@@ -7,6 +7,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { Dialog, DialogModule } from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
@@ -34,6 +36,11 @@ import { LoginComponent } from './pages/account/login/login.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
+import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
+import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
 
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { AuthService } from './core/services/auth/auth.service';
@@ -87,6 +94,11 @@ import { AccordionModule } from 'primeng/accordion';
     VerifyEmailComponent,
     AdminComponent,
     VndPipe,
+    AdminComponent,
+    AdminproductComponent,
+    AdminorderComponent,
+    SidebarAdminComponent,
+    AdminaccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,6 +121,8 @@ import { AccordionModule } from 'primeng/accordion';
     StyleClassModule,
     PaginatorModule,
     HttpClientModule,
+    TableModule,
+    DialogModule,
     SliderModule,
     AccordionModule,
   ],
