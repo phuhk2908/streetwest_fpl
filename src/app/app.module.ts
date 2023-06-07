@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
+
+import { environment } from '../environments/environment';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { Dialog, DialogModule } from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './pages/home/home.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -25,27 +32,39 @@ import { FAQComponent } from './pages/faq/faq.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/account/login/login.component';
+import { RegisterComponent } from './pages/account/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
-import { HomeModule } from './pages/home/home.module';
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { environment } from '../environments/environment';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
+import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
+import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
+
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
+import { AuthService } from './core/services/auth/auth.service';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { DashboardComponent } from './admin/pages/admin/dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './pages/account/verify-email/verify-email.component';
+import { AuthGuard } from './core/guard/auth.guard';
+import { ChipsModule } from 'primeng/chips';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DividerModule } from 'primeng/divider';
+import { AdminComponent } from './admin/pages/admin/admin.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { AdminComponent } from './pages/admin/admin.component';
-import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
-import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
-import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
-import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
+import { SliderModule } from 'primeng/slider';
+import { AccordionModule } from 'primeng/accordion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +89,10 @@ import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.c
     HomeCategoryComponent,
     HomeCarouselComponent,
     NewsletterComponent,
+    DashboardComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    AdminComponent,
     VndPipe,
     AdminComponent,
     AdminproductComponent,
@@ -83,20 +106,32 @@ import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.c
     BrowserAnimationsModule,
     HomeModule,
     CarouselModule,
-    ToastModule,
-    ReactiveFormsModule,
+    HomeFeaturedProductModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    HomeFeaturedProductModule,
+    ChipsModule,
+    PasswordModule,
+    ButtonModule,
     FormsModule,
+    ProgressSpinnerModule,
+    DividerModule,
+    ToastModule,
+    ReactiveFormsModule,
     ListboxModule,
     StyleClassModule,
     PaginatorModule,
     HttpClientModule,
     TableModule,
     DialogModule,
+    SliderModule,
+    AccordionModule,
   ],
-  providers: [MessageService],
+  providers: [
+    AuthService,
+    AuthGuard,
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    [MessageService],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

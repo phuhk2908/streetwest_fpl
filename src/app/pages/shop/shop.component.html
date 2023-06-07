@@ -1,168 +1,105 @@
 <app-breadcrumb></app-breadcrumb>
+
+
 <div class="product-area ptb-100">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-12">
-        <aside>
-          <div class="widget widget_search">
-            <form novalidate="" class="search-form ng-untouched ng-pristine ng-valid">
-              <input type="search" placeholder="Search..." class="search-field" /><button type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </div>
-
+      <div class="col-lg-4 col-md-12 ">
+        <aside class=" widget-area">
           <div class="widget widget_categories">
             <h3 class="widget-title">
-              <span>Danh mục</span>
+              <span>Loại sản phẩm</span>
             </h3>
-
-            <p-listbox [options]="cat" [(ngModel)]="selectCat" optionLabel="name"
-              [style]="{'width':'15rem', 'border': 'unset'}"></p-listbox>
-          </div>
-
-
-
-          <div class="widget widget_price_filter">
-            <h3 class="widget-title"><span>Filter by Price</span></h3>
-            <div class="filter-price">
-              <label for="minPrice">Min Price:</label>
-              <input type="number" id="minPrice" name="minPrice" />
-            </div>
-
-            <div class="filter-price">
-              <label for="maxPrice">Max Price:</label>
-              <input type="number" id="maxPrice" name="maxPrice" />
-            </div>
-
-            <!-- Filter button -->
-            <button onclick="filterByPrice()">Filter</button>
-          </div>
-
-          <div class="widget widget_vaxim_posts_thumb">
-            <h3 class="widget-title">
-              <span>Our Best Sellers</span>
-            </h3>
-            <article class="item">
-              <a routerlink="/products-details" class="thumb" href="/products-details"><img
-                  src="assets/images/product/aothun/10.PNG" alt="blog-image" /></a>
-              <div class="info">
-                <h4 class="title">
-                  <a routerlink="/products-details" href="/products-details">Cheeky woman leather jacket</a>
-                </h4>
-                <div class="star-rating">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <span class="price">$150.00</span>
-              </div>
-            </article>
-            <article class="item">
-              <a routerlink="/products-details" class="thumb" href="/products-details"><img
-                  src="assets/images/product/aothun/10.PNG" alt="blog-image" /></a>
-              <div class="info">
-                <h4 class="title">
-                  <a routerlink="/products-details" href="/products-details">Comfort man black hoodie</a>
-                </h4>
-                <div class="star-rating">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <span class="price">$150.00</span>
-              </div>
-            </article>
-            <article class="item">
-              <a routerlink="/products-details" class="thumb" href="/products-details"><img
-                  src="assets/images/product/aothun/10.PNG" alt="blog-image" /></a>
-              <div class="info">
-                <h4 class="title">
-                  <a routerlink="/products-details" href="/products-details">Trendy woman black blazer</a>
-                </h4>
-                <div class="star-rating">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <span class="price">$150.00</span>
-              </div>
-            </article>
-            <article class="item">
-              <a routerlink="/products-details" class="thumb" href="/products-details"><img
-                  src="assets/images/product/aothun/10.PNG" alt="blog-image" /></a>
-              <div class="info">
-                <h4 class="title">
-                  <a routerlink="/products-details" href="/products-details">Arctix womens essential</a>
-                </h4>
-                <div class="star-rating">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <span class="price">$150.00</span>
-              </div>
-            </article>
-          </div>
-
-          <div class="widget widget_follow_us">
-            <h3 class="widget-title">
-              <span>Follow Us</span>
-            </h3>
-            <ul>
-              <li>
-                <a href="#" target="_blank">Facebook</a>
-              </li>
-              <li>
-                <a href="#" target="_blank">Twitter</a>
-              </li>
-              <li>
-                <a href="#" target="_blank">Instagram</a>
-              </li>
-              <li>
-                <a href="#" target="_blank">Pinterest</a>
-              </li>
-              <li>
-                <a href="#" target="_blank">Linkedin</a>
+            <ul class="box-cat">
+              <li #cate *ngFor="let item of cat" [attr.data-id]="item.id" (click)="selectCategory(cate)">
+                <a class="item-cat">{{ item.name }}</a>
               </li>
             </ul>
           </div>
-
-          <div class="widget widget_tag_cloud">
-            <h3 class="widget-title">
-              <span>Tags</span>
-            </h3>
-            <div class="tagcloud">
-              <a routerlink="/shop-left-sidebar-1">Advertisment</a><a routerlink="/shop-left-sidebar-1">Business</a><a
-                routerlink="/shop-left-sidebar-1">Life</a><a routerlink="/shop-left-sidebar-1">Lifestyle</a><a
-                routerlink="/shop-left-sidebar-1">Fashion</a><a routerlink="/shop-left-sidebar-1">Ads</a>
+          <div class="widget widget_price_filter ">
+            <h3 class="widget-title"><span>Lọc theo giá</span></h3>
+            <div class="w-100  widget_price_filter_info">
+              <span class="ms-3">{{filterPrice[0] | vnd}}</span>
+              <span>{{filterPrice[1] | vnd}}</span>
             </div>
+
+            <p-slider [(ngModel)]="filterPrice" [range]="true" styleClass="prime-slider-override" [max]="maxPrice"
+              (onChange)="handleChangePrice($event)" [step]="100" #price></p-slider>
+          </div>
+          <div class="widget widget_follow_us">
+            <h3 class="widget-title">
+              <span>Mạng xã hội</span>
+            </h3>
+            <ul>
+              <li>
+                <a><i class="fa-brands fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a> <i class="fa-brands fa-instagram"></i> Instagram</a>
+              </li>
+            </ul>
           </div>
         </aside>
       </div>
 
-      <div class="col-lg-8 col-md-12">
-        <div class="vaxim-grid-sorting row align-items-center">
-          <div class="vaxim-grid-sorting row align-items-center">
-            <div class="col-lg-6 col-md-6 result-count">
-              <div class="d-flex align-items-center">
-                <p>
-                  We found
-                  <span class="count">12</span> products available for you
-                </p>
+
+      <div class="col-lg-8 col-md-12  p-0" *ngIf="products && products.length >0 ; else other_content">
+        <div class="box-sort-area mb-5">
+          <div class="d-md-flex d-inline">
+            <div class="col-lg-6 col-md-6 my-3">
+              <div class="text-count">
+                Chúng tôi tìm thấy <span class="count text-dark h6"> {{totalRecords}} </span> sản phẩm
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 ordering">
-              <div class="select-box">
-                <label>Sort By:</label><select>
+            <div class="col-lg-6 col-md-6 my-3">
+              <div class="select-box-price justify-content-center justify-content-md-end">
+                <label>Sort By:</label><select (ngModelChange)="handleSort($event)" [(ngModel)]="sortPrice">
                   <option>Default</option>
-                  <option>Popularity</option>
-                  <option>Latest</option>
-                  <option>Price: low to high</option>
-                  <option>Price: high to low</option>
+                  <option value="asc">Giá: tăng dần</option>
+                  <option value="desc">Giá: giảm dần</option>
                 </select>
               </div>
             </div>
           </div>
         </div>
+        <div class="d-flex flex-wrap box-product-area ">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4" *ngFor="let item of products">
+            <div class="single-products-box">
+              <a class="d-block"><img src="{{item.img[0]}}" class="w-100 object-fit-fill" /></a>
+              <div class="content ">
+                <div class="flex-column">
+                  <div class="text-main "> {{item.name}}
+                  </div>
+                  <div class="box-add-cart">
+                    <span class="text-cart">Thêm giỏ hàng <i class="fas fa-cart-plus"></i></span>
+                    <span class="text-price">{{ item.price |vnd}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="row">
+
+
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
+          <p-paginator (onPageChange)="onPageChange($event)" [first]="page" [rows]="rows"
+            [totalRecords]="totalRecords"></p-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- </ng-template> -->
+
+<ng-template #other_content>
+  <div class="col-lg-8 col-md-12  p-0">
+    <div class="w-100 text-center ptb-100">Không tìm thấy sản phẩm nào</div>
+  </div>
+</ng-template>
+<!-- <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let item of products">
             <div class="single-products-box">
               <a routerlink="" class="d-block"><img src="{{item.img[0]}}" alt="" /></a>
@@ -183,7 +120,7 @@
               <span class="sale">SALE</span>
               <div class="content">
                 <h3>
-                  <a [routerLink]="['/project', item?.slug]">{{item.name}}</a>
+                  <a [routerLink]="['/product', item?.slug]">{{item.name}}</a>
                 </h3>
                 <a routerlink="/cart" class="add-to-cart-btn">Add to cart <i class="fas fa-cart-plus"></i></a>
                 <div class="price">
@@ -193,12 +130,5 @@
             </div>
           </div>
 
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows"
-              [totalRecords]="totalRecords"></p-paginator>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+          
+        </div> -->

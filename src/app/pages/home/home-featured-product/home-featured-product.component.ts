@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {OwlOptions} from "ngx-owl-carousel-o";
+import { Component, Input } from '@angular/core';
+import { OwlOptions } from "ngx-owl-carousel-o";
+import { Product } from 'src/app/interface/product';
 
 @Component({
   selector: 'app-home-featured-product',
@@ -7,6 +8,7 @@ import {OwlOptions} from "ngx-owl-carousel-o";
   styleUrls: ['./home-featured-product.component.scss']
 })
 export class HomeFeaturedProductComponent {
+  @Input() productsFeature: Product[] = [];
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,

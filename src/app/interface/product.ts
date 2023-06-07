@@ -15,4 +15,6 @@ export interface Product {
   quantity?: number;
   total?: number;
   sizeSelected?: string;
+  feature?: string
 }
+
