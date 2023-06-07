@@ -99,9 +99,33 @@
                 2
               </span>
             </div>
-            <div class="option-item">
-              <a class="fa-regular fa-user"></a>
+
+            <div class="option-item-user">
+              <i (click)="this.visible = !this.visible" class="fa-regular fa-user user">
+                <div class="box-user" [hidden]="visible">
+                  <ul *ngIf="!authService.userData as user; else haveUser" >
+                    <li><a routerLink="sign-in">Đăng nhập</a></li>
+                    <li><a routerLink="sign-up">Đăng ký</a></li>
+                  </ul>
+                  <ng-template #haveUser>
+                    <ul>
+                      <li>
+                        <div class="d-flex align-items-center">
+                          <div><img [src]="authService.userData.photoURL === null ? 'assets/images/profile.png' : authService.userData.photoURL" alt="" width="20" height="20"></div>
+                          <span class="ms-3"><strong>{{authService.userData.displayName}}</strong></span>
+                        </div>
+                      </li>
+                      <li>
+                        <a routerLink="/account">Thông tin tài khoản</a>
+                      </li>
+                      <hr>
+                      <li><a (click)="authService.SignOut()">Đăng xuất</a></li>
+                    </ul>
+                  </ng-template>
+                </div>
+              </i>
             </div>
+
           </div>
         </div>
       </div>

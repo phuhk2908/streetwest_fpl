@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <div *ngIf="authService.userData as user">
+      <p class="text-center">Chúng tôi đã gửi thông tin xác thực email qua <strong>{{user.email}}</strong>.</p>
+      <p class="">Vui lòng kiểm tra email và nhấn vào đường link để xác thực email.</p>
+      <div>
+        <button class="btn btn-primary resend-btn mb-3" (click)="authService.SendVerificationMail()">
+          <i class="fa-solid fa-rotate-right"></i>
+          Gửi lại xác thực email
+        </button>
+      </div>
+      <div class="redirectToLogin">
+        <span>Đã có tài khoản ?<a class="redirect" routerLink="/account/sign-in"> Sign in</a></span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
