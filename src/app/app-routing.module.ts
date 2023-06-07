@@ -20,11 +20,10 @@ import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-
 //route guard
 
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { AdminComponent2 } from './pages/admin/admin.component';
-import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
-import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
-import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
-
+import { llAdminComponent2 } from './admin/pages/admin/admin.component';
+import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
+import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
+import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   { path: 'home', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -87,7 +86,7 @@ const routes: Routes = [
     component: CheckoutComponent,
     data: { breadcrumb: 'Thanh toán' },
   },
-  { path: 'admin', component: AdminComponent2 },
+  { path: 'admin', component: llAdminComponent2 },
   { path: 'admin/product', component: AdminproductComponent },
   { path: 'admin/order', component: AdminorderComponent },
   { path: 'admin/account', component: AdminaccountComponent },
