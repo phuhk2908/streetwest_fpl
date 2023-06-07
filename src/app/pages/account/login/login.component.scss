@@ -1,0 +1,63 @@
+$main-color: #bf2626;
+
+.form-wrraper {
+  width: 500px;
+
+  h3 {
+    color: $main-color;
+  }
+}
+
+.form-control {
+  &:focus {
+    border-color: $main-color;
+    box-shadow: 0 0 0 0.25rem rgba(191, 39, 38, 0.25);
+  }
+}
+
+.already-account {
+  span {
+    a {
+      color: $main-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.forgot-password {
+  a {
+    text-decoration: none;
+    color: $main-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.login-button {
+  background-color: $main-color;
+  color: white;
+  border: 1px solid $main-color;
+  outline: none;
+
+  &:hover {
+    color: $main-color;
+    background-color: white;
+    cursor: pointer;
+  }
+
+}
+
+.google-button {
+  position: relative;
+
+  img {
+    position: absolute;
+    left: 10px;
+  }
+}
