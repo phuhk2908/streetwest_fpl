@@ -15,7 +15,7 @@ export class ProductDetailComponent {
     private dataService: ProductService,
     private route: ActivatedRoute,
     private cartService: CartService
-  ) {}
+  ) { }
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
@@ -29,7 +29,8 @@ export class ProductDetailComponent {
     });
   }
   fetchData() {
-    // this.dataService.getProductByID('cargo-short-tie-dye');
+
+
     // this.dataService.getProduct().subscribe((data) => {
     //   console.log(data);
     // });

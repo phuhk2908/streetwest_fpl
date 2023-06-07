@@ -38,12 +38,15 @@ export class ProductService {
     const data = doc(this.firestore, `products/${id}`);
     return docData(data, { idField: 'id' }) as Observable<any>;
   }
+
   getKeySearch() {
     return this.keysearch.asObservable()
   }
   setKeySearch(key: string) {
     this.keysearch.next(key)
   }
+
+
   // async themcot() {
   //   const data = {
   //     feature: "0"

@@ -65,10 +65,11 @@
         <div class="d-flex flex-wrap box-product-area ">
           <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4" *ngFor="let item of products">
             <div class="single-products-box">
-              <a class="d-block"><img src="{{item.img[0]}}" class="w-100 object-fit-fill" /></a>
+              <a class="d-block"><img src="{{item.img[0]}}" [routerLink]="['/product',item.slug]"
+                  class="w-100 object-fit-fill" /></a>
               <div class="content ">
                 <div class="flex-column">
-                  <div class="text-main "> {{item.name}}
+                  <div class="text-main " [routerLink]="['/product',item.slug]"> {{item.name}}
                   </div>
                   <div class="box-add-cart">
                     <span class="text-cart">Thêm giỏ hàng <i class="fas fa-cart-plus"></i></span>

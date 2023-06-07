@@ -30,7 +30,8 @@ export class ShopComponent {
       if (res.length > 0) {
         let keyword = res.toLowerCase();
         this.pd.getProduct().subscribe(res => {
-          this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()))
+          this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
+
         })
       }
     })
