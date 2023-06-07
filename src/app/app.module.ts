@@ -54,7 +54,7 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DividerModule } from 'primeng/divider';
-import { AdminComponent } from './admin/pages/admin/admin.component';
+// import { AdminComponent } from './admin/pages/admin/admin.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
