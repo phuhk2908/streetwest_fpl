@@ -1,79 +1,16 @@
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-
-.new-arrival-title {
-  position: relative;
-  font-size: 28px;
-  width: 100%;
-  color: rgb(191, 39, 38);
-  text-align: left;
-
-  @include media-breakpoint-down(md) {
-    font-size: 24px;
+$main-color: rgb(191, 39, 38);
+.container {
+  .item {
+    transition: transform 0.4s ease-in-out;
   }
-
-  @include media-breakpoint-down(sm) {
-    text-align: center;
-    padding: 0;
-    font-size: 24px;
+  .item:hover {
+    transform: translateY(-3%);
   }
 }
-
-.wrapper-category-product {
-  width: 100%;
-
-  .product {
-    margin-right: 10px;
-    margin-left: 10px;
-    text-align: center;
-    height: 220px;
-
-    .wrapper-product {
-      position: relative;
-      border: 1px solid #f5f5f5;
-      border-radius: 10px;
-      background: #fcfaf9;
-      transition: all .3s ease 0s;
-      padding: 20px;
-
-      .title {
-        position: absolute;
-        left: 50%;
-        bottom: 15px;
-        transform: translateX(-50%);
-        background: #ffffff;
-        border: 1px solid #EFEBEA;
-        border-radius: 10px;
-        width: 75%;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        transition: all .3s ease 0s;
-
-        h3 {
-          font-size: 18px;
-        }
-      }
-
-      &.wrapper-product:hover {
-        border: 1px solid rgb(191, 39, 38);
-
-        .title {
-          background: rgb(191, 39, 38);
-          color: #ffffff;
-          border: none;
-        }
-      }
-    }
-  }
-
-  & div:nth-child(1) {
-    margin-left: 0;
-  }
-
-  & div:nth-last-child(1) {
-    margin-right: 0;
-  }
-
+.image {
+  background-color: rgb(239, 238, 238);
+}
+.countItem {
+  color: $main-color;
+  font-weight: 600;
 }

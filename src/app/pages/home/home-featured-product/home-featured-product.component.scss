@@ -8,25 +8,24 @@
   text-align: center;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
+    top: 50%;
     left: 0;
-    width: 35%;
+    width: 30%;
     height: 2px;
-    background: #000;
+    background: #e4e4e4;
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
-    top: 40%;
+    top: 50%;
     transform: translateY(-50%);
     right: 0;
-    width: 35%;
+    width: 30%;
     height: 2px;
-    background: #000;
+    background: #e4e4e4;
   }
 
   @include media-breakpoint-down(md) {
@@ -45,24 +44,25 @@
     text-align: center;
     padding: 0;
     font-size: 24px;
-    &:before, &:after {
+    &:before,
+    &:after {
       display: none;
     }
   }
 }
 
-
 .carousel-wrapper {
   position: relative;
 
   .carousel-img img {
-    transition: all .3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    background-color: rgb(239, 238, 238);
   }
 
   &.carousel-wrapper:hover {
     .carousel-img img {
       transform: scale(1.1);
-      transition: all .3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
     }
 
     .home-button-wrapper {
@@ -76,7 +76,7 @@
     position: absolute;
     bottom: -30px;
     opacity: 0;
-    transition: all .3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
 
     .home-button {
       font-size: 14px;
@@ -87,7 +87,7 @@
       color: white;
       padding-top: 15px;
       padding-bottom: 15px;
-      transition: all .2s ease-in-out 0s;
+      transition: all 0.2s ease-in-out 0s;
 
       &:hover {
         background-color: rgb(191, 39, 38);
@@ -99,7 +99,7 @@
     &.carousel-wrapper:not(:hover) {
       .carousel-img img {
         transform: scale(1.1);
-        transition: all .3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
       }
 
       .home-button-wrapper {
@@ -110,7 +110,6 @@
 
     .home-button-wrapper {
       display: none;
-
     }
   }
 }
