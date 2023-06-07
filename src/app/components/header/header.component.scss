@@ -1,3 +1,6 @@
+
+$main-color: #bf2626;
+
 @mixin use-flex {
     display: flex;
     justify-content: center;
@@ -183,9 +186,6 @@
 }
 
 
-
-
-
 @media (max-width: 992px) {
     .logo {
         width: 50px !important;
@@ -246,4 +246,63 @@
         }
 
     }
+}
+
+.option-item-user {
+  margin: 0 1%;
+
+  .user {
+    position: relative;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      color: $main-color;
+    }
+
+    .box-user {
+      width: 200px;
+      height: 100px;
+      position: absolute;
+      top: 30px;
+      right: 0;
+
+      ul {
+        font-family: var(--font-family);
+        color: $main-color;
+        width: 100%;
+        list-style: none;
+        border-radius: 5px;
+        margin: 0;
+        padding: 15px;
+        background: white;
+        box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+
+        li {
+          color: black !important;
+          font-weight: bold;
+
+          &:nth-child(1) {
+            margin-bottom: 15px;
+
+          }
+
+
+
+          a {
+            max-width: 100%;
+            text-decoration: none;
+            color: black !important;
+
+            &:hover {
+              color: $main-color !important;
+            }
+          }
+        }
+
+      }
+
+
+    }
+  }
 }
