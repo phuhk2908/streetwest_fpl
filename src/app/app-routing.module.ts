@@ -19,9 +19,8 @@ import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-
 
 //route guard
 
-
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { AdminComponent2 } from './pages/admin/admin.component';
 import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
 import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
 import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
@@ -83,12 +82,15 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
 
-  { path: 'checkout', component: CheckoutComponent, data: { breadcrumb: 'Thanh toán' } },
-  { path: 'admin', component: AdminComponent },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    data: { breadcrumb: 'Thanh toán' },
+  },
+  { path: 'admin', component: AdminComponent2 },
   { path: 'admin/product', component: AdminproductComponent },
-  { path: 'admin/order', component: AdminorderComponent},
-  { path: 'admin/account', component: AdminaccountComponent},
-
+  { path: 'admin/order', component: AdminorderComponent },
+  { path: 'admin/account', component: AdminaccountComponent },
 ];
 
 @NgModule({

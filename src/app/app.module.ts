@@ -36,7 +36,7 @@ import { LoginComponent } from './pages/account/login/login.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { AdminComponent2 } from './pages/admin/admin.component';
 import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
 import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
@@ -92,13 +92,13 @@ import { AccordionModule } from 'primeng/accordion';
     DashboardComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    AdminComponent,
     VndPipe,
-    AdminComponent,
     AdminproductComponent,
     AdminorderComponent,
     SidebarAdminComponent,
     AdminaccountComponent,
+    AdminComponent,
+    AdminComponent2,
   ],
   imports: [
     BrowserModule,
