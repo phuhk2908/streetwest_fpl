@@ -36,7 +36,7 @@ import { LoginComponent } from './pages/account/login/login.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { HomeCarouselComponent } from './pages/home/home-carousel/home-carousel.component';
 import { HomeCategoryComponent } from './pages/home/home-category/home-category.component';
-import { llAdminComponent2 } from './admin/pages/admin/admin.component';
+import { AdminComponent } from './admin/pages/admin/admin.component';
 import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
 import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
@@ -93,7 +93,7 @@ import { AccordionModule } from 'primeng/accordion';
     VndPipe,
     SidebarAdminComponent,
     AdminaccountComponent,
-    llAdminComponent2,
+    AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
   ],
