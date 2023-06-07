@@ -8,26 +8,12 @@
         data-bs-ride="true"
       >
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/products/products3.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/products/products1.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/products/products3.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
+          <div
+            class="carousel-item"
+            [ngClass]="{ active: i === 0 }"
+            *ngFor="let img of product.img; let i = index"
+          >
+            <img src="{{ img }}" class="d-block w-100" alt="..." />
           </div>
         </div>
         <button
@@ -52,8 +38,10 @@
     </div>
     <div class="col-lg-8 col-sm-12">
       <div class="px-lg-3 mt-lg-0 mt-4">
-        <h3 class="fw-bolder fs-3">Ergonomic Desk Sofa</h3>
-        <div class="my-"><span class="fs-5">$199</span></div>
+        <h3 class="fw-bolder fs-3">{{ product.name }}</h3>
+        <div class="my-">
+          <span class="fs-5">{{ product.price | vnd }}</span>
+        </div>
         <div class="d-flex my-3">
           <div class="rating text-danger d-flex pe-3">
             <i class="bi bi-star-fill d-flex align-items-center"></i>
@@ -70,44 +58,79 @@
           obcaecati dolore soluta repudiandae itaque fuga aliquid dolor deleniti
           necessitatibus assumenda laboriosam voluptatum totam.
         </p>
-        <ul class="list-unstyled my-3">
-          <li class="lh-lg">SKU: AB23213</li>
-          <li class="lh-lg">Verdor: lereve</li>
-          <li class="lh-lg">Availability: Instock</li>
-          <li class="lh-lg">Type <span class="text-muted"> Hodie</span></li>
-          <li class="text-muted lh-lg">Delivery & return</li>
-        </ul>
-        <div class="d-flex align-items-center products-add-to-cart">
-          <div class="input-couter position-relative text-center me-3">
-            <span class="minus position-absolute start-0 border-end h-100"
-            ><i class="bi bi-dash fs-4"></i
-            ></span>
-            <input
-              class="text-center w-100"
-              type="text"
-              value="1"
-            />
-            <span class="plus position-absolute end-0 border-start h-100"
-            ><i class="bi bi-plus fs-4"></i
-            ></span>
+        <form action="" (ngSubmit)="addToCart(product)" [formGroup]="frm1">
+          <ul class="list-unstyled my-3">
+            <li class="lh-lg">SKU: {{ product.id }}</li>
+            <li class="lh-lg">
+              Size:
+              <div
+                class="form-check"
+                *ngFor="let size of product.size | keyvalue; let i = index"
+              >
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault{{ i }}"
+                  formControlName="flexRadioDefault"
+                  value="{{ size.key }}"
+                />
+                <label class="form-check-label" for="flexRadioDefault{{ i }}">
+                  {{ size.key }}
+                </label>
+              </div>
+              <em
+                *ngIf="frm1.controls['flexRadioDefault'].errors"
+                class="text-danger"
+              >
+                Bạn phải chọn size !
+              </em>
+            </li>
+            <li class="lh-lg">
+              Available Quantity:
+              <span class="text-muted">{{ availableQuantity }}</span>
+            </li>
+            <li class="lh-lg">Type <span class="text-muted">Hoodie</span></li>
+            <li class="text-muted lh-lg">Delivery & return</li>
+          </ul>
+
+          <div class="d-flex align-items-center products-add-to-cart">
+            <div class="input-couter position-relative text-center me-3">
+              <span
+                (click)="minus($event)"
+                class="minus position-absolute start-0 border-end h-100 d-flex align-items-center justify-content-center"
+                ><i class="bi bi-dash fs-4"></i
+              ></span>
+              <input
+                class="text-center w-100"
+                formControlName="quantity"
+                type="text"
+              />
+              <span
+                (click)="plus($event)"
+                class="plus position-absolute top-0 end-0 border-start h-100 d-flex align-items-center justify-content-center"
+                ><i class="bi bi-plus fs-4"></i
+              ></span>
+            </div>
+            <button
+              [disabled]="!frm1.valid"
+              type="submit"
+              class="btn btn-dark rounded-0 d-flex justify-content-center align-items-center fw-bolder fs-6"
+            >
+              <i
+                class="bi bi-bag-fill d-flex align-items-center justify-content-center pe-2"
+              ></i
+              >ADD TO CART
+            </button>
           </div>
-          <button
-            type="button"
-            class="btn btn-dark rounded-0 d-flex justify-content-center align-items-center fw-bolder fs-6"
-          >
-            <i
-              class="bi bi-bag-fill d-flex align-items-center justify-content-center pe-2"
-            ></i
-            >ADD TO CART
-          </button>
-        </div>
+        </form>
         <div
           class="d-inline-block my-3 border-bottom border-dark border-2 fs-6"
         >
           <a
             class="d-flex align-items-center text-decoration-none text-dark fw-semibold"
             href="#"
-          ><i class="d-flex align-items-center pe-1 bi bi-plus"></i>Add to
+            ><i class="d-flex align-items-center pe-1 bi bi-plus"></i>Add to
             Wishlist</a
           >
         </div>

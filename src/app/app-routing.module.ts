@@ -8,6 +8,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
+
 import { AccountComponent } from './pages/account/account.component';
 import { VerifyEmailComponent } from './pages/account/verify-email/verify-email.component';
 import { DashboardComponent } from './admin/pages/admin/dashboard/dashboard.component';
@@ -17,6 +18,9 @@ import { RegisterComponent } from './pages/account/register/register.component';
 import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
 
 //route guard
+
+
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -58,6 +62,7 @@ const routes: Routes = [
     data: { breadcrumb: 'Câu hỏi thường gặp' },
   },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
+
   {
     path: 'account',
     component: AccountComponent,
@@ -73,6 +78,9 @@ const routes: Routes = [
   { path: 'sign-up', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
+
+  { path: 'checkout', component: CheckoutComponent, data: { breadcrumb: 'Thanh toán' } },
+
 ];
 
 @NgModule({
