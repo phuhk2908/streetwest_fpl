@@ -5,6 +5,8 @@ import { MessageService } from 'primeng/api';
 import { CartService } from 'src/app/core/services/cart.service';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/interface/product';
+import { ProductService } from 'src/app/core/services/product.services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,10 +19,7 @@ export class HeaderComponent implements OnInit {
   listCartLength: number = 0;
   listCart: Product[] = [];
 
-  constructor(
-    public authService: AuthService,
-     private cartService: CartService
-  ) {}
+  constructor(private cartService: CartService, private pd: ProductService, private router: Router, public authService: AuthService) { }
   
   private subscription: Subscription = new Subscription();
   
@@ -32,6 +31,12 @@ export class HeaderComponent implements OnInit {
         return acc + cur.quantity!;
       }, 0);
     });
+  }
+  async sendKeySearch(key: HTMLInputElement) {
+    const data = key.value;
+    this.pd.setKeySearch(data);
+    key.value = '';
+    this.router.navigate(['/product']);
   }
   ngDestroy() {
     if (this.subscription) {

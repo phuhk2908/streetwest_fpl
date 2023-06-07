@@ -55,6 +55,9 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { SliderModule } from 'primeng/slider';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -107,6 +110,8 @@ import { MessageService } from 'primeng/api';
     StyleClassModule,
     PaginatorModule,
     HttpClientModule,
+    SliderModule,
+    AccordionModule
   ],
   providers: [
     AuthService,
@@ -116,4 +121,4 @@ import { MessageService } from 'primeng/api';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
