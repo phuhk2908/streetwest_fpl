@@ -26,15 +26,15 @@ export class ShopComponent {
       this.cat = res;
     })
     this.getData();
-    this.pd.getKeySearch().subscribe(res => {
-      if (res.length > 0) {
-        let keyword = res.toLowerCase();
-        this.pd.getProduct().subscribe(res => {
-          this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
+    // this.pd.getKeySearch().subscribe(res => {
+    //   if (res.length > 0) {
+    //     let keyword = res.toLowerCase();
+    //     this.pd.getProduct().subscribe(res => {
+    //       this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
 
-        })
-      }
-    })
+    //     })
+    //   }
+    // })
   }
 
   page: number = 0;
@@ -43,12 +43,10 @@ export class ShopComponent {
   sortPrice: OrderByDirection = 'desc';
   filterPrice: number[] = [0, this.maxPrice];
   handleChangePrice(event: any) {
-    if (event.cancelable) event.preventDefault();
     this.filterPrice = [event.values[0], event.values[1]];
     this.getData();
   }
   selectCategory(event: any) {
-    if (event.cancelable) event.preventDefault();
     let id = event.getAttribute('data-id');
     if (id.length > 0) {
       this.filterCat = id;
@@ -58,7 +56,6 @@ export class ShopComponent {
   }
 
   onPageChange(event: any) {
-    if (event.cancelable) event.preventDefault();
     this.page = event.first;
     console.log(this.page);
     this.rows = event.rows;
@@ -78,7 +75,6 @@ export class ShopComponent {
           this.products = res[0];
           this.totalRecords = Math.ceil(res[1]);
         }
-
       },
       error: (error) => {
         console.error(error, "loi");

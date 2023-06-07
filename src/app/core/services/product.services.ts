@@ -17,7 +17,7 @@ import { Product } from 'src/app/interface/product';
 })
 export class ProductService {
   private unsubscribe$ = new Subject<void>();
-  keysearch = new BehaviorSubject('');
+  // keysearch = new BehaviorSubject('');
   constructor(private firestore: Firestore) { }
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
@@ -39,12 +39,12 @@ export class ProductService {
     return docData(data, { idField: 'id' }) as Observable<any>;
   }
 
-  getKeySearch() {
-    return this.keysearch.asObservable()
-  }
-  setKeySearch(key: string) {
-    this.keysearch.next(key)
-  }
+  // getKeySearch() {
+  //   return this.keysearch.asObservable()
+  // }
+  // setKeySearch(key: string) {
+  //   this.keysearch.next(key)
+  // }
 
 
   // async themcot() {

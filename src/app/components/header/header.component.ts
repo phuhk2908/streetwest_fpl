@@ -20,24 +20,24 @@ export class HeaderComponent implements OnInit {
   listCart: Product[] = [];
 
   constructor(private cartService: CartService, private pd: ProductService, private router: Router, public authService: AuthService) { }
-  
+
   private subscription: Subscription = new Subscription();
-  
+
 
   ngOnInit() {
-  this.cartService.getCart().subscribe((data) => {
+    this.cartService.getCart().subscribe((data) => {
       this.listCart = data;
       this.listCartLength = this.listCart.reduce((acc, cur) => {
         return acc + cur.quantity!;
       }, 0);
     });
   }
-  async sendKeySearch(key: HTMLInputElement) {
-    const data = key.value;
-    this.pd.setKeySearch(data);
-    key.value = '';
-    this.router.navigate(['/product']);
-  }
+  // async sendKeySearch(key: HTMLInputElement) {
+  //   const data = key.value;
+  //   this.pd.setKeySearch(data);
+  //   key.value = '';
+  //   this.router.navigate(['/product']);
+  // }
   ngDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
