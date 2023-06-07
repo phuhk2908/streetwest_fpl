@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'StreetWest';
+  showHeader:boolean = true
+  handleAdmin(ComponentRef:Component){
+   const name = ComponentRef.constructor.name
+    if(name.startsWith('Admin')){
+      this.showHeader = false
+    }
+  }
 }
