@@ -1,8 +1,11 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
 .subscribe-inner {
   z-index: 1;
   padding: 100px;
   position: relative;
-  background: url("https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat center center;
+  background: url("https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+    no-repeat center center;
   background-size: cover;
 }
 
@@ -45,4 +48,20 @@
   padding: 0 25px;
   font-size: 15px;
   font-weight: 500;
+}
+@include media-breakpoint-down(md) {
+  .subscribe-inner {
+    padding: 60px 15px;
+  }
+  .subscribe-inner .input-newsletter {
+    height: 50px;
+  }
+  .subscribe-inner .newsletter-form button {
+    display: inline-block;
+    position: relative;
+    font-size: 13.5px;
+    margin-top: 15px;
+    height: auto;
+    padding: 12px 20px 12px 45px;
+  }
 }
