@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< HEAD
-=======
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
->>>>>>> 70f8dc93821a0b8708c8a7dcd030b0f028df3a7f
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -36,25 +33,15 @@ import { HomeModule } from './pages/home/home.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { environment } from '../environments/environment';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-<<<<<<< HEAD
-import { ButtonModule } from 'primeng/button';
-=======
->>>>>>> 70f8dc93821a0b8708c8a7dcd030b0f028df3a7f
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
 import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
-<<<<<<< HEAD
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { CardModule } from 'primeng/card';
-import { DialogModule } from 'primeng/dialog';
-=======
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
->>>>>>> 70f8dc93821a0b8708c8a7dcd030b0f028df3a7f
+import { AccordionModule } from 'primeng/accordion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,17 +83,11 @@ import { ToastModule } from 'primeng/toast';
     ListboxModule,
     StyleClassModule,
     PaginatorModule,
-<<<<<<< HEAD
-    SliderModule,
-    ToastModule,
-    ButtonModule,
-    CardModule,
-    DialogModule
-=======
     HttpClientModule,
->>>>>>> 70f8dc93821a0b8708c8a7dcd030b0f028df3a7f
+    SliderModule,
+    AccordionModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

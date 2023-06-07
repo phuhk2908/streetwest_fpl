@@ -26,6 +26,8 @@
                          position: relative;
                          text-align: left;
                          padding-bottom: 5px;
+                         text-decoration: none;
+                         cursor: pointer;
 
                          &:hover {
                              color: $color-main;
@@ -131,9 +133,13 @@
          width: 100%;
          overflow: hidden;
          color: grey;
+         min-height: 50px;
 
          &>div {
              height: 50px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
 
              .text-count {
                  text-align: center;
@@ -142,9 +148,7 @@
 
          .select-box-price {
              display: flex;
-             justify-content: flex-end;
              align-items: center;
-             margin-right: 10px;
 
              label {
                  margin-right: 10px;
@@ -165,7 +169,8 @@
 
  .box-product-area {
      overflow: hidden;
-     gap: 10px 0px;
+     gap: 20px 0px;
+     min-height: 500px;
 
      .single-products-box {
          a {
@@ -253,6 +258,6 @@
 
 
  .ptb-100 {
-     padding-top: 100px;
-     padding-bottom: 100px;
+     padding-top: 50px;
+     padding-bottom: 50px;
  }

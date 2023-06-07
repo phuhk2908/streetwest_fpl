@@ -5,39 +5,41 @@ import { MessageService } from 'primeng/api';
 import { ProductService } from 'src/app/core/services/product.services';
 import { Product } from 'src/app/interface/product';
 import { ViewEncapsulation } from '@angular/core';
+import { filter } from 'rxjs';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
-  providers: [MessageService],
   encapsulation: ViewEncapsulation.None,
 })
 export class ShopComponent {
   maxPrice: number = 1000000;
-  cat: any[] = [
-    { id: 111, name: 'Quan' },
-    { id: 111, name: 'Ao' },
-    { id: 111, name: 'Ao khoac' },
-  ]
-  // cat: any;
+  cat: any;
   search: string = '';
   filterCat: any;
-  products: any[] = [];
+  products: Product[] = [];
   constructor(private pd: ProductService, private messageService: MessageService) {
 
   }
   ngOnInit(): void {
-
     this.pd.getAllCategory().subscribe((res: any[]) => {
       this.cat = res;
     })
     this.getData();
+    this.pd.getKeySearch().subscribe(res => {
+      if (res.length > 0) {
+        let keyword = res.toLowerCase();
+        this.pd.getProduct().subscribe(res => {
+          this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()))
+        })
+      }
+    })
   }
 
   page: number = 0;
   totalRecords: number = 0;
   rows: number = 10;
-  sortPrice: OrderByDirection = 'asc';
+  sortPrice: OrderByDirection = 'desc';
   filterPrice: number[] = [0, this.maxPrice];
   handleChangePrice(event: any) {
     if (event.cancelable) event.preventDefault();
@@ -46,13 +48,9 @@ export class ShopComponent {
   }
   selectCategory(event: any) {
     if (event.cancelable) event.preventDefault();
-    if (event.value?.id) {
-      this.filterCat = event.getAttribute('data-id');
-      this.getData();
-    }
-    else {
-      this.filterCat = '';
-      this.page = 0;
+    let id = event.getAttribute('data-id');
+    if (id.length > 0) {
+      this.filterCat = id;
       this.getData();
     }
 
@@ -72,6 +70,7 @@ export class ShopComponent {
   }
 
   async getData() {
+
     (await this.pd.paginator(this.filterCat, this.filterPrice, this.sortPrice, this.page)).subscribe({
       next: (res) => {
         if (res.length > 0) {
