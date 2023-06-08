@@ -6,21 +6,24 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
-  isLoading: boolean = false
+  isLoading: boolean = false;
+
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private messageService: MessageService
   ) {
     /* Saving user data in localstorage when
-    logged in and setting up null when logged out */
+  logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -30,6 +33,14 @@ export class AuthService {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
       }
+    });
+  }
+
+  getToast(severity: string, detail: string) {
+    this.messageService.add({
+      severity: severity,
+      summary: 'Thông báo',
+      detail: detail,
     });
   }
 
@@ -46,7 +57,21 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.isLoading = false
+        switch (error.code) {
+          case 'auth/user-not-found': {
+            return 'Tài khoản không tồn tại'
+          }
+          case 'auth/wrong-password': {
+            return 'Sai mật khẩu'
+          }
+          case 'auth/invalid-email': {
+            return 'Email không hợp lệ'
+          }
+          default: {
+            return 'Đăng nhập không thành công'
+          }
+        }
       });
   }
 
@@ -56,7 +81,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise */
+      up and returns promise */
         this.isLoading = false;
         this.SendVerificationMail();
         this.SetUserData(result.user);
@@ -122,8 +147,8 @@ export class AuthService {
   }
 
   /* Setting up user data when sign in with username/password,
-  sign up with username/password and sign in with social auth
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
+sign up with username/password and sign in with social auth
+provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
@@ -144,7 +169,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      location.reload()
+      location.reload();
       this.router.navigate(['home']);
     });
   }

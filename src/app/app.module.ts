@@ -63,8 +63,17 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
+
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+
+import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
+import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
+import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
+import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
+
+
 
 @NgModule({
   declarations: [
@@ -96,9 +105,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     VndPipe,
     SidebarAdminComponent,
     AdminaccountComponent,
+
+    AdminloginComponent,
+    AdminregisterComponent,
+    BlogdetailsComponent,
+
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -131,7 +146,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
   ],
   providers: [
     AuthService,
-    AuthGuard,
+    AuthAdminGuard,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     [MessageService, ConfirmationService],
   ],
