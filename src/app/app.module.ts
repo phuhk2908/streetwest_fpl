@@ -62,6 +62,13 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
+
+import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
+import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
+import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,9 +99,15 @@ import { AccordionModule } from 'primeng/accordion';
     VndPipe,
     SidebarAdminComponent,
     AdminaccountComponent,
+
+    AdminloginComponent,
+    AdminregisterComponent,
+    BlogdetailsComponent,
+
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
+
   ],
   imports: [
     BrowserModule,

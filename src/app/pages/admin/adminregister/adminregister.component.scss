@@ -1,0 +1,91 @@
+.ptb-100{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.login-form h2{
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 700;
+    color: black;
+}
+.login-form form .form-group label{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.layout-acc{
+    margin: 0 auto;
+    width: 40%;
+}
+.form-control{
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+    box-shadow: unset!important;
+    font-size: 16px;
+    color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.form-check .form-check-input{
+    border-radius: 0;
+}
+.form-check .form-check-input:checked{
+    background-color: red;
+    border: none;
+}
+.login-form form button{
+    border: none;
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background-color: red;
+    transition: var(--transition);
+    border-radius: 5px;
+    padding: 14px 30px;
+    width: 30%;
+    font-weight: 700;
+    font-size: var(--fontSize);
+}
+.login-form form button:hover{
+    background-color: black;
+}
+.login-form form .lost-your-password-wrap a{
+    display: inline-block;
+    position: relative;
+    line-height: 1.5;
+    transition: calc(.5s);
+    color: var(--blackColor);
+    text-decoration: none;
+    outline: 0!important;
+}
+.login-form form .lost-your-password-wrap{
+    text-align: end;
+}
+.login-form form .lost-your-password-wrap a::before{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    content: "";
+    position: absolute;
+    transition: calc(.5s);
+    background-color: #eee;
+}
+.login-form form .lost-your-password-wrap a::after{
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    transition: calc(.5s);
+    bottom: 0;
+    content: "";
+    background-color: red;
+}
+.login-form form .lost-your-password-wrap a:hover{
+    color: red;
+}
+.login-form form .lost-your-password-wrap a:hover:after{
+    width: 100%;
+}
