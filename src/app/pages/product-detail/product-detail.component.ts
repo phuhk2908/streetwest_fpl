@@ -28,18 +28,11 @@ export class ProductDetailComponent {
       flexRadioDefault: new FormControl('', Validators.required),
     });
   }
-  fetchData() {
-
-
-    // this.dataService.getProduct().subscribe((data) => {
-    //   console.log(data);
-    // });
-    this.dataService.getProductByID(this.id).subscribe((data) => {
-      this.product = data;
-      for (const [sizeName, value] of Object.entries(this.product.size)) {
-        this.availableQuantity += value.amount;
-      }
-    });
+  async fetchData() {
+    this.product = await this.dataService.getProductBySlug(this.id);
+    for (const [sizeName, value] of Object.entries(this.product.size)) {
+      this.availableQuantity += value.amount;
+    }
   }
 
   addToCart(product: Product) {

@@ -42,7 +42,7 @@
             <div class="option-item ms-2">
               <div class="search-box">
                 <input type="text" placeholder="Tìm kiếm" #keysearch />
-                <button><i class="fas fa-search"></i></button>
+                <button (click)="sendKeySearch(keysearch)"><i class="fas fa-search"></i></button>
               </div>
             </div>
             <div class="option-item position-relative">

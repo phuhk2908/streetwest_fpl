@@ -25,22 +25,22 @@ export class ShopComponent {
     this.pd.getAllCategory().subscribe((res: any[]) => {
       this.cat = res;
     })
-    this.getData();
-    // this.pd.getKeySearch().subscribe(res => {
-    //   if (res.length > 0) {
-    //     let keyword = res.toLowerCase();
-    //     this.pd.getProduct().subscribe(res => {
-    //       this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
-
-    //     })
-    //   }
-    // })
+    // this.getData();
+    this.pd.getKeySearch().subscribe(res => {
+      if (res.length > 0) {
+        let keyword = res.toLowerCase();
+        this.pd.getProduct().subscribe(res => {
+          console.log(res);
+          this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
+        })
+      }
+    })
   }
 
   page: number = 0;
   totalRecords: number = 0;
   rows: number = 10;
-  sortPrice: OrderByDirection = 'desc';
+  sortPrice: OrderByDirection = 'asc';
   filterPrice: number[] = [0, this.maxPrice];
   handleChangePrice(event: any) {
     this.filterPrice = [event.values[0], event.values[1]];

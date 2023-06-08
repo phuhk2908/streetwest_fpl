@@ -191,6 +191,7 @@
                  margin: 0 auto;
 
                  .text-main {
+                     cursor: pointer;
                      margin: 10px 0px;
                      font-weight: 600;
                      color: #000;
@@ -221,7 +222,7 @@
                          .text-cart {
                              background: $color-main;
                              color: #ffffff;
-
+                             transform: scale();
                          }
 
                          i {
@@ -231,7 +232,7 @@
                              height: 25px;
                              font-size: 12px;
                              position: absolute;
-                             transform: translateY(-50%);
+                             transform: translateY(-45%);
                              background-color: #f2f2f2;
                              transition: .5s;
                              text-align: center;

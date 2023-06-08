@@ -32,12 +32,12 @@ export class HeaderComponent implements OnInit {
       }, 0);
     });
   }
-  // async sendKeySearch(key: HTMLInputElement) {
-  //   const data = key.value;
-  //   this.pd.setKeySearch(data);
-  //   key.value = '';
-  //   this.router.navigate(['/product']);
-  // }
+  async sendKeySearch(key: HTMLInputElement) {
+    const data = key.value;
+    this.pd.setKeySearch(data);
+    key.value = '';
+    this.router.navigate(['/product']);
+  }
   ngDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
