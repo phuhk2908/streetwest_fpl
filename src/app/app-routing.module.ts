@@ -13,21 +13,21 @@ import { CartComponent } from './pages/cart/cart.component';
 import { AccountComponent } from './pages/account/account.component';
 import { VerifyEmailComponent } from './pages/account/verify-email/verify-email.component';
 import { DashboardComponent } from './admin/pages/admin/dashboard/dashboard.component';
-import { AuthGuard } from './core/guard/auth.guard';
 import { LoginComponent } from './pages/account/login/login.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
 
 //route guard
-
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
-import {AdminComponent} from "./admin/pages/admin/admin.component";
-import {AdminproductComponent} from "./admin/pages/admin/adminproduct/adminproduct.component";
-import {AdminorderComponent} from "./admin/pages/admin/adminorder/adminorder.component";
-import {AdminaccountComponent} from "./admin/pages/admin/adminaccount/adminaccount.component";
+import { AdminComponent } from './admin/pages/admin/admin.component';
+import { AdminproductComponent } from './admin/pages/admin/adminproduct/adminproduct.component';
+import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.component';
+import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
+import { AuthAdminGuard } from './core/guard/auth-admin.guard';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -53,7 +53,7 @@ const routes: Routes = [
     data: { breadcrumb: 'Chi tiết sản phẩm' },
   },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
-  { path: 'blog/:id', component: BlogdetailsComponent,},
+  { path: 'blog/:id', component: BlogdetailsComponent },
 
   {
     path: 'contact',
@@ -71,7 +71,6 @@ const routes: Routes = [
     data: { breadcrumb: 'Câu hỏi thường gặp' },
   },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
-
   {
     path: 'account',
     component: AccountComponent,
@@ -81,7 +80,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     data: { breadcrumb: 'Bảng điều khiển' },
-    canActivate: [AuthGuard],
+    canActivate: [AuthAdminGuard],
   },
   { path: 'sign-in', component: LoginComponent },
   { path: 'sign-up', component: RegisterComponent },
@@ -93,14 +92,13 @@ const routes: Routes = [
     component: CheckoutComponent,
     data: { breadcrumb: 'Thanh toán' },
   },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
   { path: 'admin/product', component: AdminproductComponent },
-
-  { path: 'admin/order', component: AdminorderComponent},
-  { path: 'admin/account', component: AdminaccountComponent},
-  { path: 'admin/login', component: AdminloginComponent},
-  { path: 'admin/register', component: AdminregisterComponent},
-
+  { path: 'admin/order', component: AdminorderComponent },
+  { path: 'admin/account', component: AdminaccountComponent },
+  { path: 'admin/login', component: AdminloginComponent },
+  { path: 'admin/register', component: AdminregisterComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

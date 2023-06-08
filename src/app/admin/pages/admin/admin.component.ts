@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthAdminService} from "../../../core/services/authAdmin/auth-admin.service";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent {
+export class AdminComponent  implements OnInit {
   data: any;
-
   options: any;
+
+  constructor(public authAdminService: AuthAdminService) {
+
+  }
 
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);

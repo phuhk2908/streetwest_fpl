@@ -66,6 +66,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
 import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
+import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
 
 
 
@@ -137,7 +138,7 @@ import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.compo
   ],
   providers: [
     AuthService,
-    AuthGuard,
+    AuthAdminGuard,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     [MessageService],
   ],
