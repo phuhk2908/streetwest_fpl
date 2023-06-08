@@ -48,6 +48,7 @@ export class CheckoutComponent implements OnInit {
         for (const [sizeName, value] of Object.entries(el.size)) {
           if (sizeName === el.sizeSelected) {
             value.amount -= el.quantity!;
+            value.sold += el.quantity!;
           }
         }
         this.productService.updateProductByID(el);
