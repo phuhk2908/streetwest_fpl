@@ -7,7 +7,13 @@ import {
   docData,
   getDocs,
   updateDoc,
-  query, where, orderBy, startAfter, limit, startAt, OrderByDirection,
+  query,
+  where,
+  orderBy,
+  startAfter,
+  limit,
+  startAt,
+  OrderByDirection,
 } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, Subject, from, map, tap } from 'rxjs';
 import { Product } from 'src/app/interface/product';
@@ -38,11 +44,24 @@ export class ProductService {
     const data = doc(this.firestore, `products/${id}`);
     return docData(data, { idField: 'id' }) as Observable<any>;
   }
+  async getProductBySlug(slug: string) {
+    let product: any;
+    const data = query(
+      collection(this.firestore, 'products'),
+      where('slug', '==', slug)
+    );
+    const querySnapshot = await getDocs(data);
+    querySnapshot.forEach((doc) => {
+      product = doc.data();
+      product.id = doc.id;
+    });
+    return product;
+  }
   getKeySearch() {
-    return this.keysearch.asObservable()
+    return this.keysearch.asObservable();
   }
   setKeySearch(key: string) {
-    this.keysearch.next(key)
+    this.keysearch.next(key);
   }
   // async themcot() {
   //   const data = {
@@ -58,37 +77,57 @@ export class ProductService {
   //   return true
   // }
 
-  async paginator(cat: string, filter: number[], sort: OrderByDirection, page: number): Promise<Observable<any[]>> {
+  async paginator(
+    cat: string,
+    filter: number[],
+    sort: OrderByDirection,
+    page: number
+  ): Promise<Observable<any[]>> {
     const perPage = 9;
-    const baseRef = collection(this.firestore, "products");
+    const baseRef = collection(this.firestore, 'products');
     let currentPageRef;
     const conditions = [];
     if (cat?.length > 0) {
-      conditions.push(
-        where("idCategory", "==", cat)
-      );
+      conditions.push(where('idCategory', '==', cat));
     }
     if (filter) {
       conditions.push(
-        where("price", ">", filter[0]),
-        where("price", "<", filter[1])
+        where('price', '>', filter[0]),
+        where('price', '<', filter[1])
       );
     }
 
-    let count = (await getDocs(query(baseRef, ...conditions, orderBy('price', sort)))).docs.map((doc) => doc.data());
+    let count = (
+      await getDocs(query(baseRef, ...conditions, orderBy('price', sort)))
+    ).docs.map((doc) => doc.data());
     if (page === 0) {
-      currentPageRef = query(baseRef, ...conditions, orderBy('price', sort), limit(perPage));
+      currentPageRef = query(
+        baseRef,
+        ...conditions,
+        orderBy('price', sort),
+        limit(perPage)
+      );
     } else {
-      let lastVisibleRef = query(baseRef, ...conditions, orderBy('price', sort), limit(page));
+      let lastVisibleRef = query(
+        baseRef,
+        ...conditions,
+        orderBy('price', sort),
+        limit(page)
+      );
       const lastVisibleQuerySnapshot = await getDocs(lastVisibleRef);
       const lastVisiblePost = lastVisibleQuerySnapshot.docs[lastVisibleQuerySnapshot.docs.length - 1];
-      currentPageRef = query(baseRef, ...conditions, orderBy('price', sort), startAfter(lastVisiblePost), limit(perPage));
+      currentPageRef = query(
+        baseRef,
+        ...conditions,
+        orderBy('price', sort),
+        startAfter(lastVisiblePost),
+        limit(perPage)
+      );
     }
 
     const currentPageQuerySnapshot = await getDocs(currentPageRef);
-    const documentData = currentPageQuerySnapshot.docs.map((doc) => doc.data())
+    const documentData = currentPageQuerySnapshot.docs.map((doc) => doc.data());
     const data = [documentData, count.length];
     return from([data]) as Observable<any>;
   }
 }
-

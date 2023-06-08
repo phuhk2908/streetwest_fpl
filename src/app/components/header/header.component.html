@@ -62,7 +62,7 @@
             <div class="option-item-user">
               <i (click)="this.visible = !this.visible" class="fa-regular fa-user user">
                 <div class="box-user" [hidden]="visible">
-                  <ul *ngIf="!authService.userData as user; else haveUser" >
+                  <ul *ngIf="!authService.userData as user; else haveUser">
                     <li><a routerLink="sign-in">Đăng nhập</a></li>
                     <li><a routerLink="sign-up">Đăng ký</a></li>
                   </ul>
@@ -70,7 +70,9 @@
                     <ul>
                       <li>
                         <div class="d-flex align-items-center">
-                          <div><img [src]="authService.userData.photoURL === null ? 'assets/images/profile.png' : authService.userData.photoURL" alt="" width="20" height="20"></div>
+                          <div><img
+                              [src]="authService.userData.photoURL === null ? 'assets/images/profile.png' : authService.userData.photoURL"
+                              alt="" width="20" height="20"></div>
                           <span class="ms-3"><strong>{{authService.userData.displayName}}</strong></span>
                         </div>
                       </li>
@@ -91,3 +93,4 @@
     </nav>
   </div>
 </header>
+<!-- //(click)="sendKeySearch(keysearch)" -->
