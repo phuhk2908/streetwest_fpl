@@ -3,13 +3,17 @@
     <div class="">
         <div class="nav justify-content-end">
             <header class="row">
-                <div class="col-7"><h5>Danh sách đơn hàng</h5></div>
-                <div class="col-1 pt-2 text-end"><i class="fa-solid fa-magnifying-glass mx-3"></i><i class="fa-solid fa-bell"></i></div>
+                <div class="col-7">
+                    <h5>Danh sách đơn hàng</h5>
+                </div>
+                <div class="col-1 pt-2 text-end"><i class="fa-solid fa-magnifying-glass mx-3"></i><i
+                        class="fa-solid fa-bell"></i></div>
                 <div class="col-2 text-end m-0">
                     <h5 class="pt-1">Huỳnh Kim Phú</h5>
                 </div>
                 <div class="col-1 text-end"><img src="assets/images/logo.jpg" alt=""></div>
-                <div class="col-1 text-end p-0"><button class="btn bg-light shadow-sm"><i class="bi bi-envelope-at"></i> Góp ý</button>
+                <div class="col-1 text-end p-0"><button class="btn bg-light shadow-sm"><i class="bi bi-envelope-at"></i>
+                        Góp ý</button>
                 </div>
             </header>
         </div>
@@ -39,31 +43,39 @@
                 <button class="btn bg-success text-white">Thêm sản phẩm mới</button>
             </div> -->
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Ảnh</th>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col">Loại</th>
-                    <th scope="col">Tiền</th>
-                    <th scope="col">Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><img src="" alt=""></td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>315,000</td>
-                    <td>
-                        <button class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></button>&nbsp;
-                        <button class="btn bg-danger text-white"><i class="bi bi-trash-fill"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="over-hidden">
+            <p-table [value]="products" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th scope="col">Ảnh</th>
+                        <th scope="col" pSortableColumn="name">Tên sản phẩm <p-sortIcon field="name"></p-sortIcon></th>
+                        <th scope="col" pSortableColumn="idCategory">Loại <p-sortIcon field="idCategory"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="price" scope="col">Tiền <p-sortIcon field="price"></p-sortIcon></th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item>
+                    <tr>
+                        <td><img class="" [src]="item.img[0]" alt="" width="50"></td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ getCatByName(item.idCategory) }}</td>
+                        <td>{{ item.price | vnd}}</td>
+                        <td>
+                            <button class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></button>&nbsp;
+                            <button class="btn bg-danger text-white"><i class="bi bi-trash-fill"></i></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+        </div>
     </div>
 </section>
 

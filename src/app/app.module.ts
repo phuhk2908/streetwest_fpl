@@ -62,7 +62,6 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -131,4 +130,4 @@ import { AccordionModule } from 'primeng/accordion';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

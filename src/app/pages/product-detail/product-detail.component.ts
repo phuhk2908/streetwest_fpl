@@ -15,7 +15,7 @@ export class ProductDetailComponent {
     private dataService: ProductService,
     private route: ActivatedRoute,
     private cartService: CartService
-  ) {}
+  ) { }
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];

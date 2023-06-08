@@ -13,20 +13,15 @@
     </div>
   </div>
   <owl-carousel-o [options]="customOptions">
-    <ng-template carouselSlide>
+    <ng-template carouselSlide *ngFor="let item of productsNew">
       <div class="carousel-wrapper">
-        <a href="" class="carousel-img"
-          ><img
-            src="/assets/images/product/aothun/6-removebg-preview.jpg"
-            alt=""
-            class="object-fit-cover p-4"
-        /></a>
+        <a href="" class="carousel-img"><img [src]="item.img[0]" alt="" class="object-fit-cover p-4" /></a>
         <div class="home-button-wrapper">
           <button class="home-button">Thêm vào giỏ hàng</button>
         </div>
       </div>
     </ng-template>
-    <ng-template carouselSlide>
+    <!-- <ng-template carouselSlide>
       <div class="carousel-wrapper">
         <a href="" class="carousel-img"
           ><img
@@ -77,6 +72,6 @@
           <button class="home-button">Thêm vào giỏ hàng</button>
         </div>
       </div>
-    </ng-template>
+    </ng-template> -->
   </owl-carousel-o>
 </div>

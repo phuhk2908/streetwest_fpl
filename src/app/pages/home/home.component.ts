@@ -13,16 +13,15 @@ export class HomeComponent implements OnInit {
   cat: Product[] = [];
 
   constructor(private pd: ProductService) {
-    this.pd.getProduct().subscribe((data) => {
-      this.productsFeature = data.filter(item => item.feature === '1');
-      this.productsNew = data.slice(-8, -1)
-    })
+    // this.pd.getProduct().subscribe((data) => {
+    //   this.productsFeature = data.filter(item => item.feature === '1');
+    //   this.productsNew = data.slice(-8, -1)
+    // })
   }
   ngOnInit() {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      console.log(res);
-      this.cat = res.sort((a, b) => b.id - a.id);
-    })
+    // this.pd.getAllCategory().subscribe((res: any[]) => {
+    //   this.cat = res.sort((a, b) => b.id - a.id);
+    // })
 
   }
 
