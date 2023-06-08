@@ -1,5 +1,5 @@
 <app-sidebar-admin></app-sidebar-admin>
-<section class="dashboard container mx-2">
+<section class="dashboard container mx-2 products-admin">
     <div class="">
         <div class="nav justify-content-end">
             <header class="row">
@@ -21,15 +21,7 @@
     <div class="background border shadow p-3 rounded content mt-5 row">
         <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
         <hr>
-        <div class="row">
-            <div class="col-lg-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Thêm điều kiện lọc</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
+        <!-- <div class="row my-3 justify-content-between">
             <div class="col-lg-8">
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
@@ -37,23 +29,43 @@
                 </form>
             </div>
             <div class="col-lg-2">
-                <button class="btn bg-success text-white" (click)="showDialog()">Thêm sản phẩm mới</button>
+                <button class="btn bg-success text-white" (click)="showDialog()">Thêm mới</button>
             </div>
-            <!-- <div class="col-lg-2">
-                <button class="btn bg-success text-white">Thêm sản phẩm mới</button>
-            </div> -->
-        </div>
-        <div class="over-hidden">
-            <p-table [value]="products" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-                [tableStyle]="{ 'min-width': '50rem' }">
+        </div> -->
+        <div>
+            <p-table #tablePd dataKey="id" [value]="products" [paginator]="true" [rows]="5"
+                [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+                [globalFilterFields]="['name', 'price','idCategory']">
+                <ng-template pTemplate="caption">
+                    <div class="row  my-2 justify-content-between">
+                        <div class="col-lg-2">
+                            <div pButton class="p-button-outlined bg-success text-white" (click)="showDialog()">Thêm mới
+                            </div>
+                        </div>
+                        <div class="col-lg-8 d-flex justify-content-between">
+                            <span class="p-input-icon-left ml-auto col-lg-10">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" class="w-100"
+                                    (input)="tablePd.filterGlobal($any($event.target).value, 'contains')"
+                                    placeholder="Search keyword" />
+                            </span>
+                            <div pButton label="Clear" class="p-button-outlined col-lg-2" icon="pi pi-filter-slash"
+                                (click)="clear(tablePd)"></div>
+                        </div>
+                    </div>
+                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
-                        <th scope="col">Ảnh</th>
-                        <th scope="col" pSortableColumn="name">Tên sản phẩm <p-sortIcon field="name"></p-sortIcon></th>
-                        <th scope="col" pSortableColumn="idCategory">Loại <p-sortIcon field="idCategory"></p-sortIcon>
+                        <th style="width: 10%;" scope="col">Ảnh</th>
+                        <th style="width: 20%;" scope="col" pSortableColumn="name">Tên sản phẩm <p-sortIcon
+                                field="name"></p-sortIcon></th>
+                        <th class="w-th" scope="col" pSortableColumn="idCategory">Loại <p-sortIcon
+                                field="idCategory"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="price" scope="col">Tiền <p-sortIcon field="price"></p-sortIcon></th>
-                        <th scope="col">Thao tác</th>
+                        <th class="w-th" scope="col" pSortableColumn="price">Giá <p-sortIcon field="price"></p-sortIcon>
+                        </th>
+                        <th class="w-th"> Số lượng</th>
+                        <th class="w-th" scope="col">Thao tác</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-item>
@@ -62,17 +74,20 @@
                         <td>{{ item.name }}</td>
                         <td>{{ getCatByName(item.idCategory) }}</td>
                         <td>{{ item.price | vnd}}</td>
+                        <td> {{ count(item.id)}}</td>
                         <td>
                             <button class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></button>&nbsp;
-                            <button class="btn bg-danger text-white"><i class="bi bi-trash-fill"></i></button>
+                            <button class="btn bg-danger text-white" (click)="handleDel(item.id)"><i
+                                    class="bi bi-trash-fill"></i></button>
                         </td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="paginatorleft">
-                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"
+                        (click)="showDialog()"></p-button>
                 </ng-template>
                 <ng-template pTemplate="paginatorright">
-                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+
                 </ng-template>
             </p-table>
         </div>
@@ -80,24 +95,82 @@
 </section>
 
 <div class=" flex justify-content-center">
-    <p-dialog header="Thêm sản phẩm mới" [(visible)]="visible" [style]="{width: '50vw' ,height: '100vh'}">
-        <form class=" w-75 mx-auto border bg-white border-2 p-3 shadow  rounded">
-            <div class="mb-3">Tên sản phẩm<input class="form-control">
+    <p-dialog header="Thêm sản phẩm mới" [(visible)]="visible" [style]="{width: '90vw' ,height: '100vh'}">
+
+        <form class="m-auto bg-white  w-100 rounded row" [formGroup]="formAddProduct" (ngSubmit)="onSubmit()">
+            <div class="col-6">
+                <div class="mb-3">Tên sản phẩm<input formControlName="name" class="form-control my-2">
+                </div>
+
+                <div class="mb-3">Tiền<input formControlName="price" class="form-control my-2"></div>
+                <div class="mb-3 d-flex">
+                    <div class="col-6">
+                        Ngày nhập<input class="form-control my-2" type="date" formControlName="date">
+                    </div>
+                    <div class="col-6">
+                        Nổi bật <select class="form-control  my-2" formControlName="feature">
+                            <option value="0">Không</option>
+                            <option value="1">Có</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-3">Loại sản phẩm<select class="form-control" formControlName="idCategory">
+                            <option value="{{item.id}}" *ngFor="let item of cat">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">Ảnh sản phẩm<input class="form-control" type="file">
+
+            <div class="col-6">
+                <div class="" formGroupName="kt">
+                    <label>Size</label>
+                    <div class="d-flex gap-3 my-2">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">M</span>
+                            <input type="text" class="form-control" formControlName="M" placeholder="Số lượng">
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text px-3" id="addon-wrapping"> L </span>
+                            <input type="text" class="form-control" formControlName="L" placeholder="Số lượng">
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">XL</span>
+                            <input type="text" class="form-control" formControlName="XL" placeholder="Số lượng">
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3">Ảnh sản phẩm
+                    <div class="">
+                        <p-toast></p-toast>
+                        <p-fileUpload name="uploadedFiles[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                            (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000"
+                            [fileLimit]="2">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">Tiền<input class="form-control">
-            </div>
-            <div class="mb-3">Mô tả <textarea class="form-control" placeholder="" id="floatingTextarea2"
-                    style="height: 100px"></textarea>
-            </div>
-            <div class="mb-3">Loại sản phẩm<select class="form-control">
-                    <option>Hãy chọn loại sản phẩm</option>
-                </select>
-            </div>
-            <div class="d-flex justify-content-end ">
-                <button class="btn btn-success p-2 shadow ">Thêm sản phẩm mới</button>
+
+            <div class="d-flex">
+                <button class="btn btn-success p-2 shadow" type="submit">Thêm mới</button>
             </div>
         </form>
+
     </p-dialog>
 </div>
+<p-toast key="toast2"></p-toast>
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Sản phẩm</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+    </ng-template>
+</p-confirmDialog>

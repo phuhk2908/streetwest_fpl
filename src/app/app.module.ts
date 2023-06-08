@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
@@ -58,10 +59,14 @@ import { ListboxModule } from 'primeng/listbox';
 import { StyleClassModule } from 'primeng/styleclass';
 import { VndPipe } from './core/pipe/format.pipe';
 import { PaginatorModule } from 'primeng/paginator';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
+
+import { FileUploadModule } from 'primeng/fileupload';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
@@ -119,6 +124,7 @@ import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
     HomeFeaturedProductModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     ChipsModule,
     PasswordModule,
     ButtonModule,
@@ -135,12 +141,14 @@ import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
     DialogModule,
     SliderModule,
     AccordionModule,
+    FileUploadModule,
+    ConfirmDialogModule
   ],
   providers: [
     AuthService,
     AuthAdminGuard,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    [MessageService],
+    [MessageService, ConfirmationService],
   ],
   bootstrap: [AppComponent],
 })

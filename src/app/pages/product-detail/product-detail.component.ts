@@ -25,7 +25,7 @@ export class ProductDetailComponent {
   product: Product = <Product>{};
   availableQuantity: number = 0;
   ngOnInit() {
-    this.fetchData();
+    // this.fetchData();
     this.frm1 = new FormGroup({
       quantity: new FormControl(1),
       flexRadioDefault: new FormControl('', Validators.required),
