@@ -9,57 +9,33 @@
             <div class="row">
               <div class="col-lg-12 col-md-6">
                 <div class="form-group">
-                  <label> Họ và tên <span class="required">*</span></label
-                  ><input
-                    type="text"
-                    formControlName="fullName"
-                    placeholder="Họ và tên "
-                    class="form-control"
-                  />
+                  <label> Họ và tên <span class="required">*</span></label><input type="text" formControlName="fullName"
+                    placeholder="Họ và tên " class="form-control" />
                 </div>
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                  <label>Số điện thoại <span class="required">*</span> </label
-                  ><input
-                    type="text"
-                    formControlName="phone"
-                    placeholder="Số điện thoại"
-                    class="form-control"
-                  />
-                  <span
-                    class="text-danger"
-                    *ngIf="
+                  <label>Số điện thoại <span class="required">*</span> </label><input type="text"
+                    formControlName="phone" placeholder="Số điện thoại" class="form-control" />
+                  <span class="text-danger" *ngIf="
                       f['phone'].invalid &&
                       f['phone'].errors &&
                       f['phone'].errors['pattern']
-                    "
-                  >
+                    ">
                     Hãy nhập số điện thoại
                   </span>
                 </div>
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                  <label> Địa chỉ <span class="required">*</span></label
-                  ><input
-                    id="address"
-                    type="text"
-                    formControlName="address"
-                    placeholder="Địa chỉ"
-                    class="form-control"
-                  />
+                  <label> Địa chỉ <span class="required">*</span></label><input id="address" type="text"
+                    formControlName="address" placeholder="Địa chỉ" class="form-control" />
                 </div>
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                  <label> Thành phố <span class="required">*</span></label
-                  ><input
-                    type="text"
-                    formControlName="city"
-                    placeholder="Thành phố"
-                    class="form-control"
-                  />
+                  <label> Thành phố <span class="required">*</span></label><input type="text" formControlName="city"
+                    placeholder="Thành phố" class="form-control" />
                 </div>
               </div>
             </div>
@@ -102,11 +78,7 @@
                   Thanh toán bằng tiền mặt
                 </div>
               </div>
-              <button
-                type="submit"
-                class="default-btn fw-medium mt-3"
-                [disabled]="!formCheckout.valid"
-              >
+              <button type="submit" class="default-btn fw-medium mt-3" [disabled]="!formCheckout.valid">
                 Đặt hàng
               </button>
             </div>

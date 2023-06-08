@@ -1,7 +1,22 @@
-.nav img{
+.nav img {
     width: 50%;
     border-radius: 50%;
 }
+
+.upload {
+    .p-fileupload-row>div {
+        width: auto !important;
+    }
+
+    .p-fileupload-content {
+        padding: 0px !important;
+
+        img {
+            width: 100px;
+        }
+    }
+}
+
 .dashboard {
     position: relative;
     left: 250px;
@@ -10,4 +25,16 @@
     width: calc(100% - 250px);
     padding: 10px 14px;
     transition: var(--tran-05);
+}
+
+.products-admin {
+    width: 80vw;
+}
+
+.w-th {
+    width: 10%;
+}
+
+.form-control {
+    box-shadow: none !important
 }

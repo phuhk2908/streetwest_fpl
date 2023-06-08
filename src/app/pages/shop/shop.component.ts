@@ -19,7 +19,6 @@ export class ShopComponent {
   filterCat: any;
   products: Product[] = [];
   constructor(private pd: ProductService, private messageService: MessageService) {
-
   }
   ngOnInit(): void {
     this.pd.getAllCategory().subscribe((res: any[]) => {

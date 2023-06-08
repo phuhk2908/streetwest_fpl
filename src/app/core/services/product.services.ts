@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {
   Firestore,
   collection,
@@ -14,8 +15,10 @@ import {
   limit,
   startAt,
   OrderByDirection,
+  addDoc,
+  deleteDoc,
 } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable, Subject, from, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, finalize, from, map, tap } from 'rxjs';
 import { Product } from 'src/app/interface/product';
 
 @Injectable({
@@ -24,13 +27,16 @@ import { Product } from 'src/app/interface/product';
 export class ProductService {
   private unsubscribe$ = new Subject<void>();
   keysearch = new BehaviorSubject('');
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore, private storage: AngularFireStorage) { }
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
     return collectionData(data, { idField: 'id' }) as Observable<any[]>;
   }
-
+  addProduct(data: any) {
+    const ref = collection(this.firestore, 'products');
+    return addDoc(ref, data);
+  }
   getId(id: string) {
     const catRef = doc(this.firestore, `category/${id}`);
     return docData(catRef) as Observable<any>;
@@ -39,6 +45,11 @@ export class ProductService {
   getProduct() {
     const data = collection(this.firestore, 'products');
     return collectionData(data, { idField: 'id' }) as Observable<Product[]>;
+  }
+
+  deleteProduct(id: string) {
+    const ref = doc(this.firestore, `products/${id}`);
+    return deleteDoc(ref);
   }
   getProductByID(id: string) {
     const data = doc(this.firestore, `products/${id}`);
@@ -130,4 +141,38 @@ export class ProductService {
     const data = [documentData, count.length];
     return from([data]) as Observable<any>;
   }
+  uploadImages(images: any): Promise<string[]> {
+    const uploadPromises: Promise<string>[] = [];
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      const filePath = `images/${new Date().getTime()}_${image.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, image);
+      const uploadPromise = new Promise<string>((resolve, reject) => {
+        uploadTask.snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(
+              (url) => {
+                resolve(url);
+              },
+              (error) => {
+                reject(error);
+              }
+            );
+          })
+        ).subscribe();
+      });
+      uploadPromises.push(uploadPromise);
+    }
+    return Promise.all(uploadPromises);
+  }
+  slugify(str: string) {
+    str = str.replace(/^\s+|\s+$/g, '');
+    str = str.toLowerCase();
+    str = str.replace(/[^a-z0-9 -]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+    return str;
+  }
+
 }
