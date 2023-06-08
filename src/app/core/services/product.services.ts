@@ -136,7 +136,12 @@ export class ProductService {
     }
 
     const currentPageQuerySnapshot = await getDocs(currentPageRef);
-    const documentData = currentPageQuerySnapshot.docs.map((doc) => doc.data());
+    const documentData = currentPageQuerySnapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
     const data = [documentData, count.length];
     return from([data]) as Observable<any>;
   }
