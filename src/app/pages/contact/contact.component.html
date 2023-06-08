@@ -1,71 +1,133 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="contact ptb-100 container mb-120">
-    <div class="row align-items-center">
-        <div class="col-lg-6 col-md-6 contact-content">
-            <h2>Xin chào! Hãy cho chúng tôi biết suy nghĩ của bạn</h2>
-            <p>Liên hệ với chúng tôi với các chi tiết của bạn và sẵn sàng để bắt đầu. Cho phép cung cấp cho chúng tôi một tin nhắn và liên hệ với chúng tôi!</p>
-        </div>
-        <div class="col-lg-6 col-md-6 contact-img">
-            <img src="" alt="">
-        </div>
+  <div class="row align-items-center">
+    <div class="col-lg-6 col-md-6 contact-content">
+      <h2>Xin chào! Hãy cho chúng tôi biết suy nghĩ của bạn</h2>
+      <p>
+        Liên hệ với chúng tôi với các chi tiết của bạn và sẵn sàng để bắt đầu.
+        Cho phép cung cấp cho chúng tôi một tin nhắn và liên hệ với chúng tôi!
+      </p>
     </div>
-    <div class="contact-form">
-        <div class="row m-0">
-            <div class="col-lg-8 col-md-12 p-0 ">
-                <div class="contact-form-1">
-                    <h3>Gửi tin nhắn cho chúng tôi</h3>
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 form-group">
-                                <label>Tên của bạn</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 form-group">
-                                <label>Địa chỉ email</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 form-group">
-                                <label>Số điện thoại</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 form-group">
-                                <label>Chủ thể</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <label>Tin nhắn</label>
-                                <textarea cols="30" rows="4" class="form-control"></textarea>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap">
-                                <div class="form-check">
-                                    <input type="checkbox" id="remember-me" class="form-check-input">
-                                    <label for="remember-me" class="form-check-label">Chấp nhận Điều khoản dịch vụ và Chính sách bảo mật</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap">
-                                <button type="submit">Gửi tin nhắn</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 p-0">
-                <div class="contact-info">
-                    <h3>Thông tin liên lạc</h3>
-                    <ul class="info">
-                        <li><i class="bi bi-geo-alt-fill"></i> Altona Rd, Seaholme VIC 3018, Úc</li>
-                        <li><i class="bi bi-telephone-fill"></i> (+123) 456-7898</li>
-                        <li><i class="bi bi-envelope-at"></i> hello@vaxim.com</li>
-                    </ul>
-                    <h3>Theo chúng tôi</h3>
-                    <ul class="link">
-                        <li><a href="">Facebook</a> </li>
-                        <li><a href="">Instagram</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div class="col-lg-6 col-md-6 contact-img">
+      <img src="https://vaxim-ng.envytheme.com/assets/img/contact.png" alt="" />
     </div>
+  </div>
+  <div class="contact-form">
+    <div class="row m-0">
+      <div class="col-lg-8 col-md-12 p-0">
+        <div class="contact-form-1">
+          <h3>Gửi tin nhắn cho chúng tôi</h3>
+          <form [formGroup]="frm1" (ngSubmit)="getForm()">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 form-group">
+                <label>Tên của bạn</label>
+                <input
+                  formControlName="name"
+                  type="text"
+                  class="form-control"
+                />
+                <em *ngIf="frm1.controls['name'].errors" class="text-danger"
+                  >Bắt buộc nhập tên</em
+                >
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 form-group">
+                <label>Địa chỉ email</label>
+                <input
+                  formControlName="email"
+                  type="email"
+                  class="form-control"
+                />
+                <em
+                  *ngIf="frm1.controls['email'].errors?.['required']"
+                  class="text-danger"
+                  >Bắt buộc nhập email</em
+                >
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 form-group">
+                <label>Số điện thoại</label>
+                <input
+                  formControlName="number"
+                  type="text"
+                  class="form-control"
+                />
+                <em
+                  *ngIf="frm1.controls['number'].errors?.['required']"
+                  class="text-danger"
+                  >Bắt buộc nhập số điện thoại</em
+                >
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 form-group">
+                <label>Chủ thể</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                <label>Tin nhắn</label>
+                <textarea
+                  formControlName="message"
+                  cols="30"
+                  rows="4"
+                  class="form-control"
+                ></textarea>
+                <em
+                  *ngIf="frm1.controls['message'].errors?.['required']"
+                  class="text-danger"
+                  >Phải điền nội dung</em
+                >
+              </div>
+
+              <div
+                class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap"
+              >
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    id="remember-me"
+                    class="form-check-input"
+                    formControlName="rule"
+                  />
+                  <label for="remember-me" class="form-check-label"
+                    >Chấp nhận Điều khoản dịch vụ và Chính sách bảo mật</label
+                  >
+                </div>
+              </div>
+              <div
+                class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap"
+              >
+                <button type="submit">Gửi tin nhắn</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 p-0">
+        <div class="contact-info">
+          <h3>Thông tin liên lạc</h3>
+          <ul class="info">
+            <li>
+              <i class="bi bi-geo-alt-fill"></i> 01, Phan Bội Châu, Gò Công,
+              Việt Nam
+            </li>
+            <li><i class="bi bi-telephone-fill"></i> 097 997 73 67</li>
+            <li>
+              <i class="bi bi-envelope-at"></i> streetwestclothing@gmail.com
+            </li>
+          </ul>
+          <h3>Theo chúng tôi</h3>
+          <ul class="link">
+            <li>
+              <a href="https://www.facebook.com/streetwestclothing">Facebook</a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
+                >Instagram</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- subscribe -->
 <app-newsletter></app-newsletter>

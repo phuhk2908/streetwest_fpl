@@ -24,7 +24,7 @@ import { Product } from 'src/app/interface/product';
 export class ProductService {
   private unsubscribe$ = new Subject<void>();
   keysearch = new BehaviorSubject('');
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore) {}
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
@@ -57,6 +57,15 @@ export class ProductService {
     });
     return product;
   }
+  async updateProductByID(data: Product) {
+    const ref = doc(this.firestore, 'products', data.id);
+    await updateDoc(ref, {
+      size: {
+        ...data.size,
+      },
+    });
+  }
+
   getKeySearch() {
     return this.keysearch.asObservable();
   }
@@ -115,7 +124,8 @@ export class ProductService {
         limit(page)
       );
       const lastVisibleQuerySnapshot = await getDocs(lastVisibleRef);
-      const lastVisiblePost = lastVisibleQuerySnapshot.docs[lastVisibleQuerySnapshot.docs.length - 1];
+      const lastVisiblePost =
+        lastVisibleQuerySnapshot.docs[lastVisibleQuerySnapshot.docs.length - 1];
       currentPageRef = query(
         baseRef,
         ...conditions,
@@ -126,7 +136,12 @@ export class ProductService {
     }
 
     const currentPageQuerySnapshot = await getDocs(currentPageRef);
-    const documentData = currentPageQuerySnapshot.docs.map((doc) => doc.data());
+    const documentData = currentPageQuerySnapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
     const data = [documentData, count.length];
     return from([data]) as Observable<any>;
   }

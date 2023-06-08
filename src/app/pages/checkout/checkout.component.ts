@@ -2,21 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/cart.service';
-import { MessageService } from 'primeng/api';
+import { ProductService } from 'src/app/core/services/product.services';
+
+import { Product } from 'src/app/interface/product';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
-  providers: [MessageService],
 })
 export class CheckoutComponent implements OnInit {
   formCheckout!: FormGroup;
   total: number = 0;
+  idOrder: string = '';
+  isSubmit: boolean = false;
+  cartDetail: Product[] = [];
   constructor(
     private router: Router,
     private _fb: FormBuilder,
     private cartService: CartService,
-    private messageService: MessageService
+    private productService: ProductService
   ) {}
   ngOnInit() {
     this.formCheckout = this._fb.group({
@@ -26,7 +31,6 @@ export class CheckoutComponent implements OnInit {
       city: ['', Validators.required],
     });
     this.fetchCart();
-    this.show();
   }
   fetchCart() {
     this.total = this.cartService.getTotalCart();
@@ -34,19 +38,21 @@ export class CheckoutComponent implements OnInit {
   get f() {
     return this.formCheckout.controls;
   }
-  isSubmit: boolean = true;
+
   async order() {
-    const idOrder = await this.cartService.createOrder(this.formCheckout.value);
+    this.idOrder = await this.cartService.createOrder(this.formCheckout.value);
     this.cartService.getCart().subscribe(async (data) => {
-      await this.cartService.saveOrder(idOrder, data);
-    });
-  }
-  show() {
-    this.messageService.add({
-      key: 'myKey',
-      severity: 'success',
-      summary: 'Thông báo',
-      detail: 'Đặt hàng thành công !',
+      await this.cartService.saveOrder(this.idOrder, data);
+      this.cartDetail = data;
+      data.forEach((el) => {
+        for (const [sizeName, value] of Object.entries(el.size)) {
+          if (sizeName === el.sizeSelected) {
+            value.amount -= el.quantity!;
+          }
+        }
+        this.productService.updateProductByID(el);
+      });
+      this.isSubmit = true;
     });
   }
 }
