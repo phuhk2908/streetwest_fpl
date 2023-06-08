@@ -11,7 +11,6 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     public authService: AuthService,
-    private messageService: MessageService
   ) {}
 
   errorString: void | string = '';
