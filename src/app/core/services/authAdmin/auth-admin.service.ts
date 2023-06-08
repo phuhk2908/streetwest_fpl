@@ -1,46 +1,36 @@
 import { Injectable, NgZone } from '@angular/core';
-import * as auth from 'firebase/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
+import * as auth from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  userData: any; // Save logged in user data
+export class AuthAdminService {
+  userAdminData: any; // Save logged in user data
   isLoading: boolean = false;
 
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone, // NgZone service to remove outside scope warning
-    private messageService: MessageService
+    public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
     /* Saving user data in localstorage when
-  logged in and setting up null when logged out */
+    logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+        this.userAdminData = user;
+        localStorage.setItem('user', JSON.stringify(this.userAdminData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
       }
-    });
-  }
-
-  getToast(severity: string, detail: string) {
-    this.messageService.add({
-      severity: severity,
-      summary: 'Thông báo',
-      detail: detail,
     });
   }
 
@@ -54,24 +44,10 @@ export class AuthService {
         this.ngZone.run(() => {
           this.router.navigate(['home']);
         });
-        this.SetUserData(result.user);
+        this.SetUserAdminData(result.user);
       })
       .catch((error) => {
-        this.isLoading = false
-        switch (error.code) {
-          case 'auth/user-not-found': {
-            return 'Tài khoản không tồn tại'
-          }
-          case 'auth/wrong-password': {
-            return 'Sai mật khẩu'
-          }
-          case 'auth/invalid-email': {
-            return 'Email không hợp lệ'
-          }
-          default: {
-            return 'Đăng nhập không thành công'
-          }
-        }
+        window.alert(error.message);
       });
   }
 
@@ -81,10 +57,10 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign
-      up and returns promise */
+        up and returns promise */
         this.isLoading = false;
         this.SendVerificationMail();
-        this.SetUserData(result.user);
+        this.SetUserAdminData(result.user);
         result.user?.updateProfile({ displayName: username });
       })
       .catch((error) => {
@@ -120,47 +96,21 @@ export class AuthService {
     return user !== null && user.emailVerified !== false;
   }
 
-  // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      if (res.additionalUserInfo.isNewUser) {
-        this.router.navigate(['register']);
-      } else {
-        this.router.navigate(['dashboard']);
-      }
-    });
-  }
-
-  // Auth logic to run auth providers
-  AuthLogin(provider: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
-
   /* Setting up user data when sign in with username/password,
-sign up with username/password and sign in with social auth
-provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
+  sign up with username/password and sign in with social auth
+  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
+  SetUserAdminData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
+      `admin/${user.uid}`
     );
-    const userData: any = {
+    const userAdminData: any = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     };
-    return userRef.set(userData, {
+    return userRef.set(userAdminData, {
       merge: true,
     });
   }
