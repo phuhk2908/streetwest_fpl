@@ -2,9 +2,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-12 shadow " style="min-height: 150px">
+    <div class="col-lg-8 col-12 shadow" style="min-height: 150px">
       <ng-container *ngIf="listProduct.length !== 0; else noProduct">
-        <div class="row cart-area justify-content-around align-items-center" *ngFor="let product of listProduct">
+        <div
+          class="row cart-area justify-content-around align-items-center"
+          *ngFor="let product of listProduct"
+        >
           <div class="btn-close col-2" (click)="removeProduct(product)"></div>
           <div class="col-2">
             <img class="w-100" src="{{ product.img[0] }}" />
@@ -22,12 +25,19 @@
             <div class="info-product_qty mb-3 col-md-8 col-11">
               <div class="price">{{ product.price }}</div>
               <div class="inputCount d-flex">
-                <span (click)="minus(product)" class="border rounded-circle"><i
-                    class="bi bi-dash use-flex justify-content-center"></i></span>
-                <input class="text-center border-0 w-100" type="text"
-                  name="quantity-{{ product.id }}-{{ product.sizeSelected }}" id="" value="{{ product.quantity }}" />
-                <span (click)="plus(product)" class="border rounded-circle"><i
-                    class="bi bi-plus use-flex justify-content-center"></i></span>
+                <span (click)="minus(product)" class="border rounded-circle"
+                  ><i class="bi bi-dash use-flex justify-content-center"></i
+                ></span>
+                <input
+                  class="text-center border-0 w-100"
+                  type="text"
+                  name="quantity-{{ product.id }}-{{ product.sizeSelected }}"
+                  id=""
+                  value="{{ product.quantity }}"
+                />
+                <span (click)="plus(product)" class="border rounded-circle"
+                  ><i class="bi bi-plus use-flex justify-content-center"></i
+                ></span>
               </div>
             </div>
           </div>
@@ -52,7 +62,12 @@
           <span>{{ total }}đ</span>
         </div>
         <hr class="my-3 border border-secondary border-1 opacity-25" />
-        <button class="btn btn-danger rounded" routerLink="/checkout" type="button">
+        <button
+          class="btn btn-danger rounded"
+          [disabled]="listProduct.length == 0"
+          routerLink="/checkout"
+          type="button"
+        >
           Thanh toán
         </button>
       </div>
@@ -62,8 +77,7 @@
 <ng-template #noProduct>
   <div class="h-100 d-flex align-items-center justify-content-center noProduct">
     <div class="text-center">
-      <h3 class="text-capitalize ">Giỏ hàng trống
-      </h3>
+      <h3 class="text-capitalize">Giỏ hàng trống</h3>
       <a routerLink="/product" class="nav-link mt-3 text-danger">Shop Now</a>
     </div>
   </div>
