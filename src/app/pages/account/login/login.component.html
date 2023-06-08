@@ -14,13 +14,17 @@
       <input #userPwd type="password" class="form-control" id="userPwd">
     </div>
 
+    <ng-template [ngIf]="errorString" >
+      <small class="text-danger">{{ errorString }}</small>
+    </ng-template>
+
     <div class="forgot-password text-end mb-3">
       <a routerLink="/account/forgot-password">
         Quên mật khẩu
       </a>
     </div>
 
-    <button #enterBtn  *ngIf="!authService.isLoading" class="btn btn-primary w-100 login-button">Đăng nhập
+    <button #enterBtn  *ngIf="!authService.isLoading" class="btn btn-primary w-100 login-button" (click)="getMessage()">Đăng nhập
     </button>
 
     <button *ngIf="authService.isLoading" class="btn btn-primary w-100 login-button" style="background-color: white">
@@ -36,3 +40,5 @@
   </div>
 
 </div>
+
+<p-toast position="bottom-right"></p-toast>
