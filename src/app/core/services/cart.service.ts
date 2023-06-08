@@ -2,18 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/interface/product';
 import { BehaviorSubject } from 'rxjs';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  doc,
-  docData,
-  getDocs,
-  updateDoc,
-  query,
-  where,
-  addDoc,
-} from '@angular/fire/firestore';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
