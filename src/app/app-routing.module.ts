@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FAQComponent } from './pages/faq/faq.component';
@@ -25,6 +26,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
 import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
 import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
+import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
+import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -50,6 +53,8 @@ const routes: Routes = [
     data: { breadcrumb: 'Chi tiết sản phẩm' },
   },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
+  { path: 'blog/:id', component: BlogdetailsComponent,},
+
   {
     path: 'contact',
     component: ContactComponent,
@@ -88,6 +93,8 @@ const routes: Routes = [
   { path: 'admin/product', component: AdminproductComponent },
   { path: 'admin/order', component: AdminorderComponent},
   { path: 'admin/account', component: AdminaccountComponent},
+  { path: 'admin/login', component: AdminloginComponent},
+  { path: 'admin/register', component: AdminregisterComponent},
 
 ];
 
