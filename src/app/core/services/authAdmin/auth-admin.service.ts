@@ -41,7 +41,7 @@ export class AuthAdminService {
       .then((result) => {
         this.isLoading = false;
         this.ngZone.run(() => {
-          this.router.navigate(['home']);
+          this.router.navigate(['/admin']);
         });
         this.SetUserAdminData(result.user);
       })
@@ -119,7 +119,7 @@ export class AuthAdminService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       location.reload();
-      this.router.navigate(['home']);
+      this.router.navigate(['admin/login']);
     });
   }
 }
