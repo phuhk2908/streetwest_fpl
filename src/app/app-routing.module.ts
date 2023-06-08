@@ -22,12 +22,12 @@ import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-
 
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
-import { AdminComponent } from './pages/admin/admin.component';
-import { AdminproductComponent } from './pages/admin/adminproduct/adminproduct.component';
-import { AdminorderComponent } from './pages/admin/adminorder/adminorder.component';
-import { AdminaccountComponent } from './pages/admin/adminaccount/adminaccount.component';
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
+import {AdminComponent} from "./admin/pages/admin/admin.component";
+import {AdminproductComponent} from "./admin/pages/admin/adminproduct/adminproduct.component";
+import {AdminorderComponent} from "./admin/pages/admin/adminorder/adminorder.component";
+import {AdminaccountComponent} from "./admin/pages/admin/adminaccount/adminaccount.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
