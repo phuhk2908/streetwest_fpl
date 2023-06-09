@@ -7,7 +7,7 @@ import {AuthAdminService} from "../../../core/services/authAdmin/auth-admin.serv
   styleUrls: ['./adminlogin.component.scss'],
 })
 export class AdminloginComponent implements OnInit {
-  constructor(public authAdminService: AuthAdminService) {
+  constructor(public authService: AuthAdminService) {
   }
   ngOnInit() {}
 }

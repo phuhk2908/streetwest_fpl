@@ -56,7 +56,7 @@ const routes: Routes = [
     component: ProductDetailComponent,
     data: { breadcrumb: 'Chi tiết sản phẩm' },
   },
-  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
+  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Bài viết' } },
   { path: 'blog/:id', component: BlogdetailsComponent },
 
   {
@@ -103,28 +103,24 @@ const routes: Routes = [
     component: CheckoutComponent,
     data: { breadcrumb: 'Thanh toán' },
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
   {
     path: 'admin/product',
     component: AdminproductComponent,
-    canActivate: [AuthAdminGuard],
   },
   {
     path: 'admin/order',
     component: AdminorderComponent,
-    canActivate: [AuthAdminGuard],
   },
   {
     path: 'admin/account',
     component: AdminaccountComponent,
-    canActivate: [AuthAdminGuard],
   },
   { path: 'admin/login', component: AdminloginComponent },
   {
     path: 'admin/register',
     component: AdminregisterComponent,
-    canActivate: [AuthAdminGuard],
   },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
