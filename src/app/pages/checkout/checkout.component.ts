@@ -22,11 +22,11 @@ export class CheckoutComponent implements OnInit {
     private router: Router,
     private _fb: FormBuilder,
     private cartService: CartService,
+
     private messageService: MessageService,
     private productService: ProductService
 
   ) { }
-
   ngOnInit() {
     this.formCheckout = this._fb.group({
       fullName: ['', Validators.required],
@@ -44,9 +44,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   async order() {
-    this.idOrder = await this.cartService.createOrder(this.formCheckout.value);
     this.cartService.getCart().subscribe(async (data) => {
-      await this.cartService.saveOrder(this.idOrder, data);
+      this.idOrder = await this.cartService.saveOrder(data);
+      this.cartService.createOrder(this.formCheckout.value, this.idOrder);
       this.cartDetail = data;
       data.forEach((el) => {
         for (const [sizeName, value] of Object.entries(el.size)) {

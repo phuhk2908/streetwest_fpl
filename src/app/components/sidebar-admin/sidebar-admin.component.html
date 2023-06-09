@@ -1,34 +1,44 @@
 <nav>
-    <div class="logo-name">
-        <div class="logo-image">
-            <!--<img src="images/logo.png" alt="">-->
-        </div>
-
-        <span class="logo_name">CodingLab</span>
+  <div class="logo-name">
+    <div class="logo-image">
+      <!--<img src="images/logo.png" alt="">-->
     </div>
 
-    <div class="menu-items">
-        <ul class="nav-links">
-            <li class="mb-3"><a [routerLink]="['/admin']">
-                    <i class="bi bi-graph-up"></i>
-                    <span class="link-name">Tổng quan</span>
-                </a></li>
-            <li class="mb-2"><a href="#" [routerLink]="['/admin/order']">
-                    <i class="bi bi-cart3"></i>
-                    <span class="link-name">Đơn hàng</span>
-                </a></li>
-            <li class="mb-2"><a href="#" [routerLink]="['/admin/product']">
-                    <i class="bi bi-tags"></i>
-                    <span class="link-name">Sản phẩm</span>
-                </a></li>
-            <li class="mb-2"><a href="#">
-                    <i class="bi bi-chat-dots-fill"></i>
-                    <span class="link-name">Bình luận</span>
-                </a></li>
-            <li class="mb-2"><a href="#" [routerLink]="['/admin/account']">
-                    <i class="bi bi-person-circle"></i>
-                    <span class="link-name">Tài khoản</span>
-                </a></li>
-        </ul>
-    </div>
+    <span class="logo_name">Trang quản trị</span>
+  </div>
+
+  <div class="menu-items">
+    <ul class="nav-links">
+      <li class="mb-3">
+        <a [routerLink]="['/admin']">
+          <i class="bi bi-graph-up"></i>
+          <span class="link-name">Tổng quan</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="#" [routerLink]="['/admin/order']">
+          <i class="bi bi-cart3"></i>
+          <span class="link-name">Đơn hàng</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="#" [routerLink]="['/admin/product']">
+          <i class="bi bi-tags"></i>
+          <span class="link-name">Sản phẩm</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="#">
+          <i class="bi bi-chat-dots-fill"></i>
+          <span class="link-name">Bình luận</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="#" [routerLink]="['/admin/account']">
+          <i class="bi bi-person-circle"></i>
+          <span class="link-name">Tài khoản</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

@@ -77,6 +77,9 @@ import { AccountAddressComponent } from './pages/account/account-address/account
 import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
 
+import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+
+
 
 
 @NgModule({
@@ -117,10 +120,15 @@ import { AccountOrderComponent } from './pages/account/account-order/account-ord
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
+
     AccountProfileComponent,
     AccountAddressComponent,
     AccountNoficationComponent,
     AccountOrderComponent,
+
+    HeaderAdminComponent,
+
+
   ],
   imports: [
     BrowserModule,
