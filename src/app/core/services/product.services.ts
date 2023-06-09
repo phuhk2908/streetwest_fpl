@@ -90,6 +90,7 @@ export class ProductService {
       });
     } else {
       await updateDoc(ref, {
+        status: 0,
         ...data,
       });
     }
