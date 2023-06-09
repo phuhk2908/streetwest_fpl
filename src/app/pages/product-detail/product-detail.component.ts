@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interface/product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CartService } from 'src/app/core/services/cart.service';
+4;
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -14,8 +16,9 @@ export class ProductDetailComponent {
   constructor(
     private dataService: ProductService,
     private route: ActivatedRoute,
-    private cartService: CartService
-  ) { }
+    private cartService: CartService,
+    private router: Router
+  ) {}
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
@@ -41,6 +44,7 @@ export class ProductDetailComponent {
     product.quantity = quantity;
     product.sizeSelected = sizeSelected;
     this.cartService.addToCart(product);
+    this.router.navigate(['/cart']);
   }
   plus(e: Event) {
     let value = this.frm1.controls['quantity'].value;

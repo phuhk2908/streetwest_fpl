@@ -1,4 +1,4 @@
-<app-breadcrumb></app-breadcrumb>
+g<app-breadcrumb></app-breadcrumb>
 <div class="container mb-120">
   <div class="row align-items-center">
     <div class="col-lg-4 col-sm-12">
@@ -61,10 +61,10 @@
         <form action="" (ngSubmit)="addToCart(product)" [formGroup]="frm1">
           <ul class="list-unstyled my-3">
             <li class="lh-lg">SKU: {{ product.id }}</li>
-            <li class="lh-lg">
-              Size:
+            <li class="lh-lg d-flex">
+              <span class="pe-3"> Size:</span>
               <div
-                class="form-check"
+                class="form-check d-flex align-items-center justify-content-center px-3"
                 *ngFor="let size of product.size | keyvalue; let i = index"
               >
                 <input
@@ -75,7 +75,10 @@
                   formControlName="flexRadioDefault"
                   value="{{ size.key }}"
                 />
-                <label class="form-check-label" for="flexRadioDefault{{ i }}">
+                <label
+                  class="form-check-label px-2"
+                  for="flexRadioDefault{{ i }}"
+                >
                   {{ size.key }}
                 </label>
               </div>
@@ -136,16 +139,24 @@
         </div>
         <div class="social fs-6">
           <ul class="list-unstyled d-flex align-items-center m-0">
-            <li class="me-2">Share:</li>
+            <li class="me-2">Mạng xã hội:</li>
             <li class="me-1">
-              <i
-                class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
-              ></i>
+              <a
+                href="https://www.facebook.com/streetwestclothing"
+                class="text-decoration-none"
+                ><i
+                  class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
+                ></i
+              ></a>
             </li>
             <li class="me-1">
-              <i
-                class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
-              ></i>
+              <a
+                href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
+                class="text-decoration-none"
+                ><i
+                  class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
+                ></i
+              ></a>
             </li>
           </ul>
         </div>
