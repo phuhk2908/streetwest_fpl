@@ -1,7 +1,8 @@
-.nav img{
+.nav img {
     width: 50%;
     border-radius: 50%;
 }
+
 .dashboard {
     position: relative;
     left: 250px;
@@ -10,4 +11,8 @@
     width: calc(100% - 250px);
     padding: 10px 14px;
     transition: var(--tran-05);
+}
+
+.order-admin {
+    width: 80vw;
 }

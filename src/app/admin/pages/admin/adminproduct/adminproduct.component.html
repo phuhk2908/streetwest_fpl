@@ -21,17 +21,6 @@
     <div class="background border shadow p-3 rounded content mt-5 row">
         <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
         <hr>
-        <!-- <div class="row my-3 justify-content-between">
-            <div class="col-lg-8">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
-                </form>
-            </div>
-            <div class="col-lg-2">
-                <button class="btn bg-success text-white" (click)="showDialog()">Thêm mới</button>
-            </div>
-        </div> -->
         <div>
             <p-table #tablePd dataKey="id" [value]="products" [paginator]="true" [rows]="5"
                 [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"

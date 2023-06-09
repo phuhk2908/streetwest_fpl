@@ -65,7 +65,8 @@ import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import { TagModule } from 'primeng/tag';
+import { SidebarModule } from 'primeng/sidebar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,7 +128,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     SliderModule,
     AccordionModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TagModule,
+    SidebarModule
   ],
   providers: [
     AuthService,
