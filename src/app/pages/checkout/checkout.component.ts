@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from 'src/app/core/services/product.services';
 
@@ -22,7 +23,6 @@ export class CheckoutComponent implements OnInit {
     private router: Router,
     private _fb: FormBuilder,
     private cartService: CartService,
-
     private messageService: MessageService,
     private productService: ProductService
 

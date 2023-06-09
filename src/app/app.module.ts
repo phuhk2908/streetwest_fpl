@@ -65,6 +65,8 @@ import { AccordionModule } from 'primeng/accordion';
 
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TagModule } from 'primeng/tag';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
@@ -76,11 +78,7 @@ import { AccountProfileComponent } from './pages/account/account-profile/account
 import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
 import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
-
 import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -158,6 +156,8 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     AccordionModule,
     FileUploadModule,
     ConfirmDialogModule,
+    TagModule,
+    SidebarModule
     NgOptimizedImage,
   ],
   providers: [

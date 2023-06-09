@@ -1,32 +1,85 @@
 <app-sidebar-admin></app-sidebar-admin>
-<section class="dashboard container mx-2">
-  <app-header-admin></app-header-admin>
-  <div class="background border shadow p-3 rounded content mt-5 row">
-    <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
-    <hr />
-    <div class="row">
-      <div class="col-lg-2">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Thêm điều kiện lọc</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-      <div class="col-lg-10">
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Tìm kiếm"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Tìm</button>
-        </form>
-      </div>
-      <!-- <div class="col-lg-2">
-                <button class="btn bg-success text-white">Thêm sản phẩm mới</button>
-            </div> -->
+<section class="dashboard container mx-2 order-admin">
+    <div class=" overflow-hidden">
+        <div class="nav justify-content-end">
+            <header class="row">
+                <div class="col-7">
+                    <h5>Danh sách đơn hàng</h5>
+                </div>
+                <div class="col-1 pt-2 text-end"><i class="fa-solid fa-magnifying-glass mx-3"></i><i
+                        class="fa-solid fa-bell"></i></div>
+                <div class="col-2 text-end m-0">
+                    <h5 class="pt-1">Huỳnh Kim Phú</h5>
+                </div>
+                <div class="col-1 text-end"><img src="assets/images/logo.jpg" alt=""></div>
+                <div class="col-1 text-end p-0"><button class="btn bg-light shadow-sm"><i class="bi bi-envelope-at"></i>
+                        Góp ý</button>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="background border shadow p-3 rounded content mt-5 row overflow-hidden">
+        <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
+        <hr>
+        <div>
+            <p-table #tablePd dataKey="id" [value]="orders" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                [tableStyle]="{ 'min-width': '50rem' }" [globalFilterFields]="['fullName', 'phone','address']">
+                <ng-template pTemplate="caption">
+                    <div class="row  my-2 justify-content-between">
+                        <div class="col-lg-2">
+                            <div pButton label="Clear" class="p-button-outlined " icon="pi pi-filter-slash"
+                                (click)="clear(tablePd)"></div>
+                        </div>
+                        <div class="col-lg-8 ">
+                            <span class="p-input-icon-left ml-auto col-lg-10">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" class="w-100"
+                                    (input)="tablePd.filterGlobal($any($event.target).value, 'contains')"
+                                    placeholder="Search keyword" />
+                            </span>
+
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 10%" scope="col" pSortableColumn="id">Chi tiết</th>
+                        <th style="width: 15%" scope="col" pSortableColumn="fullName">Họ và tên</th>
+                        <th style="width: 20%" scope="col" pSortableColumn="phone"> Số điện thoại<p-sortIcon
+                                field="phone"></p-sortIcon>
+                        </th>
+                        <th style="width: 25%" scope="col" pSortableColumn="address">Địa chỉ <p-sortIcon
+                                field="address"></p-sortIcon>
+                        </th>
+                        <th style="width: 15%" scope="col" pSortableColumn="status">Trạng thái <p-sortIcon
+                                field="status"></p-sortIcon>
+                        </th>
+                        <th style="width: 15%;" scope="col">Thao tác</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item>
+                    <tr>
+                        <td>
+                            <div class="text-secondary" (click)="showDetail(item.idOrder)">Chi tiết</div>
+                        </td>
+                        <td>{{item.fullName}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>{{item.address + item.city}}</td>
+                        <td><ng-container *ngTemplateOutlet="status;context:{status: item.status}"></ng-container></td>
+                        <td>
+                            <button class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></button>&nbsp;
+                            <button class="btn btn-outline-danger " (click)="handleDel(item.id)"><i
+                                    class="bi bi-trash-fill"></i></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+
+                </ng-template>
+            </p-table>
+        </div>
     </div>
     <table class="table">
       <thead>
@@ -59,3 +112,41 @@
     </table>
   </div>
 </section>
+<ng-template #status let-status="status">
+    <p-tag value="Đơn hàng mới" [rounded]="true" severity="danger" *ngIf="status === 0"></p-tag>
+    <p-tag value="Đang giao hàng" [rounded]="true" severity=" warning " *ngIf="status === 1"></p-tag>
+    <p-tag value="Xác nhận" [rounded]="true" severity="info" *ngIf="status === 2"></p-tag>
+    <p-tag value="Hoàn tât" severity="success" [rounded]="true" *ngIf="status === 3"></p-tag>
+</ng-template>
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Đơn hàng</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+    </ng-template>
+</p-confirmDialog>
+
+<p-sidebar [(visible)]="sidebar" position="right" [style]="{width: '50vw'}" [blockScroll]="true">
+    <ng-template pTemplate="header">
+        <h3>Đơn hàng và thông tin người dùng</h3>
+    </ng-template>
+    <table class="table" style="height: 100px;">
+        <thead>
+            <tr>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="" *ngFor="let item of ordersDetail?.cart">
+                <td class="w-25 align-middle"> <img width="70" [src]="item.img[0]"> </td>
+                <td class="w-25 align-middle"> {{item.name}}</td>
+                <td class="w-25 align-middle">{{item.quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
+</p-sidebar>

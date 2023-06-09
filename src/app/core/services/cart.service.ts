@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class CartService {
   cartList: Product[] = [];
   productList = new BehaviorSubject<Product[]>([]);
-  constructor(private http: HttpClient, private firestore: Firestore) {}
+  constructor(private http: HttpClient, private firestore: Firestore) { }
   getCart() {
     return this.productList.asObservable();
   }
@@ -52,6 +52,7 @@ export class CartService {
     });
     console.log('Document written with ID: ', docRef.id);
   }
+
   async saveOrder(cart: Product[]) {
     const orderCollection = collection(this.firestore, 'orderDetail');
     const docRef = await addDoc(orderCollection, {

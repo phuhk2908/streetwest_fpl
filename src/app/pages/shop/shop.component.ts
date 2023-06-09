@@ -21,11 +21,12 @@ export class ShopComponent {
     private pd: ProductService,
     private messageService: MessageService,
     private cartService: CartService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.pd.getAllCategory().subscribe((res: any[]) => {
       this.cat = res;
-    });
+    })
+    //this.getData();
     this.pd.getKeySearch().subscribe((res) => {
       if (res.length > 0) {
         let keyword = res.toLowerCase();

@@ -104,9 +104,9 @@ export class ProductService {
   }
   // async themcot() {
   //   const data = {
-  //     feature: "0"
+  //     status: 0
   //   };
-  //   const collectionRef = collection(this.firestore, "products");
+  //   const collectionRef = collection(this.firestore, "order");
   //   const q = query(collectionRef);
   //   const querySnapshot = await getDocs(collectionRef);
   //   querySnapshot.forEach((doc) => {
