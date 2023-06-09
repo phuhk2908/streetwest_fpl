@@ -18,7 +18,15 @@ import {
   addDoc,
   deleteDoc,
 } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable, Subject, finalize, from, map, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  finalize,
+  from,
+  map,
+  tap,
+} from 'rxjs';
 import { Product } from 'src/app/interface/product';
 
 @Injectable({
@@ -28,7 +36,10 @@ export class ProductService {
   private unsubscribe$ = new Subject<void>();
   keysearch = new BehaviorSubject('');
 
-  constructor(private firestore: Firestore, private storage: AngularFireStorage) { }
+  constructor(
+    private firestore: Firestore,
+    private storage: AngularFireStorage
+  ) {}
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
@@ -71,11 +82,17 @@ export class ProductService {
   }
   async updateProductByID(data: Product) {
     const ref = doc(this.firestore, 'products', data.id);
-    await updateDoc(ref, {
-      size: {
-        ...data.size,
-      },
-    });
+    if (data.quantity) {
+      await updateDoc(ref, {
+        size: {
+          ...data.size,
+        },
+      });
+    } else {
+      await updateDoc(ref, {
+        ...data,
+      });
+    }
   }
 
   getKeySearch() {
@@ -165,18 +182,21 @@ export class ProductService {
       const fileRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, image);
       const uploadPromise = new Promise<string>((resolve, reject) => {
-        uploadTask.snapshotChanges().pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe(
-              (url) => {
-                resolve(url);
-              },
-              (error) => {
-                reject(error);
-              }
-            );
-          })
-        ).subscribe();
+        uploadTask
+          .snapshotChanges()
+          .pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe(
+                (url) => {
+                  resolve(url);
+                },
+                (error) => {
+                  reject(error);
+                }
+              );
+            })
+          )
+          .subscribe();
       });
       uploadPromises.push(uploadPromise);
     }
@@ -185,10 +205,10 @@ export class ProductService {
   slugify(str: string) {
     str = str.replace(/^\s+|\s+$/g, '');
     str = str.toLowerCase();
-    str = str.replace(/[^a-z0-9 -]/g, '')
+    str = str
+      .replace(/[^a-z0-9 -]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
     return str;
   }
-
 }

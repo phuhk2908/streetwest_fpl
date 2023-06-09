@@ -1,40 +1,44 @@
 .nav img {
-    width: 50%;
-    border-radius: 50%;
+  width: 50%;
+  border-radius: 50%;
 }
 
 .upload {
-    .p-fileupload-row>div {
-        width: auto !important;
-    }
+  .p-fileupload-row > div {
+    width: auto !important;
+  }
 
-    .p-fileupload-content {
-        padding: 0px !important;
+  .p-fileupload-content {
+    padding: 0px !important;
 
-        img {
-            width: 100px;
-        }
+    img {
+      width: 100px;
     }
+  }
 }
 
 .dashboard {
-    position: relative;
-    left: 250px;
-    background-color: var(--panel-color);
-    /* min-height: 100vh; */
-    width: calc(100% - 250px);
-    padding: 10px 14px;
-    transition: var(--tran-05);
+  position: relative;
+  left: 250px;
+  background-color: var(--panel-color);
+  /* min-height: 100vh; */
+  width: calc(100% - 250px);
+  padding: 10px 14px;
+  transition: var(--tran-05);
 }
 
 .products-admin {
-    width: 80vw;
+  width: 80vw;
 }
 
 .w-th {
-    width: 10%;
+  width: 10%;
 }
 
 .form-control {
-    box-shadow: none !important
+  box-shadow: none !important;
+}
+.imgCurrent {
+  max-width: 200px;
+  width: 100%;
 }

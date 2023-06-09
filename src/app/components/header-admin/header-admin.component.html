@@ -1,0 +1,27 @@
+<header class="row">
+  <div class="col-7"></div>
+  <div class="col-1 pt-2 text-end">
+    <i class="fa-solid fa-magnifying-glass mx-3"></i
+    ><i class="fa-solid fa-bell"></i>
+  </div>
+  <div class="col-2 text-end m-0">
+    <h5 class="pt-1">{{ authAdminService.userAdminData?.displayName }}</h5>
+  </div>
+  <div class="col-1 d-flex align-items-center justify-content-center">
+    <img
+      [src]="
+        authAdminService.userAdminData?.photoURL === null
+          ? 'assets/images/profile.png'
+          : authAdminService.userAdminData?.photoURL
+      "
+      alt=""
+      width="30px"
+      height="30px"
+    />
+  </div>
+  <div class="col-1 text-end p-0">
+    <button class="btn bg-light shadow-sm">
+      <i class="bi bi-envelope-at"></i> Góp ý
+    </button>
+  </div>
+</header>

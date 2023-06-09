@@ -1,67 +1,61 @@
 <app-sidebar-admin></app-sidebar-admin>
 <section class="dashboard container mx-2">
-    <div class="">
-        <div class="nav justify-content-end">
-            <header class="row">
-                <div class="col-7"><h5>Danh sách đơn hàng</h5></div>
-                <div class="col-1 pt-2 text-end"><i class="fa-solid fa-magnifying-glass mx-3"></i><i class="fa-solid fa-bell"></i></div>
-                <div class="col-2 text-end m-0">
-                    <h5 class="pt-1">Huỳnh Kim Phú</h5>
-                </div>
-                <div class="col-1 text-end"><img src="assets/images/logo.jpg" alt=""></div>
-                <div class="col-1 text-end p-0"><button class="btn bg-light shadow-sm"><i class="bi bi-envelope-at"></i> Góp ý</button>
-                </div>
-            </header>
-        </div>
-    </div>
-    <div class="background border shadow p-3 rounded content mt-5 row">
-        <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
-        <hr>
-        <div class="row">
-            <div class="col-lg-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Thêm điều kiện lọc</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="col-lg-10">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
-                </form>
-            </div>
-            <!-- <div class="col-lg-2">
+  <app-header-admin></app-header-admin>
+  <div class="background border shadow p-3 rounded content mt-5 row">
+    <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
+    <hr />
+    <div class="row">
+      <div class="col-lg-2">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Thêm điều kiện lọc</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="col-lg-10">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Tìm kiếm"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Tìm</button>
+        </form>
+      </div>
+      <!-- <div class="col-lg-2">
                 <button class="btn bg-success text-white">Thêm sản phẩm mới</button>
             </div> -->
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col">Tên khách hàng</th>
-                    <th scope="col">Tiền</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <button class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></button>&nbsp;
-                        <button class="btn bg-danger text-white"><i class="bi bi-trash-fill"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Tên sản phẩm</th>
+          <th scope="col">Tên khách hàng</th>
+          <th scope="col">Tiền</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>
+            <button class="btn bg-success text-white">
+              <i class="bi bi-pencil-square"></i></button
+            >&nbsp;
+            <button class="btn bg-danger text-white">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
-
-
