@@ -28,6 +28,10 @@ import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.c
 import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
 import { AuthAdminGuard } from './core/guard/auth-admin.guard';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
+import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
+import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
+import {AccountOrderComponent} from "./pages/account/account-order/account-order.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -75,6 +79,13 @@ const routes: Routes = [
     path: 'account',
     component: AccountComponent,
     data: { breadcrumb: 'Tài khoản' },
+    children: [
+      { path: '', component: AccountProfileComponent },
+      { path: 'profile', component: AccountProfileComponent },
+      { path: 'address', component: AccountAddressComponent },
+      { path: 'order', component: AccountOrderComponent },
+      { path: 'nofications', component: AccountNoficationComponent },
+    ],
   },
   {
     path: 'dashboard',

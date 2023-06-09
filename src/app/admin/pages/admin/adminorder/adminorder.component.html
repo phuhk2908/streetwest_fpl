@@ -81,8 +81,37 @@
             </p-table>
         </div>
     </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Tên sản phẩm</th>
+          <th scope="col">Tên khách hàng</th>
+          <th scope="col">Tiền</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>
+            <button class="btn bg-success text-white">
+              <i class="bi bi-pencil-square"></i></button
+            >&nbsp;
+            <button class="btn bg-danger text-white">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
-
 <ng-template #status let-status="status">
     <p-tag value="Đơn hàng mới" [rounded]="true" severity="danger" *ngIf="status === 0"></p-tag>
     <p-tag value="Đang giao hàng" [rounded]="true" severity=" warning " *ngIf="status === 1"></p-tag>

@@ -44,17 +44,18 @@ export class CartService {
     this.cartList = [];
     this.productList.next(this.cartList);
   }
-  async createOrder(data: any) {
+  async createOrder(data: any, idOrder: string) {
     const orderCollection = collection(this.firestore, 'order');
-    const docRef = await addDoc(orderCollection, data);
-    console.log('Document written with ID: ', docRef.id);
-    return docRef.id;
-  }
-  async saveOrder(idOrder: string, cart: Product[]) {
-    console.log(idOrder, cart);
-    const orderCollection = collection(this.firestore, 'orderDetail');
     const docRef = await addDoc(orderCollection, {
       idOrder: idOrder,
+      ...data,
+    });
+    console.log('Document written with ID: ', docRef.id);
+  }
+
+  async saveOrder(cart: Product[]) {
+    const orderCollection = collection(this.firestore, 'orderDetail');
+    const docRef = await addDoc(orderCollection, {
       cart: cart,
     });
     console.log('Document written with ID: ', docRef.id);

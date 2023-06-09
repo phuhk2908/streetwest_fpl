@@ -6,6 +6,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from 'src/app/core/services/product.services';
 
 import { Product } from 'src/app/interface/product';
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-checkout',
@@ -22,7 +23,9 @@ export class CheckoutComponent implements OnInit {
     private router: Router,
     private _fb: FormBuilder,
     private cartService: CartService,
-    private messageService: MessageService, private productService: ProductService
+    private messageService: MessageService,
+    private productService: ProductService
+
   ) { }
   ngOnInit() {
     this.formCheckout = this._fb.group({
@@ -41,9 +44,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   async order() {
-    this.idOrder = await this.cartService.createOrder(this.formCheckout.value);
     this.cartService.getCart().subscribe(async (data) => {
-      await this.cartService.saveOrder(this.idOrder, data);
+      this.idOrder = await this.cartService.saveOrder(data);
+      this.cartService.createOrder(this.formCheckout.value, this.idOrder);
       this.cartDetail = data;
       data.forEach((el) => {
         for (const [sizeName, value] of Object.entries(el.size)) {
