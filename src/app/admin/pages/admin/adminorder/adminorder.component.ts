@@ -13,7 +13,8 @@ import { ProductService } from 'src/app/core/services/product.services';
 })
 export class AdminorderComponent implements OnInit {
   orders: any[] = [];
-  sidebar: boolean = true;
+  ordersDetail: any;
+  sidebar: boolean = false;
   constructor(private pd: ProductService, private messageService: MessageService,
     private _fb: FormBuilder, private storage: AngularFireStorage,
     private confirmationService: ConfirmationService, private od: OrderService) { }
@@ -26,8 +27,13 @@ export class AdminorderComponent implements OnInit {
       this.orders = res;
     });
   }
-  showDetail(id: string) {
-    this.sidebar = true
+  async showDetail(id: string) {
+    this.sidebar = true;
+    console.log(id);
+    this.od.getIdDetailOrder(id).subscribe(res => {
+      this.ordersDetail = res;
+      console.log(this.ordersDetail.cart);
+    })
   }
   clear(table: Table) {
     table.clear();

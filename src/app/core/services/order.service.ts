@@ -33,6 +33,6 @@ export class OrderService {
     }
     getIdDetailOrder(id: string) {
         const Ref = doc(this.firestore, `orderDetail/${id}`);
-        return docData(Ref) as Observable<any>;
+        return docData(Ref, { idField: 'id' }) as Observable<any>;
     }
 }

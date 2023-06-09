@@ -60,7 +60,7 @@
                 <ng-template pTemplate="body" let-item>
                     <tr>
                         <td>
-                            <div class="text-secondary" (click)="showDetail(item.id)">Chi tiết</div>
+                            <div class="text-secondary" (click)="showDetail(item.idOrder)">Chi tiết</div>
                         </td>
                         <td>{{item.fullName}}</td>
                         <td>{{item.phone}}</td>
@@ -74,7 +74,6 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="paginatorleft">
-                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
                 </ng-template>
                 <ng-template pTemplate="paginatorright">
 
@@ -105,5 +104,20 @@
     <ng-template pTemplate="header">
         <h3>Đơn hàng và thông tin người dùng</h3>
     </ng-template>
-
+    <table class="table" style="height: 100px;">
+        <thead>
+            <tr>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="" *ngFor="let item of ordersDetail?.cart">
+                <td class="w-25 align-middle"> <img width="70" [src]="item.img[0]"> </td>
+                <td class="w-25 align-middle"> {{item.name}}</td>
+                <td class="w-25 align-middle">{{item.quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
 </p-sidebar>
