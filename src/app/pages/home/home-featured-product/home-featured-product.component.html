@@ -5,7 +5,8 @@
     </div>
     <div class="d-flex align-items-center justify-content-center">
       <p class="text-center w-75 text-muted my-3">
-        Một số sản phẩm được yêu thích đến từ nhà StreetWest được mọi người tin dùng. Với với cách tee tạo nên sự thoải mái có thể giúp nâng cấp tủ đồ của bạn.
+        Một số sản phẩm được yêu thích đến từ nhà StreetWest được mọi người tin dùng. Với với cách tee tạo nên sự thoải
+        mái có thể giúp nâng cấp tủ đồ của bạn.
       </p>
     </div>
   </div>
@@ -14,48 +15,9 @@
       <div class="carousel-wrapper">
         <a href="" class="carousel-img"><img [src]="item.img[0]" alt="" class="object-fit-cover p-4" /></a>
         <div class="home-button-wrapper">
-          <button class="home-button">Thêm vào giỏ hàng</button>
+          <button class="home-button" (click)="gotoShop(item.slug!)">Thêm vào giỏ hàng</button>
         </div>
       </div>
     </ng-template>
-    <!--<ng-template carouselSlide>
-      <div class="carousel-wrapper">
-        <a href="" class="carousel-img"
-          ><img
-            src="/assets/images/product/aothun/6-removebg-preview.jpg"
-            alt=""
-            class="object-fit-cover p-4"
-        /></a>
-        <div class="home-button-wrapper">
-          <button class="home-button">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-    </ng-template>
-    <ng-template carouselSlide>
-      <div class="carousel-wrapper">
-        <a href="" class="carousel-img"
-          ><img
-            src="/assets/images/product/aothun/6-removebg-preview.jpg"
-            alt=""
-            class="object-fit-cover p-4"
-        /></a>
-        <div class="home-button-wrapper">
-          <button class="home-button">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-    </ng-template>
-    <ng-template carouselSlide>
-      <div class="carousel-wrapper">
-        <a href="" class="carousel-img"
-          ><img
-            src="/assets/images/product/aothun/6-removebg-preview.jpg"
-            alt=""
-            class="object-fit-cover p-4"
-        /></a>
-        <div class="home-button-wrapper">
-          <button class="home-button">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-    </ng-template> -->
   </owl-carousel-o>
 </div>

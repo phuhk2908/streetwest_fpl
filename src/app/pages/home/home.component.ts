@@ -13,19 +13,21 @@ export class HomeComponent implements OnInit {
   cat: Product[] = [];
   products: Product[] = [];
   constructor(private pd: ProductService) {
+
+  }
+  ngOnInit() {
+    this.getData()
+
+  }
+  getData() {
+    this.pd.getAllCategory().subscribe((res: any[]) => {
+      this.cat = res.sort((a, b) => b.id - a.id);
+    });
     this.pd.getProduct().subscribe((data) => {
       this.products = data;
       this.productsFeature = data.filter(item => item.feature === '1');
       this.productsNew = data.slice(-8, -1);
-
     })
-  }
-  ngOnInit() {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res.sort((a, b) => b.id - a.id);
-    });
-
-
   }
 
 }

@@ -32,6 +32,7 @@ import { AccountProfileComponent } from './pages/account/account-profile/account
 import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
 import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -75,6 +76,7 @@ const routes: Routes = [
     data: { breadcrumb: 'Câu hỏi thường gặp' },
   },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
+  { path: 'wish', component: WishlistComponent, data: { breadcrumb: 'Danh sách yêu thích' } },
   {
     path: 'account',
     component: AccountComponent,
@@ -128,4 +130,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/core/services/product.services';
 import { Product } from 'src/app/interface/product';
 import { ViewEncapsulation } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
+import { WishListService } from 'src/app/core/services/wishlist.service';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -20,12 +21,11 @@ export class ShopComponent {
   constructor(
     private pd: ProductService,
     private messageService: MessageService,
-    private cartService: CartService
+    private cartService: CartService,
+    private wish: WishListService
   ) { }
   ngOnInit(): void {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res;
-    })
+
     this.getData();
     this.pd.getKeySearch().subscribe((res) => {
       if (res.length > 0) {
@@ -40,8 +40,6 @@ export class ShopComponent {
     });
   }
   addToCart(product: Product) {
-    console.log(product);
-
     product.quantity = 1;
     product.sizeSelected = 'M';
     this.cartService.addToCart(product);
@@ -76,6 +74,9 @@ export class ShopComponent {
   }
 
   async getData() {
+    this.pd.getAllCategory().subscribe((res: any[]) => {
+      this.cat = res;
+    });
     (
       await this.pd.paginator(
         this.filterCat,
@@ -95,4 +96,12 @@ export class ShopComponent {
       },
     });
   }
+  handleWishList(product: Product) {
+    const result = this.wish.addWishList(product);
+    if (result.length > 0) {
+      this.messageService.add({ severity: 'info', detail: 'Sản phẩm đã có trong danh sách' });
+    }
+
+  }
+
 }
