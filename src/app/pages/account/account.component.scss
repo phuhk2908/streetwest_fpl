@@ -1,93 +1,143 @@
-.ptb-100{
-    padding-top: 100px;
-    padding-bottom: 100px;
+$main-color: rgb(191, 39, 38);
+
+.container {
+  .row {
+    .test {
+      height: 550px;
+    }
+  }
 }
-.login-form h2{
-    margin-bottom: 30px;
-    font-size: 36px;
-    font-weight: 700;
-    color: black;
+
+.wrapper-user__image {
+  width: 40px;
+  height: 40px !important;
+  border: 1px solid black;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
 }
-.login-form form .form-group label{
-    display: block;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-.form-control{
-    height: 48px;
-    border-radius: 5px;
-    border: 1px solid #eeeeee;
-    box-shadow: unset!important;
+
+.wrapper-user__edit {
+  .user__name {
     font-size: 16px;
-    color: black;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.form-check .form-check-input{
-    border-radius: 0;
-}
-.form-check .form-check-input:checked{
-    background-color: red;
-    border: none;
-}
-.login-form form button{
-    border: none;
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: white;
-    background-color: red;
-    transition: var(--transition);
-    border-radius: 5px;
-    padding: 14px 30px;
-    width: 100%;
     font-weight: 700;
-    font-size: var(--fontSize);
-}
-.login-form form button:hover{
-    background-color: black;
-}
-.description{
-    font-style: italic;
-    font-size: 14.5px;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-.login-form form .lost-your-password-wrap a{
-    display: inline-block;
-    position: relative;
-    line-height: 1.5;
-    transition: calc(.5s);
-    color: var(--blackColor);
+    overflow: hidden;
+  }
+
+  .user__edit {
     text-decoration: none;
-    outline: 0!important;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666666;
+    position: relative;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      color: $main-color;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $main-color;
+      transition: all 0.3s ease 0s;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+
+    i {
+      margin-right: 2px;
+      font-size: 0.65rem;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
 }
-.login-form form .lost-your-password-wrap{
-    text-align: end;
-}
-.login-form form .lost-your-password-wrap a::before{
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    content: "";
-    position: absolute;
-    transition: calc(.5s);
-    background-color: #eee;
-}
-.login-form form .lost-your-password-wrap a::after{
-    width: 0;
-    height: 1px;
-    position: absolute;
-    left: 0;
-    transition: calc(.5s);
-    bottom: 0;
-    content: "";
-    background-color: red;
-}
-.login-form form .lost-your-password-wrap a:hover{
-    color: red;
-}
-.login-form form .lost-your-password-wrap a:hover:after{
-    width: 100%;
+
+.wrapper-list {
+  .wrapper-list-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease 0s;
+
+    li {
+      margin-bottom: 10px;
+      transition: all 0.3s ease 0s;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 14px;
+        transition: all 0.3s ease 0s;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+          color: $main-color;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: $main-color;
+          transition: all 0.3s ease 0s;
+        }
+
+        &:hover:before {
+          width: 100%;
+        }
+
+      }
+
+      .wrapper-list-submenu {
+        list-style: none;
+        padding-left: 20px;
+        margin: 10px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: all 0.3s ease 0s;
+
+        li {
+          margin-bottom: 10px;
+
+          a {
+            text-decoration: none;
+            color: #666666;
+            font-size: 14px;
+            transition: all 0.3s ease 0s;
+
+            &:hover {
+              color: $main-color;
+            }
+          }
+        }
+      }
+    }
+  }
 }

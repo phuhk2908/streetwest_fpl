@@ -48,7 +48,6 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { DashboardComponent } from './admin/pages/admin/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './pages/account/verify-email/verify-email.component';
-import { AuthGuard } from './core/guard/auth.guard';
 import { ChipsModule } from 'primeng/chips';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -72,7 +71,14 @@ import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.compone
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
 import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
 import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
+import {NgOptimizedImage} from "@angular/common";
+import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
+import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
+import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
+import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
+
 import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+
 
 
 
@@ -114,7 +120,14 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
+
+    AccountProfileComponent,
+    AccountAddressComponent,
+    AccountNoficationComponent,
+    AccountOrderComponent,
+
     HeaderAdminComponent,
+
 
   ],
   imports: [
@@ -144,7 +157,8 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     SliderModule,
     AccordionModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    NgOptimizedImage,
   ],
   providers: [
     AuthService,
@@ -154,4 +168,4 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
