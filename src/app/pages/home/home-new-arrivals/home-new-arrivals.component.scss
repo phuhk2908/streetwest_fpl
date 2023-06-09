@@ -57,9 +57,10 @@
 
 .carousel-wrapper {
   position: relative;
+
   .carousel-img img {
     transition: all 0.3s ease-in-out 0s;
-    background-color: rgb(239, 238, 238);
+    background-color: rgb(239, 238, 238, .4);
   }
 
   &.carousel-wrapper:hover {
