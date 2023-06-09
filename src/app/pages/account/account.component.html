@@ -1,10 +1,57 @@
 <div class="ptb-100">
   <div *ngIf="user; else noUser">
     <div class="container">
-      hihi
+      <div class="row">
+        <div class="col-2 ps-5 position-sticky">
+          <div class="row d-flex align-items-center">
+            <div
+              class="col-5"
+              style="padding-right: 0;">
+              <div class="wrapper-user__image">
+                <img
+                  ngSrc="/assets/images/icons8-user-48.png"
+                  alt="..."
+                  height="48"
+                  width="48">
+              </div>
+            </div>
+            <div class="col-6 d-flex flex-column ps-0 wrapper-user__edit">
+              <div class="user__name">{{ user.displayName }}</div>
+              <a class="user__edit">
+                <i class="fa-solid fa-pen"></i>
+                <span>Sửa hồ sơ</span>
+              </a>
+            </div>
+            <p-divider></p-divider>
+            <div class="wrapper-list">
+              <ul class="wrapper-list-menu">
+                <li>
+                  <a (click)="show = !show">Tài Khoản Của Tôi</a>
+                  <div
+                    *ngIf="show"
+                    [@enterAnimation]="show">
+                    <ul class="wrapper-list-submenu">
+                      <li><a routerLink="profile">Hồ Sơ</a></li>
+                      <li><a routerLink="address">Địa Chỉ</a></li>
+                      <li><a href="">Đổi Mật Khẩu</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li><a routerLink="order">Đơn Hàng</a></li>
+                <li><a routerLink="nofications">Thông Báo</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 bg-secondary test">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
   </div>
-    <ng-template #noUser>
-      <app-login></app-login>
-    </ng-template>
+</div>
+<div>
+  <ng-template #noUser>
+    <app-login></app-login>
+  </ng-template>
 </div>
