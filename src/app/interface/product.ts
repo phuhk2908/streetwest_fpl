@@ -2,7 +2,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
-  img: [[name: string]];
+  img: string[];
   idCategory: string;
   date: string;
   size: {
@@ -15,6 +15,5 @@ export interface Product {
   quantity?: number;
   total?: number;
   sizeSelected?: string;
-  feature?: string
+  feature?: string;
 }
-

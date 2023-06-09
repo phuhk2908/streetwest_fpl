@@ -72,6 +72,7 @@ import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.compone
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
 import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
 import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
+import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
 
 
 
@@ -113,6 +114,7 @@ import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
+    HeaderAdminComponent,
 
   ],
   imports: [
