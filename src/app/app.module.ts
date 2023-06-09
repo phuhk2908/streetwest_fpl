@@ -72,8 +72,8 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
 import { BlogdetailsComponent } from './pages/blog/blogdetails/blogdetails.component';
-import {AuthAdminGuard} from "./core/guard/auth-admin.guard";
-import {NgOptimizedImage} from "@angular/common";
+import { AuthAdminGuard } from "./core/guard/auth-admin.guard";
+import { NgOptimizedImage } from "@angular/common";
 import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
 import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
 import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
@@ -165,4 +165,4 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

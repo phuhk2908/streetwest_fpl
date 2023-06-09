@@ -4,59 +4,24 @@
   <div class="background border shadow p-3 rounded content mt-5 row">
     <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
     <hr />
-    <!-- <div class="row my-3 justify-content-between">
-            <div class="col-lg-8">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
-                </form>
-            </div>
-            <div class="col-lg-2">
-                <button class="btn bg-success text-white" (click)="showDialog()">Thêm mới</button>
-            </div>
-        </div> -->
     <div>
-      <p-table
-        #tablePd
-        dataKey="id"
-        [value]="products"
-        [paginator]="true"
-        [rows]="5"
-        [showCurrentPageReport]="true"
-        [tableStyle]="{ 'min-width': '50rem' }"
-        [globalFilterFields]="['name', 'price', 'idCategory']"
-      >
+      <p-table #tablePd dataKey="id" [value]="products" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }" [globalFilterFields]="['name', 'price', 'idCategory']">
         <ng-template pTemplate="caption">
           <div class="row my-2 justify-content-between">
             <div class="col-lg-2">
-              <div
-                pButton
-                class="p-button-outlined bg-success text-white"
-                (click)="showDialog()"
-              >
+              <div pButton class="btn btn-outline-secondary" (click)="showDialog()">
                 Thêm mới
               </div>
             </div>
-            <div class="col-lg-8 d-flex justify-content-between">
+            <div class="col-lg-8 d-flex justify-content-end">
               <span class="p-input-icon-left ml-auto col-lg-10">
                 <i class="pi pi-search"></i>
-                <input
-                  pInputText
-                  type="text"
-                  class="w-100"
-                  (input)="
+                <input pInputText type="text" class="w-100" (input)="
                     tablePd.filterGlobal($any($event.target).value, 'contains')
-                  "
-                  placeholder="Search keyword"
-                />
+                  " placeholder="Search keyword" />
               </span>
-              <div
-                pButton
-                label="Clear"
-                class="p-button-outlined col-lg-2"
-                icon="pi pi-filter-slash"
-                (click)="clear(tablePd)"
-              ></div>
+              <div pButton class="p-button-outlined col-lg-2" icon="pi pi-filter-slash" (click)="clear(tablePd)"></div>
             </div>
           </div>
         </ng-template>
@@ -84,28 +49,16 @@
             <td>{{ item.price | vnd }}</td>
             <td>{{ count(item.id) }}</td>
             <td>
-              <button
-                class="btn bg-success text-white"
-                (click)="showDiaLogUpdate(item.id)"
-              >
-                <i class="bi bi-pencil-square"></i></button
-              >&nbsp;
-              <button
-                class="btn bg-danger text-white"
-                (click)="handleDel(item.id)"
-              >
+              <button class="btn btn-outline-primary" (click)="showDiaLogUpdate(item.id)">
+                <i class="bi bi-pencil-square"></i></button>&nbsp;
+              <button class="btn btn-outline-danger" (click)="handleDel(item.id)">
                 <i class="bi bi-trash-fill"></i>
               </button>
             </td>
           </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">
-          <p-button
-            type="button"
-            icon="pi pi-plus"
-            styleClass="p-button-text"
-            (click)="showDialog()"
-          ></p-button>
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" (click)="showDialog()"></p-button>
         </ng-template>
         <ng-template pTemplate="paginatorright"> </ng-template>
       </p-table>
@@ -115,16 +68,8 @@
 </section>
 
 <div class="flex justify-content-center">
-  <p-dialog
-    header="Thêm sản phẩm mới"
-    [(visible)]="visible"
-    [style]="{ width: '90vw', height: '100vh' }"
-  >
-    <form
-      class="m-auto bg-white w-100 rounded row"
-      [formGroup]="formAddProduct"
-      (ngSubmit)="onSubmit()"
-    >
+  <p-dialog header="Thêm sản phẩm mới" [(visible)]="visible" [style]="{ width: '90vw', height: '100vh' }">
+    <form class="m-auto bg-white w-100 rounded row" [formGroup]="formAddProduct" (ngSubmit)="onSubmit()">
       <div class="col-6">
         <div class="mb-3">
           Tên sản phẩm<input formControlName="name" class="form-control my-2" />
@@ -135,11 +80,7 @@
         </div>
         <div class="mb-3 d-flex">
           <div class="col-6">
-            Ngày nhập<input
-              class="form-control my-2"
-              type="date"
-              formControlName="date"
-            />
+            Ngày nhập<input class="form-control my-2" type="date" formControlName="date" />
           </div>
           <div class="col-6">
             Nổi bật
@@ -151,10 +92,7 @@
         </div>
         <div class="mb-3">
           <div class="mb-3">
-            Loại sản phẩm<select
-              class="form-control"
-              formControlName="idCategory"
-            >
+            Loại sản phẩm<select class="form-control" formControlName="idCategory">
               <option value="{{ item.id }}" *ngFor="let item of cat">
                 {{ item.name }}
               </option>
@@ -169,30 +107,15 @@
           <div class="d-flex gap-3 my-2">
             <div class="input-group flex-nowrap">
               <span class="input-group-text" id="addon-wrapping">M</span>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="M"
-                placeholder="Số lượng"
-              />
+              <input type="text" class="form-control" formControlName="M" placeholder="Số lượng" />
             </div>
             <div class="input-group flex-nowrap">
               <span class="input-group-text px-3" id="addon-wrapping"> L </span>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="L"
-                placeholder="Số lượng"
-              />
+              <input type="text" class="form-control" formControlName="L" placeholder="Số lượng" />
             </div>
             <div class="input-group flex-nowrap">
               <span class="input-group-text" id="addon-wrapping">XL</span>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="XL"
-                placeholder="Số lượng"
-              />
+              <input type="text" class="form-control" formControlName="XL" placeholder="Số lượng" />
             </div>
           </div>
         </div>
@@ -200,15 +123,8 @@
           Ảnh sản phẩm
           <div class="">
             <p-toast></p-toast>
-            <p-fileUpload
-              name="uploadedFiles[]"
-              url="https://www.primefaces.org/cdn/api/upload.php"
-              (onUpload)="onUpload($event)"
-              [multiple]="true"
-              accept="image/*"
-              [maxFileSize]="1000000"
-              [fileLimit]="2"
-            >
+            <p-fileUpload name="uploadedFiles[]" url="https://www.primefaces.org/cdn/api/upload.php"
+              (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000" [fileLimit]="2">
               <ng-template pTemplate="content">
                 <ul *ngIf="uploadedFiles.length">
                   <li *ngFor="let file of uploadedFiles">
@@ -236,40 +152,17 @@
     <h3>Sản phẩm</h3>
   </ng-template>
   <ng-template pTemplate="footer">
-    <button
-      type="button"
-      pButton
-      icon="pi pi-check"
-      label="Yes"
-      (click)="cd.accept()"
-    ></button>
-    <button
-      type="button"
-      pButton
-      icon="pi pi-times"
-      label="No"
-      (click)="cd.reject()"
-    ></button>
+    <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+    <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
   </ng-template>
 </p-confirmDialog>
 <!-- handleUpdateProduct -->
 <div class="flex justify-content-center">
-  <p-dialog
-    header="Cập nhật sản phẩm "
-    [(visible)]="visibleSecond"
-    [style]="{ width: '90vw', height: '100vh' }"
-  >
-    <form
-      class="m-auto bg-white w-100 rounded row"
-      [formGroup]="formUpdateProduct"
-      (ngSubmit)="onUpdate()"
-    >
+  <p-dialog header="Cập nhật sản phẩm " [(visible)]="visibleSecond" [style]="{ width: '90vw', height: '100vh' }">
+    <form class="m-auto bg-white w-100 rounded row" [formGroup]="formUpdateProduct" (ngSubmit)="onUpdate()">
       <div class="col-6">
         <div class="mb-3">
-          Tên sản phẩm<input
-            formControlName="nameUpdate"
-            class="form-control my-2"
-          />
+          Tên sản phẩm<input formControlName="nameUpdate" class="form-control my-2" />
         </div>
 
         <div class="mb-3">
@@ -277,29 +170,19 @@
         </div>
         <div class="mb-3 d-flex">
           <div class="col-6">
-            Ngày nhập<input
-              class="form-control my-2"
-              type="date"
-              formControlName="dateUpdate"
-            />
+            Ngày nhập<input class="form-control my-2" type="date" formControlName="dateUpdate" />
           </div>
           <div class="col-6">
             Nổi bật
             <select class="form-control my-2" formControlName="featureUpdate">
-              <option
-                value="0"
-                [selected]="
+              <option value="0" [selected]="
                   formUpdateProduct.controls['featureUpdate'].value === '0'
-                "
-              >
+                ">
                 Không
               </option>
-              <option
-                value="1"
-                [selected]="
+              <option value="1" [selected]="
                   formUpdateProduct.controls['featureUpdate'].value === '1'
-                "
-              >
+                ">
                 Có
               </option>
             </select>
@@ -307,18 +190,11 @@
         </div>
         <div class="mb-3">
           <div class="mb-3">
-            Loại sản phẩm<select
-              class="form-control"
-              formControlName="idCategoryUpdate"
-            >
-              <option
-                value="{{ item.id }}"
-                *ngFor="let item of cat"
-                [selected]="
+            Loại sản phẩm<select class="form-control" formControlName="idCategoryUpdate">
+              <option value="{{ item.id }}" *ngFor="let item of cat" [selected]="
                   formUpdateProduct.controls['idCategoryUpdate'].value ===
                   item.id
-                "
-              >
+                ">
                 {{ item.name }}
               </option>
             </select>
@@ -332,47 +208,29 @@
           <div class="d-flex gap-3 my-2">
             <div class="input-group flex-nowrap">
               <span class="input-group-text" id="addon-wrapping">M</span>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="amountM"
-              />
+              <input type="text" class="form-control" formControlName="amountM" />
               <input type="text" class="form-control" formControlName="soldM" />
             </div>
             <div class="input-group flex-nowrap">
               <span class="input-group-text px-3" id="addon-wrapping"> L </span>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="amountL"
-              />
+              <input type="text" class="form-control" formControlName="amountL" />
               <input type="text" class="form-control" formControlName="soldL" />
             </div>
             <div class="input-group flex-nowrap">
               <span class="input-group-text" id="addon-wrapping">XL</span>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="amountXL"
-              />
-              <input
-                type="text"
-                class="form-control"
-                formControlName="soldXL"
-              />
+              <input type="text" class="form-control" formControlName="amountXL" />
+              <input type="text" class="form-control" formControlName="soldXL" />
             </div>
           </div>
         </div>
         <div class="my-3">
           Ảnh sản phẩm hiện tại
           <div class="d-flex align-items-center justify-content-center">
-            <div
-              *ngFor="
+            <div *ngFor="
                 let srcImg of formUpdateProduct.controls['imgCurrent'].value
-              "
-            >
+              ">
               <div class="img">
-                {{ srcImg | slice : 8 : 20 }}
+                <!-- {{ srcImg | slice : 8 : 20 }} -->
                 <img [src]="srcImg" alt="" class="imgCurrent" />
               </div>
             </div>
@@ -382,15 +240,8 @@
           Chọn ảnh mới
           <div class="">
             <p-toast></p-toast>
-            <p-fileUpload
-              name="uploadedFiles[]"
-              url="https://www.primefaces.org/cdn/api/upload.php"
-              (onUpload)="onUpload($event)"
-              [multiple]="true"
-              accept="image/*"
-              [maxFileSize]="1000000"
-              [fileLimit]="2"
-            >
+            <p-fileUpload name="uploadedFiles[]" url="https://www.primefaces.org/cdn/api/upload.php"
+              (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000" [fileLimit]="2">
               <ng-template pTemplate="content">
                 <ul *ngIf="uploadedFiles.length">
                   <li *ngFor="let file of uploadedFiles">

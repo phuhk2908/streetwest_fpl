@@ -47,6 +47,7 @@ export class CartService {
   async createOrder(data: any, idOrder: string) {
     const orderCollection = collection(this.firestore, 'order');
     const docRef = await addDoc(orderCollection, {
+      status: 0,
       idOrder: idOrder,
       ...data,
     });

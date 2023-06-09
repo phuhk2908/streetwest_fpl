@@ -18,14 +18,14 @@ export class ProductDetailComponent {
     private route: ActivatedRoute,
     private cartService: CartService,
     private router: Router
-  ) {}
+  ) { }
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
   product: Product = <Product>{};
   availableQuantity: number = 0;
   ngOnInit() {
-    //this.fetchData();
+    this.fetchData();
     this.frm1 = new FormGroup({
       quantity: new FormControl(1),
       flexRadioDefault: new FormControl('', Validators.required),

@@ -1,12 +1,10 @@
 <app-breadcrumb></app-breadcrumb>
-<div class="checkout-area test">
+<div class="checkout-area ">
   <ng-container *ngIf="isSubmit">
-    <ng-container
-      *ngTemplateOutlet="
+    <ng-container *ngTemplateOutlet="
         successOrdered;
         context: { id: idOrder, cartDetail: cartDetail, total: total }
-      "
-    ></ng-container>
+      "></ng-container>
   </ng-container>
   <div
     class="container"
@@ -22,7 +20,6 @@
             <div class="row">
               <div class="col-lg-12 col-md-6">
                 <div class="form-group">
-
                   <label> Họ và tên <span class="required">*</span></label
                   ><input
                   type="text"
@@ -40,7 +37,6 @@
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-
                   <label>Số điện thoại <span class="required">*</span> </label
                   ><input
                   type="text"
@@ -141,12 +137,7 @@
     </form>
   </div>
 </div>
-<ng-template
-  #successOrdered
-  let-id="id"
-  let-cart="cartDetail"
-  let-subtotal="total"
->
+<ng-template #successOrdered let-id="id" let-cart="cartDetail" let-subtotal="total">
   <div class="text-center">
     <h1 class="fs-1">
       <i
@@ -182,33 +173,24 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of cart">
-            <th scope="row">{{ item.name }} - {{ item.sizeSelected }}</th>
-            <td>{{ item.price }}</td>
-            <td class="text-end">{{ item.quantity }}</td>
-            <td>{{ item.price * item.quantity }}</td>
-          </tr>
-          <tr>
-            <td
-              colspan="3"
-              class="text-end">Tạm tính
-            </td>
-            <td>{{ subtotal }}</td>
-          </tr>
-          <tr>
-            <td
-              colspan="3"
-              class="text-end">Phí vận chuyển
-            </td>
-            <td>Free</td>
-          </tr>
-          <tr>
-            <td
-              colspan="3"
-              class="text-end">Tổng tiền
-            </td>
-            <td>{{ subtotal }}</td>
-          </tr>
+            <tr *ngFor="let item of cart">
+              <th scope="row">{{ item.name }} - {{ item.sizeSelected }}</th>
+              <td>{{ item.price |vnd }}</td>
+              <td class="text-end">{{ item.quantity }}</td>
+              <td>{{ item.price * item.quantity }}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-end">Tổng tiền</td>
+              <td>{{ subtotal|vnd }}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-end">Phí vận chuyển</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-end">Tổng tiền + phí vận chuyển</td>
+              <td>{{ subtotal|vnd }}</td>
+            </tr>
           </tbody>
         </table>
       </div>
