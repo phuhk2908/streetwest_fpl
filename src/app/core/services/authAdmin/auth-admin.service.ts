@@ -46,6 +46,7 @@ export class AuthAdminService {
         this.SetUserAdminData(result.user);
       })
       .catch((error) => {
+        this.isLoading = false;
         window.alert(error.message);
       });
   }

@@ -114,16 +114,13 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     AdminloginComponent,
     AdminregisterComponent,
     BlogdetailsComponent,
-
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
-
     AccountProfileComponent,
     AccountAddressComponent,
     AccountNoficationComponent,
     AccountOrderComponent,
-
     HeaderAdminComponent,
 
 

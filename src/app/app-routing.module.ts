@@ -31,7 +31,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
 import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
 import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
-import {AccountOrderComponent} from "./pages/account/account-order/account-order.component";
+import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -56,7 +56,7 @@ const routes: Routes = [
     component: ProductDetailComponent,
     data: { breadcrumb: 'Chi tiết sản phẩm' },
   },
-  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
+  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Bài viết' } },
   { path: 'blog/:id', component: BlogdetailsComponent },
 
   {
@@ -103,12 +103,24 @@ const routes: Routes = [
     component: CheckoutComponent,
     data: { breadcrumb: 'Thanh toán' },
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
-  { path: 'admin/product', component: AdminproductComponent },
-  { path: 'admin/order', component: AdminorderComponent },
-  { path: 'admin/account', component: AdminaccountComponent },
+  {
+    path: 'admin/product',
+    component: AdminproductComponent,
+  },
+  {
+    path: 'admin/order',
+    component: AdminorderComponent,
+  },
+  {
+    path: 'admin/account',
+    component: AdminaccountComponent,
+  },
   { path: 'admin/login', component: AdminloginComponent },
-  { path: 'admin/register', component: AdminregisterComponent },
+  {
+    path: 'admin/register',
+    component: AdminregisterComponent,
+  },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
