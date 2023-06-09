@@ -31,7 +31,7 @@
     border-radius: 0;
 }
 .form-check .form-check-input:checked{
-    background-color: red;
+    background-color: rgb(191,39,38);
     border: none;
 }
 .login-form form button{
@@ -40,7 +40,7 @@
     margin-top: 20px;
     text-align: center;
     color: white;
-    background-color: red;
+    background-color: rgb(191,39,38);
     transition: var(--transition);
     border-radius: 5px;
     padding: 14px 30px;
@@ -88,10 +88,10 @@
     transition: calc(.5s);
     bottom: 0;
     content: "";
-    background-color: red;
+    background-color: rgb(191,39,38);
 }
 .login-form form .lost-your-password-wrap a:hover{
-    color: red;
+    color: rgb(191,39,38);
 }
 .login-form form .lost-your-password-wrap a:hover:after{
     width: 100%;
