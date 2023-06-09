@@ -114,16 +114,13 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     AdminloginComponent,
     AdminregisterComponent,
     BlogdetailsComponent,
-
     AdminComponent,
     AdminorderComponent,
     AdminproductComponent,
-
     AccountProfileComponent,
     AccountAddressComponent,
     AccountNoficationComponent,
     AccountOrderComponent,
-
     HeaderAdminComponent,
 
 
@@ -157,7 +154,7 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     FileUploadModule,
     ConfirmDialogModule,
     TagModule,
-    SidebarModule
+    SidebarModule,
     NgOptimizedImage,
   ],
   providers: [
