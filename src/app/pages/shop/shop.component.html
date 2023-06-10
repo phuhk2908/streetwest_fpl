@@ -65,6 +65,14 @@
         <div class="d-flex flex-wrap box-product-area">
           <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4" *ngFor="let item of products">
             <div class="single-products-box">
+              <div class="products-button">
+                <div>
+                  <a><i class="fas fa-search-plus"></i></a>
+                </div>
+                <div>
+                  <a (click)="handleWishList(item)"><i class="far fa-heart"></i></a>
+                </div>
+              </div>
               <a class="d-block"><img src="{{ item.img[0] }}" [routerLink]="['/product/', item.slug]"
                   class="w-100 object-fit-fill" /></a>
               <div class="content">
@@ -82,6 +90,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
           <p-paginator (onPageChange)="onPageChange($event)" [first]="page" [rows]="rows"
             [totalRecords]="totalRecords"></p-paginator>
@@ -92,42 +101,40 @@
 </div>
 
 <!-- </ng-template> -->
-
+<p-toast [baseZIndex]="10000" life="1000"></p-toast>
 <ng-template #other_content>
   <div class="col-lg-8 col-md-12 p-0">
     <div class="w-100 text-center ptb-100">Không tìm thấy sản phẩm nào</div>
   </div>
 </ng-template>
 <!-- <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let item of products">
-            <div class="single-products-box">
-              <a routerlink="" class="d-block"><img src="{{item.img[0]}}" alt="" /></a>
-              <ul class="products-button">
-                <li>
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView"><i
-                      class="fas fa-search-plus"></i><span class="tooltip-label">Quick View</span></a>
-                </li>
-                <li>
-                  <a routerlink="/compare" href="/compare"><i class="fas fa-exchange-alt"></i><span
-                      class="tooltip-label">Compare</span></a>
-                </li>
-                <li>
-                  <a routerlink="/wishlist" href="/wishlist"><i class="far fa-heart"></i><span class="tooltip-label">Add
-                      to Wishlist</span></a>
-                </li>
-              </ul>
-              <span class="sale">SALE</span>
-              <div class="content">
-                <h3>
-                  <a [routerLink]="['/product', item?.slug]">{{item.name}}</a>
-                </h3>
-                <a routerlink="/cart" class="add-to-cart-btn">Add to cart <i class="fas fa-cart-plus"></i></a>
-                <div class="price">
-                  <span class="new-price">{{item.price |vnd}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          
-        </div> -->
+  <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let item of products">
+    <div class="single-products-box">
+      <a routerlink="" class="d-block"><img src="{{item.img[0]}}" alt="" /></a>
+      <ul class="products-button">
+        <li>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView"><i class="fas fa-search-plus"></i><span
+              class="tooltip-label">Quick View</span></a>
+        </li>
+        <li>
+          <a routerlink="/compare" href="/compare"><i class="fas fa-exchange-alt"></i><span
+              class="tooltip-label">Compare</span></a>
+        </li>
+        <li>
+          <a routerlink="/wishlist" href="/wishlist"><i class="far fa-heart"></i><span class="tooltip-label">Add
+              to Wishlist</span></a>
+        </li>
+      </ul>
+      <span class="sale">SALE</span>
+      <div class="content">
+        <h3>
+          <a [routerLink]="['/product', item?.slug]">{{item.name}}</a>
+        </h3>
+        <a routerlink="/cart" class="add-to-cart-btn">Add to cart <i class="fas fa-cart-plus"></i></a>
+        <div class="price">
+          <span class="new-price">{{item.price |vnd}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,4 +1,12 @@
 $color-main: #cf0018;
+//  transform: scale(1.08);
+
+
+
+.p-toast-detail {
+  margin: 5px 0 0 0 !important;
+}
+
 
 .test {
   border: 1px solid red;
@@ -130,7 +138,7 @@ $color-main: #cf0018;
     color: grey;
     min-height: 50px;
 
-    & > div {
+    &>div {
       height: 50px;
       display: flex;
       justify-content: space-between;
@@ -165,19 +173,58 @@ $color-main: #cf0018;
   min-height: 500px;
 
   .single-products-box {
+    position: relative;
+
+    &:hover .products-button {
+      visibility: visible;
+
+    }
+
     a {
       width: 95%;
       margin: 0 auto;
       background: #fffcfc;
 
+
+
       img {
         width: 100%;
         object-fit: cover;
+
+
+      }
+    }
+
+    .products-button {
+      visibility: hidden;
+      width: 40px;
+
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      list-style-type: none;
+      transition: .5s;
+
+      a {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background: #000;
+        color: #ffffff;
+        margin: 10px 0px;
+        cursor: pointer;
+
+        &:hover {
+          background: #cf0018;
+        }
       }
     }
 
     .content {
-      & > div {
+      &>div {
         width: 90%;
         margin: 0 auto;
 
