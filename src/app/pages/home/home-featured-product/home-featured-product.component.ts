@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from "ngx-owl-carousel-o";
 import { Product } from 'src/app/interface/product';
 
@@ -8,6 +9,7 @@ import { Product } from 'src/app/interface/product';
   styleUrls: ['./home-featured-product.component.scss']
 })
 export class HomeFeaturedProductComponent {
+  constructor(private route: Router) { }
   @Input() productsFeature: Product[] = [];
   customOptions: OwlOptions = {
     loop: true,
@@ -34,4 +36,7 @@ export class HomeFeaturedProductComponent {
     nav: true,
     margin: 20
   };
+  gotoShop(name: string) {
+    this.route.navigate([`product/${name}`])
+  }
 }
