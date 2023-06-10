@@ -37,16 +37,16 @@ export class ShopComponent {
   sortPrice: OrderByDirection = 'asc';
   filterPrice: number[] = [0, this.maxPrice];
   ngOnInit(): void {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res;
-      if (this.id?.length > 0) {
-        let cate = this.cat?.find((item: any) => item.slug === this.id);
-        this.filterCat = cate.id;
-        this.getData();
-      } else {
-        this.getData();
-      }
-    });
+    // this.pd.getAllCategory().subscribe((res: any[]) => {
+    //   this.cat = res;
+    //   if (this.id?.length > 0) {
+    //     let cate = this.cat?.find((item: any) => item.slug === this.id);
+    //     this.filterCat = cate.id;
+    //     this.getData();
+    //   } else {
+    //     this.getData();
+    //   }
+    // });
 
   }
   addToCart(product: Product) {

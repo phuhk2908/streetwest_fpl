@@ -35,7 +35,7 @@ export class AdminproductComponent implements OnInit {
     private confirmationService: ConfirmationService
   ) { }
   ngOnInit(): void {
-    this.getData();
+    //this.getData();
     this.formAddProduct = this._fb.group({
       name: ['', Validators.required],
       price: ['', [Validators.required]],

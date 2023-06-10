@@ -33,6 +33,7 @@ import { AccountNoficationComponent } from './pages/account/account-nofication/a
 import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: 'admin/product',
     component: AdminproductComponent,
+  },
+  {
+    path: 'admin/blog',
+    component: AdminBlogComponent,
   },
   {
     path: 'admin/order',
