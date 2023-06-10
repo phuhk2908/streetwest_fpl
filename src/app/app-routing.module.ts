@@ -41,17 +41,14 @@ const routes: Routes = [
     path: 'shop',
     component: ShopComponent,
     data: { breadcrumb: 'Sản phẩm' },
-    children: [
-      {
-        path: ':id',
-        component: ShopComponent,
-      }
-    ],
   },
   {
-    path: 'product/:id',
-    component: ProductDetailComponent,
-    data: { breadcrumb: 'Chi tiết sản phẩm' },
+    path: 'shop/:id',
+    component: ShopComponent,
+    data: { breadcrumb: 'Sản phẩm' },
+  },
+  {
+    path: 'product/:id', component: ProductDetailComponent, data: { breadcrumb: 'Chi tiết sản phẩm' }
   },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Bài viết' } },
   { path: 'blog/:id', component: BlogdetailsComponent },

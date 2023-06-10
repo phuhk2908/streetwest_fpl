@@ -20,44 +20,41 @@ export class ShopComponent {
     private cartService: CartService,
     private wish: WishListService,
     private route: ActivatedRoute,
-  ) { }
+    private router: Router
+  ) {
+
+  }
   maxPrice: number = 1000000;
   cat: any;
   search: string = '';
   filterCat: any;
   products: Product[] = [];
   id: string = this.route.snapshot.params['id'];
-
+  iShowComponent: boolean = false;
+  page: number = 0;
+  totalRecords: number = 0;
+  rows: number = 10;
+  sortPrice: OrderByDirection = 'asc';
+  filterPrice: number[] = [0, this.maxPrice];
   ngOnInit(): void {
-    console.log(this.id);
-    if (this.id?.length > 0) {
-      let isCategory = this.cat.find((item: any) => item.slug === this.id);
-      console.log(isCategory.id);
-      this.filterCat = isCategory.id;
-    }
-    this.getData();
-    this.pd.getKeySearch().subscribe((res) => {
-      if (res.length > 0) {
-        let keyword = res.toLowerCase();
-        this.pd.getProduct().subscribe((res) => {
-          console.log(res);
-          this.products = res.filter((p) =>
-            p.name.toLowerCase().includes(keyword.toLowerCase())
-          );
-        });
+    this.pd.getAllCategory().subscribe((res: any[]) => {
+      this.cat = res;
+      if (this.id?.length > 0) {
+        let cate = this.cat?.find((item: any) => item.slug === this.id);
+        this.filterCat = cate.id;
+        this.getData();
+      } else {
+        this.getData();
       }
     });
+
   }
   addToCart(product: Product) {
     product.quantity = 1;
     product.sizeSelected = 'M';
     this.cartService.addToCart(product);
   }
-  page: number = 0;
-  totalRecords: number = 0;
-  rows: number = 10;
-  sortPrice: OrderByDirection = 'asc';
-  filterPrice: number[] = [0, this.maxPrice];
+
   handleChangePrice(event: any) {
     this.filterPrice = [event.values[0], event.values[1]];
     this.getData();
@@ -84,9 +81,7 @@ export class ShopComponent {
 
   async getData() {
 
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res;
-    });
+
 
     (
       await this.pd.paginator(
