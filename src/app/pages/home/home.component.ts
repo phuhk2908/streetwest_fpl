@@ -20,9 +20,6 @@ export class HomeComponent implements OnInit {
 
   }
   getData() {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res.sort((a, b) => b.id - a.id);
-    });
     this.pd.getProduct().subscribe((data) => {
       this.products = data;
       this.productsFeature = data.filter(item => item.feature === '1');
@@ -31,10 +28,3 @@ export class HomeComponent implements OnInit {
   }
 
 }
-// this.staffByArea = data.reduce((acc: any, item: any) => {
-//   if (!acc[item.area]) {
-//     acc[item.area] = [];
-//   }
-//   acc[item.area].push(item);
-//   return acc;
-// }, []);

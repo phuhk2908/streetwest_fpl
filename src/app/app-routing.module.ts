@@ -38,18 +38,14 @@ const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   { path: 'home', component: HomeComponent, data: { breadcrumb: 'Home' } },
   {
-    path: 'product',
+    path: 'shop',
     component: ShopComponent,
     data: { breadcrumb: 'Sản phẩm' },
     children: [
       {
-        path: 'shop-nam',
+        path: ':id',
         component: ShopComponent,
-      },
-      {
-        path: 'shop-nu',
-        component: ShopComponent,
-      },
+      }
     ],
   },
   {

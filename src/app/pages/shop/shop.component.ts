@@ -6,6 +6,7 @@ import { Product } from 'src/app/interface/product';
 import { ViewEncapsulation } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
 import { WishListService } from 'src/app/core/services/wishlist.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -13,19 +14,27 @@ import { WishListService } from 'src/app/core/services/wishlist.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class ShopComponent {
+  constructor(
+    private pd: ProductService,
+    private messageService: MessageService,
+    private cartService: CartService,
+    private wish: WishListService,
+    private route: ActivatedRoute,
+  ) { }
   maxPrice: number = 1000000;
   cat: any;
   search: string = '';
   filterCat: any;
   products: Product[] = [];
-  constructor(
-    private pd: ProductService,
-    private messageService: MessageService,
-    private cartService: CartService,
-    private wish: WishListService
-  ) { }
-  ngOnInit(): void {
+  id: string = this.route.snapshot.params['id'];
 
+  ngOnInit(): void {
+    console.log(this.id);
+    if (this.id?.length > 0) {
+      let isCategory = this.cat.find((item: any) => item.slug === this.id);
+      console.log(isCategory.id);
+      this.filterCat = isCategory.id;
+    }
     this.getData();
     this.pd.getKeySearch().subscribe((res) => {
       if (res.length > 0) {
@@ -74,9 +83,11 @@ export class ShopComponent {
   }
 
   async getData() {
+
     this.pd.getAllCategory().subscribe((res: any[]) => {
       this.cat = res;
     });
+
     (
       await this.pd.paginator(
         this.filterCat,
