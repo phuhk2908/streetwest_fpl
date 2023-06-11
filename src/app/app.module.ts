@@ -67,7 +67,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TagModule } from 'primeng/tag';
 import { SidebarModule } from 'primeng/sidebar';
-
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './pages/admin/adminregister/adminregister.component';
@@ -79,7 +79,12 @@ import { AccountAddressComponent } from './pages/account/account-address/account
 import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
 import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+import { EditorModule } from 'primeng/editor';
+import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { FieldsetModule } from 'primeng/fieldset';
 
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,6 +127,7 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     AccountNoficationComponent,
     AccountOrderComponent,
     HeaderAdminComponent,
+    AdminBlogComponent,
 
 
   ],
@@ -156,6 +162,11 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
     TagModule,
     SidebarModule,
     NgOptimizedImage,
+    EditorModule,
+    InputMaskModule,
+    DynamicDialogModule,
+    FieldsetModule,
+    CalendarModule
   ],
   providers: [
     AuthService,

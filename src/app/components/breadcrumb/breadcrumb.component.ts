@@ -18,7 +18,8 @@ export class BreadcrumbComponent {
     this.breadcrumbs$ = breadcrumbService.breadcrumbs$;
     this.breadcrumbs$.subscribe((item: Breadcrumb[]) => {
       if (item.length > 0) {
-        this.label = item[0]['label'];
+        let breadcrumbLast = item.slice(-1)
+        this.label = breadcrumbLast[0]['label'];
       }
     })
   }

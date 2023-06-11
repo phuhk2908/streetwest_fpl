@@ -14,26 +14,28 @@ export class HomeCategoryComponent {
     this.fetchData();
   }
   fetchData() {
-    this.productService.getProduct().subscribe((data) => (this.productArr = data));
-    this.productService.getAllCategory().subscribe((categories) => {
-      this.productGroupByCate = categories.reduce(
-        (productContainer, category) => {
-          productContainer = {
-            ...productContainer,
-            [category.name]: [
-              this.productArr.filter(
-                (product) => product.idCategory == category.id
-              ).length,
-              category.thumbnail,
-              category.slug
-            ],
-          };
-          return productContainer;
-        },
-        {}
-      );
-      console.log(this.productGroupByCate);
-    });
+    this.productService.getProduct().subscribe((data) => {
+      this.productArr = data
+      this.productService.getAllCategory().subscribe((categories) => {
+        this.productGroupByCate = categories.reduce(
+          (productContainer, category) => {
+            productContainer = {
+              ...productContainer,
+              [category.name]: [
+                this.productArr.filter(
+                  (product) => product.idCategory == category.id
+                ).length,
+                category.thumbnail,
+                category.slug
+              ],
+            };
+            return productContainer;
+          },
+          {}
+        );
+      })
+    })
+
 
   }
 }

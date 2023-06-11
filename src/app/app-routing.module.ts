@@ -33,6 +33,7 @@ import { AccountNoficationComponent } from './pages/account/account-nofication/a
 import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -41,17 +42,14 @@ const routes: Routes = [
     path: 'shop',
     component: ShopComponent,
     data: { breadcrumb: 'Sản phẩm' },
-    children: [
-      {
-        path: ':id',
-        component: ShopComponent,
-      }
-    ],
   },
   {
-    path: 'product/:id',
-    component: ProductDetailComponent,
-    data: { breadcrumb: 'Chi tiết sản phẩm' },
+    path: 'shop/:id',
+    component: ShopComponent,
+    data: { breadcrumb: 'Sản phẩm' },
+  },
+  {
+    path: 'product/:id', component: ProductDetailComponent, data: { breadcrumb: 'Chi tiết sản phẩm' }
   },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Bài viết' } },
   { path: 'blog/:id', component: BlogdetailsComponent },
@@ -104,6 +102,10 @@ const routes: Routes = [
   {
     path: 'admin/product',
     component: AdminproductComponent,
+  },
+  {
+    path: 'admin/blog',
+    component: AdminBlogComponent,
   },
   {
     path: 'admin/order',

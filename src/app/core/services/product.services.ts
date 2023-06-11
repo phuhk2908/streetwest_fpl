@@ -39,7 +39,7 @@ export class ProductService {
   constructor(
     private firestore: Firestore,
     private storage: AngularFireStorage
-  ) {}
+  ) { }
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
@@ -104,9 +104,9 @@ export class ProductService {
   }
   // async themcot() {
   //   const data = {
-  //     status: 0
+  //     img: []
   //   };
-  //   const collectionRef = collection(this.firestore, "order");
+  //   const collectionRef = collection(this.firestore, "products");
   //   const q = query(collectionRef);
   //   const querySnapshot = await getDocs(collectionRef);
   //   querySnapshot.forEach((doc) => {
