@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthAdminService } from '../../core/services/authAdmin/auth-admin.service';
+import {AuthService} from "../../core/services/auth/auth.service";
 
 @Component({
   selector: 'app-sidebar-admin',
@@ -7,7 +7,7 @@ import { AuthAdminService } from '../../core/services/authAdmin/auth-admin.servi
   styleUrls: ['./sidebar-admin.component.scss'],
 })
 export class SidebarAdminComponent implements OnInit {
-  constructor(public authService: AuthAdminService) {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {}
 }
