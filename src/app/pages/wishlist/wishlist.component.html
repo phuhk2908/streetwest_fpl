@@ -1,38 +1,50 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="wishlist-area ptb-100">
-    <div class="container" *ngIf="wishList && wishList.length > 0; else other_content">
-        <form class="">
-            <div class="wishlist-table table-responsive ">
-                <table class="table table-bordered">
-                    <thead class="thead">
-                        <tr>
-                            <th scope="col">Hình</th>
-                            <th scope="col">Tên sản phẩm</th>
-                            <th scope="col">Giá </th>
-                            <th scope="col">Thêm vào giỏ hàng</th>
-                            <th scope="col"> Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let item of wishList">
-                        <tr>
-                            <td><a><img width="100" [src]="item.img[0]"></a>
-                            </td>
-                            <td><a>{{item.name}}</a></td>
-                            <td class="product-price">{{item.price|vnd}}</td>
-                            <td><a class="default-btn"><i class="fas fa-shopping-bag px-2"></i> ADD TO
-                                    CART</a></td>
-                            <td><a class="remove" (click)="delWish(item.id)"><i
-                                        class="far fa-trash-alt text-danger"></i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </form>
-    </div>
+  <div
+    class="container"
+    *ngIf="wishList && wishList.length > 0; else other_content"
+  >
+    <form class="">
+      <div class="wishlist-table table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead">
+            <tr>
+              <th scope="col">Hình</th>
+              <th scope="col">Tên sản phẩm</th>
+              <th scope="col">Giá</th>
+              <th scope="col">Thêm vào giỏ hàng</th>
+              <th scope="col">Xóa</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of wishList">
+            <tr>
+              <td>
+                <a><img width="100" [src]="item.img[0]" /></a>
+              </td>
+              <td>
+                <a>{{ item.name }}</a>
+              </td>
+              <td class="product-price">{{ item.price | vnd }}</td>
+              <td>
+                <a class="default-btn shop" (click)="addToCart(item)"
+                  ><i class="fas fa-shopping-bag px-2"></i> ADD TO CART</a
+                >
+              </td>
+              <td>
+                <a class="remove" (click)="delWish(item.id)"
+                  ><i class="far fa-trash-alt text-danger"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
 </div>
 
 <ng-template #other_content>
-    <div class="container">
-        <div class="w-100 text-center ptb-100">Không tìm thấy sản phẩm nào</div>
-    </div>
+  <div class="container">
+    <div class="w-100 text-center ptb-100">Không tìm thấy sản phẩm nào</div>
+  </div>
 </ng-template>
