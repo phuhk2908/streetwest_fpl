@@ -21,9 +21,7 @@ export class ShopComponent {
     private wish: WishListService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-
-  }
+  ) {}
   maxPrice: number = 1000000;
   cat: any;
   search: string = '';
@@ -37,17 +35,16 @@ export class ShopComponent {
   sortPrice: OrderByDirection = 'asc';
   filterPrice: number[] = [0, this.maxPrice];
   ngOnInit(): void {
-    // this.pd.getAllCategory().subscribe((res: any[]) => {
-    //   this.cat = res;
-    //   if (this.id?.length > 0) {
-    //     let cate = this.cat?.find((item: any) => item.slug === this.id);
-    //     this.filterCat = cate.id;
-    //     this.getData();
-    //   } else {
-    //     this.getData();
-    //   }
-    // });
-
+    this.pd.getAllCategory().subscribe((res: any[]) => {
+      this.cat = res;
+      if (this.id?.length > 0) {
+        let cate = this.cat?.find((item: any) => item.slug === this.id);
+        this.filterCat = cate.id;
+        this.getData();
+      } else {
+        this.getData();
+      }
+    });
   }
   addToCart(product: Product) {
     product.quantity = 1;
@@ -80,9 +77,6 @@ export class ShopComponent {
   }
 
   async getData() {
-
-
-
     (
       await this.pd.paginator(
         this.filterCat,
@@ -105,9 +99,10 @@ export class ShopComponent {
   handleWishList(product: Product) {
     const result = this.wish.addWishList(product);
     if (result.length > 0) {
-      this.messageService.add({ severity: 'info', detail: 'Sản phẩm đã có trong danh sách' });
+      this.messageService.add({
+        severity: 'info',
+        detail: 'Sản phẩm đã có trong danh sách',
+      });
     }
-
   }
-
 }
