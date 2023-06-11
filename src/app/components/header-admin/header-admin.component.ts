@@ -7,5 +7,5 @@ import {AuthService} from "../../core/services/auth/auth.service";
   styleUrls: ['./header-admin.component.scss'],
 })
 export class HeaderAdminComponent {
-  constructor(public authAdminService: AuthService) {}
+  constructor(public authService: AuthService) {}
 }
