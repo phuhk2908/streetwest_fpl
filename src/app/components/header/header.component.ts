@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
     const data = key.value;
     this.pd.setKeySearch(data);
     key.value = '';
-    this.router.navigate(['/product']);
+    this.router.navigate(['/shop']);
   }
   ngDestroy() {
     if (this.subscription) {

@@ -67,7 +67,7 @@
             <div class="single-products-box">
               <div class="products-button">
                 <div>
-                  <a><i class="fas fa-search-plus"></i></a>
+                  <a><i class="fas fa-search-plus" [routerLink]="['/product/', item.slug]"></i></a>
                 </div>
                 <div>
                   <a (click)="handleWishList(item)"><i class="far fa-heart"></i></a>
