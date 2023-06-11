@@ -1,15 +1,18 @@
 .dashboard {
-    position: relative;
-    left: 250px;
-    background-color: var(--panel-color);
-    /* min-height: 100vh; */
-    width: calc(100% - 250px);
-    padding: 10px 14px;
-    transition: var(--tran-05);
+  position: relative;
+  left: 250px;
+  background-color: var(--panel-color);
+  /* min-height: 100vh; */
+  width: calc(100% - 250px);
+  padding: 10px 14px;
+  transition: var(--tran-05);
 }
-.nav img{
-    width: 50%;
-    border-radius: 50%;
+.nav img {
+  width: 50%;
+  border-radius: 50%;
+}
+.products-admin {
+  width: 80vw;
 }
 
 .products-admin {
