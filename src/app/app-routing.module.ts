@@ -34,6 +34,7 @@ import { AccountAddressComponent } from './pages/account/account-address/account
 import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
+import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -120,7 +121,7 @@ const routes: Routes = [
     path: 'admin/register',
     component: AdminregisterComponent,
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AuthAdminGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 

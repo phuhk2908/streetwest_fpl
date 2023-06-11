@@ -85,6 +85,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FieldsetModule } from 'primeng/fieldset';
 
 import { CalendarModule } from 'primeng/calendar';
+import { AuthAdminService } from './core/services/authAdmin/auth-admin.service';
+import { AuthGuard } from './core/guard/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -171,6 +173,8 @@ import { CalendarModule } from 'primeng/calendar';
   providers: [
     AuthService,
     AuthAdminGuard,
+    AuthGuard,
+    AuthAdminService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     [MessageService, ConfirmationService],
   ],

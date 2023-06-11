@@ -1,20 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthAdminService} from "../../../core/services/authAdmin/auth-admin.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthAdminService } from "../../../core/services/authAdmin/auth-admin.service";
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent  implements OnInit {
+export class AdminComponent implements OnInit {
   data: any;
   options: any;
 
-  constructor(public authAdminService: AuthAdminService) {
+  constructor(public authService: AuthService) {
 
   }
 
   ngOnInit() {
+    this.authService.isAdmin()
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue(

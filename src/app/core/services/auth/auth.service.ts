@@ -7,6 +7,8 @@ import {
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MessageService } from 'primeng/api';
+import { Firestore, collection, doc, docData, getDocs, query, where } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +22,9 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
-    private messageService: MessageService
+    private messageService: MessageService,
+    private firestore: Firestore
+
   ) {
     /* Saving user data in localstorage when
   logged in and setting up null when logged out */
@@ -43,7 +47,27 @@ export class AuthService {
       detail: detail,
     });
   }
-
+  async getRole(uid: string) {
+    let user: any;
+    const data = query(
+      collection(this.firestore, 'users'), where('uid', '==', uid)
+    );
+    const querySnapshot = await getDocs(data);
+    querySnapshot.forEach((doc) => {
+      user = doc.data();
+      user.id = doc.id;
+    });
+    return user;
+  }
+  async isAdmin() {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    const isUser = this.getRole(user.uid).then(res => res);
+    const isAdmin = await (isUser.then((data) => {
+      if (data.role === 1) return true;
+      else return false;
+    }))
+    return isAdmin;
+  }
   // Sign in with email/password
   SignIn(email: string, password: string) {
     this.isLoading = true;
@@ -53,6 +77,7 @@ export class AuthService {
         this.isLoading = false;
         this.ngZone.run(() => {
           this.router.navigate(['home']);
+          console.log('signin');
         });
         this.SetUserData(result.user);
       })
@@ -117,7 +142,8 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false;
+    return user !== null;
+    // && user.emailVerified !== false;
   }
 
   // Sign in with Google
@@ -158,7 +184,7 @@ provider in Firestore database using AngularFirestore + AngularFirestoreDocument
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
+      emailVerified: user.emailVerified
     };
     return userRef.set(userData, {
       merge: true,
