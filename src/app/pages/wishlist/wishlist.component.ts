@@ -16,7 +16,7 @@ export class WishlistComponent implements OnInit {
     private messageService: MessageService,
     private cartService: CartService,
     private wish: WishListService
-  ) {}
+  ) { window.scrollTo(0, 0); }
   ngOnInit(): void {
     this.wish.getWishList().subscribe((data: any) => {
       this.wishList = data;

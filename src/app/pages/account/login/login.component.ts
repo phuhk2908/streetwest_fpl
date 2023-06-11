@@ -11,11 +11,14 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     public authService: AuthService,
-  ) {}
+  ) {
+    window.scrollTo(0, 0);
+
+  }
 
   errorString: void | string = '';
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.addValueWithEnterButton();

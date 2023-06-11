@@ -76,13 +76,13 @@ const routes: Routes = [
     path: 'account',
     component: AccountComponent,
     data: { breadcrumb: 'Tài khoản' },
-    children: [
-      { path: '', component: AccountProfileComponent },
-      { path: 'profile', component: AccountProfileComponent },
-      { path: 'address', component: AccountAddressComponent },
-      { path: 'order', component: AccountOrderComponent },
-      { path: 'nofications', component: AccountNoficationComponent },
-    ],
+    // children: [
+    //   { path: '', component: AccountProfileComponent },
+    //   { path: 'profile', component: AccountProfileComponent },
+    //   { path: 'address', component: AccountAddressComponent },
+    //   { path: 'order', component: AccountOrderComponent },
+    //   { path: 'nofications', component: AccountNoficationComponent },
+    // ],
   },
   {
     path: 'dashboard',

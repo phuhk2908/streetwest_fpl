@@ -10,7 +10,11 @@ import { Blog } from 'src/app/interface/blog';
 export class BlogComponent {
   blogContain: any;
   blogNew: Blog[] = [];
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService) {
+
+    window.scrollTo(0, 0);
+
+  }
   ngOnInit() {
     this.fetchData();
   }

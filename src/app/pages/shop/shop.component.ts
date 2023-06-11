@@ -24,7 +24,7 @@ export class ShopComponent {
   ) {
     window.scrollTo(0, 0);
   }
-  maxPrice: number = 1000000;
+  maxPrice: number = 10000000;
   cat: any;
   search: string = '';
   filterCat: any;
@@ -33,7 +33,7 @@ export class ShopComponent {
   iShowComponent: boolean = false;
   page: number = 0;
   totalRecords: number = 0;
-  rows: number = 10;
+  rows: number = 9;
   sortPrice: OrderByDirection = 'asc';
   filterPrice: number[] = [0, this.maxPrice];
   ngOnInit(): void {
@@ -68,7 +68,6 @@ export class ShopComponent {
 
   onPageChange(event: any) {
     this.page = event.first;
-    console.log(this.page);
     this.rows = event.rows;
     this.getData();
   }
