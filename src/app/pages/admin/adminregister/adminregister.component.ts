@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthAdminService} from "../../../core/services/authAdmin/auth-admin.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-adminregister',
@@ -7,9 +7,7 @@ import {AuthAdminService} from "../../../core/services/authAdmin/auth-admin.serv
   styleUrls: ['./adminregister.component.scss'],
 })
 export class AdminregisterComponent implements OnInit {
-
-  constructor(public authAdminService: AuthAdminService) {
-  }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {}
 }

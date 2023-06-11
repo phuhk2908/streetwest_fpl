@@ -17,7 +17,7 @@
               <label>Mật khẩu</label>
               <input #password type="password" placeholder="Password" class="form-control">
             </div>
-            <button (click)="authAdminService.SignUp(email.value, password.value, username.value)">Đăng ký</button>
+            <button (click)="authService.SignUp(email.value, password.value, username.value)">Đăng ký</button>
           </form>
         </div>
       </div>
