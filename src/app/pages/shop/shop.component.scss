@@ -203,7 +203,8 @@ $color-main: #cf0018;
       top: 20px;
       right: 20px;
       list-style-type: none;
-      transition: .5s;
+      transition: visibility 0.3s ease;
+      transition-delay: 0.3s;
 
       a {
         width: 100%;

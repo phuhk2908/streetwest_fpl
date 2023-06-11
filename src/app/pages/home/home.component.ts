@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   cat: Product[] = [];
   products: Product[] = [];
   constructor(private pd: ProductService) {
-
+    window.scrollTo(0, 0);
   }
   ngOnInit() {
     this.getData()

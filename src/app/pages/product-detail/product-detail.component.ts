@@ -5,8 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interface/product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CartService } from 'src/app/core/services/cart.service';
-4;
+
 import { Router } from '@angular/router';
+import { WishListService } from 'src/app/core/services/wishlist.service';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -14,18 +16,20 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailComponent {
   constructor(
+    private messageService: MessageService,
+    private wish: WishListService,
     private dataService: ProductService,
     private route: ActivatedRoute,
     private cartService: CartService,
     private router: Router
-  ) { }
+  ) { window.scrollTo(0, 0); }
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
   product: Product = <Product>{};
   availableQuantity: number = 0;
   ngOnInit() {
-    //this.fetchData();
+    this.fetchData();
     this.frm1 = new FormGroup({
       quantity: new FormControl(1),
       flexRadioDefault: new FormControl('', Validators.required),
@@ -33,11 +37,20 @@ export class ProductDetailComponent {
   }
   async fetchData() {
     this.product = await this.dataService.getProductBySlug(this.id);
+    console.log(this.product);
     for (const [sizeName, value] of Object.entries(this.product.size)) {
       this.availableQuantity += value.amount;
     }
   }
-
+  handleWishList(product: Product) {
+    const result = this.wish.addWishList(product);
+    if (result.length > 0) {
+      this.messageService.add({
+        severity: 'info',
+        detail: 'Sản phẩm đã có trong danh sách',
+      });
+    }
+  }
   addToCart(product: Product) {
     const quantity = this.frm1.controls['quantity'].value;
     const sizeSelected = this.frm1.controls['flexRadioDefault'].value;

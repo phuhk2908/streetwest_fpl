@@ -21,7 +21,9 @@ export class ShopComponent {
     private wish: WishListService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    window.scrollTo(0, 0);
+  }
   maxPrice: number = 1000000;
   cat: any;
   search: string = '';
