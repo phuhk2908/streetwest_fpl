@@ -10,12 +10,7 @@
               <span>Loại sản phẩm</span>
             </h3>
             <ul class="box-cat">
-              <li
-                #cate
-                *ngFor="let item of cat"
-                [attr.data-id]="item.id"
-                (click)="selectCategory(cate)"
-              >
+              <li #cate *ngFor="let item of cat" [attr.data-id]="item.id" (click)="selectCategory(cate)">
                 <a class="item-cat">{{ item.name }}</a>
               </li>
             </ul>
@@ -27,15 +22,8 @@
               <span>{{ filterPrice[1] | vnd }}</span>
             </div>
 
-            <p-slider
-              [(ngModel)]="filterPrice"
-              [range]="true"
-              styleClass="prime-slider-override"
-              [max]="maxPrice"
-              (onChange)="handleChangePrice($event)"
-              [step]="10000"
-              #price
-            ></p-slider>
+            <p-slider [(ngModel)]="filterPrice" [range]="true" styleClass="prime-slider-override" [max]="maxPrice"
+              (onChange)="handleChangePrice($event)" [step]="10000" #price></p-slider>
           </div>
           <div class="widget widget_follow_us">
             <h3 class="widget-title">
@@ -53,10 +41,7 @@
         </aside>
       </div>
 
-      <div
-        class="col-lg-8 col-md-12 p-0"
-        *ngIf="products && products.length > 0; else other_content"
-      >
+      <div class="col-lg-8 col-md-12 p-0" *ngIf="products && products.length > 0; else other_content">
         <div class="box-sort-area mb-5">
           <div class="d-md-flex d-inline">
             <div class="col-lg-6 col-md-6 my-3">
@@ -67,14 +52,8 @@
               </div>
             </div>
             <div class="col-lg-6 col-md-6 my-3">
-              <div
-                class="select-box-price justify-content-center justify-content-md-end"
-              >
-                <label>Sort By:</label
-                ><select
-                  (ngModelChange)="handleSort($event)"
-                  [(ngModel)]="sortPrice"
-                >
+              <div class="select-box-price justify-content-center justify-content-md-end">
+                <label>Sắp xếp theo:</label><select (ngModelChange)="handleSort($event)" [(ngModel)]="sortPrice">
                   <option>Default</option>
                   <option value="asc">Giá: tăng dần</option>
                   <option value="desc">Giá: giảm dần</option>
@@ -84,29 +63,26 @@
           </div>
         </div>
         <div class="d-flex flex-wrap box-product-area">
-          <div
-            class="col-lg-4 col-md-4 col-sm-4 col-sm-4"
-            *ngFor="let item of products"
-          >
+          <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4" *ngFor="let item of products">
             <div class="single-products-box">
-              <a class="d-block"
-                ><img
-                  src="{{ item.img[0] }}"
-                  [routerLink]="['/product/', item.slug]"
-                  class="w-100 object-fit-fill"
-              /></a>
+              <div class="products-button">
+                <div>
+                  <a><i class="fas fa-search-plus" [routerLink]="['/product/', item.slug]"></i></a>
+                </div>
+                <div>
+                  <a (click)="handleWishList(item)"><i class="far fa-heart"></i></a>
+                </div>
+              </div>
+              <a class="d-block"><img src="{{ item.img[0] }}" [routerLink]="['/product/', item.slug]"
+                  class="w-100 object-fit-fill" /></a>
               <div class="content">
                 <div class="flex-column">
-                  <div
-                    class="text-main"
-                    [routerLink]="['/product/', item.slug]"
-                  >
+                  <div class="text-main" [routerLink]="['/product/', item.slug]">
                     {{ item.name }}
                   </div>
                   <div class="box-add-cart">
-                    <span class="text-cart" (click)="addToCart(item)"
-                      >Thêm giỏ hàng <i class="fas fa-cart-plus"></i
-                    ></span>
+                    <span class="text-cart" (click)="addToCart(item)">Thêm giỏ hàng <i
+                        class="fas fa-cart-plus"></i></span>
                     <span class="text-price">{{ item.price | vnd }}</span>
                   </div>
                 </div>
@@ -114,13 +90,10 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
-          <p-paginator
-            (onPageChange)="onPageChange($event)"
-            [first]="page"
-            [rows]="rows"
-            [totalRecords]="totalRecords"
-          ></p-paginator>
+          <p-paginator (onPageChange)="onPageChange($event)" [first]="page" [rows]="rows"
+            [totalRecords]="totalRecords"></p-paginator>
         </div>
       </div>
     </div>
@@ -128,42 +101,40 @@
 </div>
 
 <!-- </ng-template> -->
-
+<p-toast [baseZIndex]="10000" life="1000"></p-toast>
 <ng-template #other_content>
   <div class="col-lg-8 col-md-12 p-0">
     <div class="w-100 text-center ptb-100">Không tìm thấy sản phẩm nào</div>
   </div>
 </ng-template>
 <!-- <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let item of products">
-            <div class="single-products-box">
-              <a routerlink="" class="d-block"><img src="{{item.img[0]}}" alt="" /></a>
-              <ul class="products-button">
-                <li>
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView"><i
-                      class="fas fa-search-plus"></i><span class="tooltip-label">Quick View</span></a>
-                </li>
-                <li>
-                  <a routerlink="/compare" href="/compare"><i class="fas fa-exchange-alt"></i><span
-                      class="tooltip-label">Compare</span></a>
-                </li>
-                <li>
-                  <a routerlink="/wishlist" href="/wishlist"><i class="far fa-heart"></i><span class="tooltip-label">Add
-                      to Wishlist</span></a>
-                </li>
-              </ul>
-              <span class="sale">SALE</span>
-              <div class="content">
-                <h3>
-                  <a [routerLink]="['/product', item?.slug]">{{item.name}}</a>
-                </h3>
-                <a routerlink="/cart" class="add-to-cart-btn">Add to cart <i class="fas fa-cart-plus"></i></a>
-                <div class="price">
-                  <span class="new-price">{{item.price |vnd}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          
-        </div> -->
+  <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let item of products">
+    <div class="single-products-box">
+      <a routerlink="" class="d-block"><img src="{{item.img[0]}}" alt="" /></a>
+      <ul class="products-button">
+        <li>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView"><i class="fas fa-search-plus"></i><span
+              class="tooltip-label">Quick View</span></a>
+        </li>
+        <li>
+          <a routerlink="/compare" href="/compare"><i class="fas fa-exchange-alt"></i><span
+              class="tooltip-label">Compare</span></a>
+        </li>
+        <li>
+          <a routerlink="/wishlist" href="/wishlist"><i class="far fa-heart"></i><span class="tooltip-label">Add
+              to Wishlist</span></a>
+        </li>
+      </ul>
+      <span class="sale">SALE</span>
+      <div class="content">
+        <h3>
+          <a [routerLink]="['/product', item?.slug]">{{item.name}}</a>
+        </h3>
+        <a routerlink="/cart" class="add-to-cart-btn">Add to cart <i class="fas fa-cart-plus"></i></a>
+        <div class="price">
+          <span class="new-price">{{item.price |vnd}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

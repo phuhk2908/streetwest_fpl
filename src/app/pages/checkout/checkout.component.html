@@ -1,14 +1,12 @@
 <app-breadcrumb></app-breadcrumb>
-<div class="checkout-area test">
+<div class="checkout-area ">
   <ng-container *ngIf="isSubmit">
-    <ng-container
-      *ngTemplateOutlet="
+    <ng-container *ngTemplateOutlet="
         successOrdered;
         context: { id: idOrder, cartDetail: cartDetail, total: total }
-      "
-    ></ng-container>
+      "></ng-container>
   </ng-container>
-  <div class="container" *ngIf="isSubmit == false">
+  <div class="container" *ngIf="!isSubmit">
     <form class="" [formGroup]="formCheckout" (submit)="order()">
       <div class="row">
         <div class="col-lg-6 col-md-12">
@@ -17,14 +15,8 @@
             <div class="row">
               <div class="col-lg-12 col-md-6">
                 <div class="form-group">
-
-                  <label> Họ và tên <span class="required">*</span></label
-                  ><input
-                    type="text"
-                    formControlName="fullName"
-                    placeholder="Họ và tên "
-                    class="form-control"
-                  />
+                  <label> Họ và tên <span class="required">*</span></label><input type="text" formControlName="fullName"
+                    placeholder="Họ và tên " class="form-control" />
                   <span class="text-danger" *ngIf="f['fullName'].errors">
                     Hãy nhập tên
                   </span>
@@ -33,14 +25,8 @@
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-
-                  <label>Số điện thoại <span class="required">*</span> </label
-                  ><input
-                    type="text"
-                    formControlName="phone"
-                    placeholder="Số điện thoại"
-                    class="form-control"
-                  />
+                  <label>Số điện thoại <span class="required">*</span> </label><input type="text"
+                    formControlName="phone" placeholder="Số điện thoại" class="form-control" />
                   <span class="text-danger" *ngIf="f['phone'].errors">
                     Hãy nhập số điện thoại
                   </span>
@@ -48,14 +34,8 @@
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                  <label> Địa chỉ <span class="required">*</span></label
-                  ><input
-                    id="address"
-                    type="text"
-                    formControlName="address"
-                    placeholder="Địa chỉ"
-                    class="form-control"
-                  />
+                  <label> Địa chỉ <span class="required">*</span></label><input id="address" type="text"
+                    formControlName="address" placeholder="Địa chỉ" class="form-control" />
                   <span class="text-danger" *ngIf="f['address'].errors">
                     Hãy nhập địa chỉ của bạn
                   </span>
@@ -63,13 +43,8 @@
               </div>
               <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                  <label> Thành phố <span class="required">*</span></label
-                  ><input
-                    type="text"
-                    formControlName="city"
-                    placeholder="Thành phố"
-                    class="form-control"
-                  />
+                  <label> Thành phố <span class="required">*</span></label><input type="text" formControlName="city"
+                    placeholder="Thành phố" class="form-control" />
                   <span class="text-danger" *ngIf="f['city'].errors">
                     Hãy nhập tên thành phố của bạn
                   </span>
@@ -85,7 +60,7 @@
               <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <td class="order-subtotal"><span>Cart Subtotal</span></td>
+                    <td class="order-subtotal"><span>Tạm tính</span></td>
                     <td class="order-subtotal-price">
                       <span class="order-subtotal-amount">
                         {{ total | vnd }}
@@ -93,11 +68,11 @@
                     </td>
                   </tr>
                   <tr>
-                    <td class="order-shipping"><span>Shipping</span></td>
-                    <td class="shipping-price"><span>Free</span></td>
+                    <td class="order-shipping"><span>Phí giao hàng</span></td>
+                    <td class="shipping-price"><span>Miễn phí</span></td>
                   </tr>
                   <tr>
-                    <td class="total-price"><span>Order Total</span></td>
+                    <td class="total-price"><span>Tổng đơn hàng:</span></td>
                     <td class="product-subtotal">
                       <span class="subtotal-amount"> {{ total | vnd }} </span>
                     </td>
@@ -125,40 +100,39 @@
     </form>
   </div>
 </div>
-<ng-template
-  #successOrdered
-  let-id="id"
-  let-cart="cartDetail"
-  let-subtotal="total"
->
+<ng-template #successOrdered let-id="id" let-cart="cartDetail" let-subtotal="total">
   <div class="text-center">
     <h1 class="fs-1">
       <i class="fa-regular fa-circle-check" style="color: #15f42f"></i>
     </h1>
     <h3 class="">StreetWest cảm ơn bạn đã đặt hàng</h3>
     <p>ID đơn đặt hàng: {{ id }}</p>
-    <a class="btn btn-primary" href="/"> Tiếp tục mua hàng </a>
+    <a class="btn btn-primary" style="background-color:rgb(191, 39, 38)" href="/"> Tiếp tục mua hàng </a>
     <div class="container">
       <div class="cartInfo p-3 mt-2">
         <table class="table table-responsive table-bordered">
           <thead>
             <tr>
-              <th scope="col" class="bg-custom-secondary">Tên sản phẩm</th>
-              <th scope="col" class="bg-custom-secondary">Giá</th>
-              <th scope="col" class="bg-custom-secondary">Số lượng</th>
-              <th scope="col" class="bg-custom-secondary">Tổng</th>
+              <th scope="col" class="bg-custom-secondary">Tên sản phẩm
+              </th>
+              <th scope="col" class="bg-custom-secondary">Giá
+              </th>
+              <th scope="col" class="bg-custom-secondary">Số lượng
+              </th>
+              <th scope="col" class="bg-custom-secondary">Tổng
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of cart">
               <th scope="row">{{ item.name }} - {{ item.sizeSelected }}</th>
-              <td>{{ item.price }}</td>
+              <td>{{ item.price |vnd }}</td>
               <td class="text-end">{{ item.quantity }}</td>
-              <td>{{ item.price * item.quantity }}</td>
+              <td>{{ item.price * item.quantity | vnd }}</td>
             </tr>
             <tr>
               <td colspan="3" class="text-end">Tổng tiền</td>
-              <td>{{ subtotal }}</td>
+              <td>{{ subtotal|vnd }}</td>
             </tr>
             <tr>
               <td colspan="3" class="text-end">Phí vận chuyển</td>
@@ -166,7 +140,7 @@
             </tr>
             <tr>
               <td colspan="3" class="text-end">Tổng tiền + phí vận chuyển</td>
-              <td>{{ subtotal }}</td>
+              <td>{{ subtotal|vnd }}</td>
             </tr>
           </tbody>
         </table>

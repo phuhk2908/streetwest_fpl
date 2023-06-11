@@ -28,31 +28,30 @@ import { AdminorderComponent } from './admin/pages/admin/adminorder/adminorder.c
 import { AdminaccountComponent } from './admin/pages/admin/adminaccount/adminaccount.component';
 import { AuthAdminGuard } from './core/guard/auth-admin.guard';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AccountProfileComponent } from './pages/account/account-profile/account-profile.component';
+import { AccountNoficationComponent } from './pages/account/account-nofication/account-nofication.component';
+import { AccountAddressComponent } from './pages/account/account-address/account-address.component';
+import { AccountOrderComponent } from './pages/account/account-order/account-order.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   { path: 'home', component: HomeComponent, data: { breadcrumb: 'Home' } },
   {
-    path: 'product',
+    path: 'shop',
     component: ShopComponent,
     data: { breadcrumb: 'Sản phẩm' },
-    children: [
-      {
-        path: 'shop-nam',
-        component: ShopComponent,
-      },
-      {
-        path: 'shop-nu',
-        component: ShopComponent,
-      },
-    ],
   },
   {
-    path: 'product/:id',
-    component: ProductDetailComponent,
-    data: { breadcrumb: 'Chi tiết sản phẩm' },
+    path: 'shop/:id',
+    component: ShopComponent,
+    data: { breadcrumb: 'Sản phẩm' },
   },
-  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Blog' } },
+  {
+    path: 'product/:id', component: ProductDetailComponent, data: { breadcrumb: 'Chi tiết sản phẩm' }
+  },
+  { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Bài viết' } },
   { path: 'blog/:id', component: BlogdetailsComponent },
 
   {
@@ -71,10 +70,18 @@ const routes: Routes = [
     data: { breadcrumb: 'Câu hỏi thường gặp' },
   },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
+  { path: 'wish', component: WishlistComponent, data: { breadcrumb: 'Danh sách yêu thích' } },
   {
     path: 'account',
     component: AccountComponent,
     data: { breadcrumb: 'Tài khoản' },
+    children: [
+      { path: '', component: AccountProfileComponent },
+      { path: 'profile', component: AccountProfileComponent },
+      { path: 'address', component: AccountAddressComponent },
+      { path: 'order', component: AccountOrderComponent },
+      { path: 'nofications', component: AccountNoficationComponent },
+    ],
   },
   {
     path: 'dashboard',
@@ -92,12 +99,28 @@ const routes: Routes = [
     component: CheckoutComponent,
     data: { breadcrumb: 'Thanh toán' },
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
-  { path: 'admin/product', component: AdminproductComponent },
-  { path: 'admin/order', component: AdminorderComponent },
-  { path: 'admin/account', component: AdminaccountComponent },
+  {
+    path: 'admin/product',
+    component: AdminproductComponent,
+  },
+  {
+    path: 'admin/blog',
+    component: AdminBlogComponent,
+  },
+  {
+    path: 'admin/order',
+    component: AdminorderComponent,
+  },
+  {
+    path: 'admin/account',
+    component: AdminaccountComponent,
+  },
   { path: 'admin/login', component: AdminloginComponent },
-  { path: 'admin/register', component: AdminregisterComponent },
+  {
+    path: 'admin/register',
+    component: AdminregisterComponent,
+  },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -105,4 +128,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

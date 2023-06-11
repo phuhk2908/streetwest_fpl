@@ -1,0 +1,34 @@
+.wishlist-table {
+  .product-price {
+    min-width: 50px;
+  }
+
+  .thead tr th {
+    text-align: center;
+    border: unset;
+  }
+  .shop {
+    cursor: pointer;
+  }
+  .default-btn {
+    background: black;
+    color: #eaedff;
+    padding: 15px;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  table tbody tr td {
+    min-width: 100px;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+    border-color: #eaedff;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+  }
+}

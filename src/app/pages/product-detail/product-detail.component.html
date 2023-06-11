@@ -1,36 +1,20 @@
-g<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb></app-breadcrumb>
 <div class="container mb-120">
   <div class="row align-items-center">
     <div class="col-lg-4 col-sm-12">
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="true"
-      >
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
-          <div
-            class="carousel-item"
-            [ngClass]="{ active: i === 0 }"
-            *ngFor="let img of product.img; let i = index"
-          >
+          <div class="carousel-item" [ngClass]="{ active: i === 0 }" *ngFor="let img of product.img; let i = index">
             <img src="{{ img }}" class="d-block w-100" alt="..." />
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -52,197 +36,118 @@ g<app-breadcrumb></app-breadcrumb>
           </div>
           <span class="reviewsCount">3 reviews</span>
         </div>
-        <p class="text-muted my-3 lh-lg">
+        <!-- <p class="text-muted my-3 lh-lg">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam
           architecto, non corporis tempora provident praesentium. Architecto,
           obcaecati dolore soluta repudiandae itaque fuga aliquid dolor deleniti
           necessitatibus assumenda laboriosam voluptatum totam.
-        </p>
+        </p> -->
         <form action="" (ngSubmit)="addToCart(product)" [formGroup]="frm1">
           <ul class="list-unstyled my-3">
-            <li class="lh-lg">SKU: {{ product.id }}</li>
+            <li class="lh-lg">Mã sản phẩm: {{ product.id }}</li>
             <li class="lh-lg d-flex">
               <span class="pe-3"> Size:</span>
-              <div
-                class="form-check d-flex align-items-center justify-content-center px-3"
-                *ngFor="let size of product.size | keyvalue; let i = index"
-              >
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault{{ i }}"
-                  formControlName="flexRadioDefault"
-                  value="{{ size.key }}"
-                />
-                <label
-                  class="form-check-label px-2"
-                  for="flexRadioDefault{{ i }}"
-                >
+              <div class="form-check d-flex align-items-center justify-content-center px-3"
+                *ngFor="let size of product.size | keyvalue; let i = index">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault{{ i }}"
+                  formControlName="flexRadioDefault" value="{{ size.key }}" />
+                <label class="form-check-label px-2" for="flexRadioDefault{{ i }}">
                   {{ size.key }}
                 </label>
               </div>
-              <em
-                *ngIf="frm1.controls['flexRadioDefault'].errors"
-                class="text-danger"
-              >
+              <em *ngIf="frm1.controls['flexRadioDefault'].errors" class="text-danger">
                 Bạn phải chọn size !
               </em>
             </li>
             <li class="lh-lg">
-              Available Quantity:
-              <span class="text-muted">{{ availableQuantity }}</span>
+              Trong kho:
+              <span class="text-muted">{{ availableQuantity }} cái</span>
             </li>
-            <li class="lh-lg">Type <span class="text-muted">Hoodie</span></li>
-            <li class="text-muted lh-lg">Delivery & return</li>
+            <li class="lh-lg">Loại <span class="text-muted">Hoodie</span></li>
+            <li class="text-muted lh-lg">Vận chuyển & hoàn trả</li>
           </ul>
 
           <div class="d-flex align-items-center products-add-to-cart">
             <div class="input-couter position-relative text-center me-3">
-              <span
-                (click)="minus($event)"
-                class="minus position-absolute start-0 border-end h-100 d-flex align-items-center justify-content-center"
-                ><i class="bi bi-dash fs-4"></i
-              ></span>
-              <input
-                class="text-center w-100"
-                formControlName="quantity"
-                type="text"
-              />
-              <span
-                (click)="plus($event)"
-                class="plus position-absolute top-0 end-0 border-start h-100 d-flex align-items-center justify-content-center"
-                ><i class="bi bi-plus fs-4"></i
-              ></span>
+              <span (click)="minus($event)"
+                class="minus position-absolute start-0 border-end h-100 d-flex align-items-center justify-content-center"><i
+                  class="bi bi-dash fs-4"></i></span>
+              <input class="text-center w-100" formControlName="quantity" type="text" />
+              <span (click)="plus($event)"
+                class="plus position-absolute top-0 end-0 border-start h-100 d-flex align-items-center justify-content-center"><i
+                  class="bi bi-plus fs-4"></i></span>
             </div>
-            <button
-              [disabled]="!frm1.valid"
-              type="submit"
-              class="btn btn-dark rounded-0 d-flex justify-content-center align-items-center fw-bolder fs-6"
-            >
-              <i
-                class="bi bi-bag-fill d-flex align-items-center justify-content-center pe-2"
-              ></i
-              >ADD TO CART
+            <button [disabled]="!frm1.valid" type="submit"
+              class="btn btn-dark rounded-0 d-flex justify-content-center align-items-center fw-bolder fs-6">
+              <i class="bi bi-bag-fill d-flex align-items-center justify-content-center pe-2"></i>Thêm vào giỏ hàng
             </button>
           </div>
         </form>
-        <div
-          class="d-inline-block my-3 border-bottom border-dark border-2 fs-6"
-        >
-          <a
-            class="d-flex align-items-center text-decoration-none text-dark fw-semibold"
-            href="#"
-            ><i class="d-flex align-items-center pe-1 bi bi-plus"></i>Add to
-            Wishlist</a
-          >
+        <div class="d-inline-block my-3 border-bottom border-dark border-2 fs-6">
+          <a class="d-flex align-items-center text-decoration-none text-dark fw-semibold pointer-cus"
+            (click)="handleWishList(product)"><i class="d-flex align-items-center pe-1 bi bi-plus "></i>Thêm danh sách
+            yêu thích</a>
         </div>
         <div class="social fs-6">
           <ul class="list-unstyled d-flex align-items-center m-0">
             <li class="me-2">Mạng xã hội:</li>
             <li class="me-1">
-              <a
-                href="https://www.facebook.com/streetwestclothing"
-                class="text-decoration-none"
-                ><i
-                  class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
-                ></i
-              ></a>
+              <a href="https://www.facebook.com/streetwestclothing" class="text-decoration-none"><i
+                  class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"></i></a>
             </li>
             <li class="me-1">
-              <a
-                href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
-                class="text-decoration-none"
-                ><i
-                  class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
-                ></i
-              ></a>
+              <a href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
+                class="text-decoration-none"><i
+                  class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"></i></a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="tab">
+  <!-- <div class="tab">
     <nav class="mb-lg-4 mb-3">
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button
-          class="nav-link lh-lg active"
-          id="nav-description-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-description"
-          type="button"
-          role="tab"
-          aria-controls="nav-description"
-          aria-selected="true"
-        >
+        <button class="nav-link lh-lg active" id="nav-description-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description"
+          aria-selected="true">
           Description
         </button>
-        <button
-          class="nav-link lh-lg"
-          id="nav-information-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-information"
-          type="button"
-          role="tab"
-          aria-controls="nav-information"
-          aria-selected="false"
-        >
+        <button class="nav-link lh-lg" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information"
+          type="button" role="tab" aria-controls="nav-information" aria-selected="false">
           Information
         </button>
-        <button
-          class="nav-link lh-lg"
-          id="nav-review-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-review"
-          type="button"
-          role="tab"
-          aria-controls="nav-review"
-          aria-selected="false"
-        >
+        <button class="nav-link lh-lg" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review"
+          type="button" role="tab" aria-controls="nav-review" aria-selected="false">
           Review<span>(4)</span>
         </button>
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-      <div
-        class="tab-pane fade show active text-muted"
-        id="nav-description"
-        role="tabpanel"
-        aria-labelledby="nav-description-tab"
-        tabindex="0"
-      >
+      <div class="tab-pane fade show active text-muted" id="nav-description" role="tabpanel"
+        aria-labelledby="nav-description-tab" tabindex="0">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium
         accusamus sint optio, voluptate totam unde mollitia iure eius distinctio
         enim architecto quis illo consequuntur reiciendis, vitae error soluta
         voluptas aliquid.
       </div>
-      <div
-        class="tab-pane fade text-muted"
-        id="nav-information"
-        role="tabpanel"
-        aria-labelledby="nav-information-tab"
-        tabindex="0"
-      >
+      <div class="tab-pane fade text-muted" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab"
+        tabindex="0">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nulla
         excepturi iusto cumque! Perferendis tenetur magnam eos fugit, esse nihil
         molestiae fuga totam ipsa quas tempora molestias. Doloribus, similique
         magni.
       </div>
-      <div
-        class="tab-pane fade text-muted"
-        id="nav-review"
-        role="tabpanel"
-        aria-labelledby="nav-review-tab"
-        tabindex="0"
-      >
+      <div class="tab-pane fade text-muted" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab"
+        tabindex="0">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nulla
         excepturi iusto cumque! Perferendis tenetur magnam eos fugit, esse nihil
         molestiae fuga totam ipsa quas tempora molestias. Doloribus, similique
         magni.
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
+<p-toast [baseZIndex]="10000" life="1000"></p-toast>
 <app-home-featured-product class="mb-120"></app-home-featured-product>
 <app-newsletter></app-newsletter>

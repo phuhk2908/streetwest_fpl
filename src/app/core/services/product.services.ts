@@ -39,7 +39,7 @@ export class ProductService {
   constructor(
     private firestore: Firestore,
     private storage: AngularFireStorage
-  ) {}
+  ) { }
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
@@ -104,7 +104,7 @@ export class ProductService {
   }
   // async themcot() {
   //   const data = {
-  //     feature: "0"
+  //     img: []
   //   };
   //   const collectionRef = collection(this.firestore, "products");
   //   const q = query(collectionRef);

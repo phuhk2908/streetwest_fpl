@@ -5,14 +5,14 @@
     ><i class="fa-solid fa-bell"></i>
   </div>
   <div class="col-2 text-end m-0">
-    <h5 class="pt-1">{{ authAdminService.userAdminData?.displayName }}</h5>
+    <h5 class="pt-1">{{ authAdminService.userData?.displayName }}</h5>
   </div>
   <div class="col-1 d-flex align-items-center justify-content-center">
     <img
       [src]="
-        authAdminService.userAdminData?.photoURL === null
+        authAdminService.userData?.photoURL === null
           ? 'assets/images/profile.png'
-          : authAdminService.userAdminData?.photoURL
+          : authAdminService.userData?.photoURL
       "
       alt=""
       width="30px"

@@ -33,9 +33,9 @@ export class AdminproductComponent implements OnInit {
     private _fb: FormBuilder,
     private storage: AngularFireStorage,
     private confirmationService: ConfirmationService
-  ) {}
+  ) { }
   ngOnInit(): void {
-    this.getData();
+    //this.getData();
     this.formAddProduct = this._fb.group({
       name: ['', Validators.required],
       price: ['', [Validators.required]],
@@ -86,7 +86,7 @@ export class AdminproductComponent implements OnInit {
     });
   }
 
-  handErr(result: string) {}
+  handErr(result: string) { }
 
   onSubmit() {
     if (this.formAddProduct.invalid) {

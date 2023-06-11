@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Product } from 'src/app/interface/product';
 import { ProductService } from 'src/app/core/services/product.services';
 import { Router } from '@angular/router';
+import { WishListService } from 'src/app/core/services/wishlist.service';
 
 @Component({
   selector: 'app-header',
@@ -17,9 +18,12 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   visible: boolean = true;
   listCartLength: number = 0;
+  wishList: Product[] = [];
   listCart: Product[] = [];
 
-  constructor(private cartService: CartService, private pd: ProductService, private router: Router, public authService: AuthService) { }
+  constructor(private cartService: CartService, private pd: ProductService,
+    private wish: WishListService,
+    private router: Router, public authService: AuthService) { }
 
   private subscription: Subscription = new Subscription();
 
@@ -31,12 +35,16 @@ export class HeaderComponent implements OnInit {
         return acc + cur.quantity!;
       }, 0);
     });
+    this.wish.getWishList().subscribe((data) => {
+      this.wishList = data;
+    })
   }
+
   async sendKeySearch(key: HTMLInputElement) {
     const data = key.value;
     this.pd.setKeySearch(data);
     key.value = '';
-    this.router.navigate(['/product']);
+    this.router.navigate(['/shop']);
   }
   ngDestroy() {
     if (this.subscription) {

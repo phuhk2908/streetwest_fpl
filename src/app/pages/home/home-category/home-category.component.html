@@ -1,97 +1,16 @@
 <div class="container mb-5 position-relative">
   <div class="row justify-content-center">
-    <div class="col-lg-4 col-md-6 col-12 text-center" *ngFor="let item of category">
+    <div class="col-lg-4 col-md-6 col-12 text-center" *ngFor="let item of productGroupByCate | keyvalue">
       <div class="mx-lg-4 my-lg-0 mx-md-2 my-md-2 m-4 item">
         <div class="image p-4">
-          <img class="img-fluid" [src]="item.thumbnail" alt="" />
+          <img class="img-fluid" [src]="item.value[1]" alt="" />
         </div>
         <div class="content mt-4">
-          <span class="countItem fs-5">22 Items</span>
-          <h3 class="my-3 fw-bolder fs-3">{{item.name}}</h3>
-          <a href="#" class="text-decoration-none text-muted text-uppercase">Shop Now</a>
+          <span class="countItem fs-5">{{ item.value[0] }} sản phẩm</span>
+          <h3 class="my-3 fw-bolder fs-3">{{ item.key }}</h3>
+          <a href="#" class="text-decoration-none text-muted " [routerLink]="['/shop/', item.value[2]]">Xem thêm</a>
         </div>
       </div>
     </div>
-    <!-- <div class="col-lg-4 col-md-6 col-12 text-center">
-      <div class="mx-lg-4 my-lg-0 mx-md-2 my-md-2 m-4 item">
-        <div class="image p-4">
-          <img
-            class="img-fluid"
-            src="/assets/images/product/aothun/6-removebg-preview.jpg"
-            alt=""
-          />
-        </div>
-        <div class="content mt-4">
-          <span class="countItem fs-5">22 Items</span>
-          <h3 class="my-3 fw-bolder fs-3">Bottom</h3>
-          <a href="#" class="text-decoration-none text-muted text-uppercase"
-            >Shop Now</a
-          >
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-12 text-center">
-      <div class="mx-lg-4 my-lg-0 mx-md-2 my-md-2 m-4 item">
-        <div class="image p-4">
-          <img
-            class="img-fluid"
-            src="/assets/images/product/aothun/6-removebg-preview.jpg"
-            alt=""
-          />
-        </div>
-        <div class="content mt-4">
-          <span class="countItem fs-5">22 Items</span>
-          <h3 class="my-3 fw-bolder fs-3">Bottom</h3>
-          <a href="#" class="text-decoration-none text-muted text-uppercase"
-            >Shop Now</a
-          >
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>
-<!-- <div class="col d-flex justify-content-center align-items-center p-0 product">
-  <div class="wrapper-product">
-    <img src="/assets/images/product/aothun/6-removebg-preview.jpg" alt="" width="150" height="150">
-    <div class="title">
-      <h3>Product</h3>
-      <span>100 sản phẩm</span>
-    </div>
-  </div>
-</div>
-<div class="col d-flex justify-content-center align-items-center p-0 product">
-  <div class="wrapper-product">
-    <img src="/assets/images/product/aothun/6-removebg-preview.jpg" alt="" width="150" height="150">
-    <div class="title">
-      <h3>Product</h3>
-      <span>100 sản phẩm</span>
-    </div>
-  </div>
-</div>
-<div class="col d-flex justify-content-center align-items-center p-0 product">
-  <div class="wrapper-product">
-    <img src="/assets/images/product/aothun/6-removebg-preview.jpg" alt="" width="150" height="150">
-    <div class="title">
-      <h3>Product</h3>
-      <span>100 sản phẩm</span>
-    </div>
-  </div>
-</div>
-<div class="col d-flex justify-content-center align-items-center p-0 product">
-  <div class="wrapper-product">
-    <img src="/assets/images/product/aothun/6-removebg-preview.jpg" alt="" width="150" height="150">
-    <div class="title">
-      <h3>Product</h3>
-      <span>100 sản phẩm</span>
-    </div>
-  </div>
-</div>
-<div class="col d-flex justify-content-center align-items-center p-0 product">
-  <div class="wrapper-product">
-    <img src="/assets/images/product/aothun/6-removebg-preview.jpg" alt="" width="150" height="150">
-    <div class="title">
-      <h3>Product</h3>
-      <span>100 sản phẩm</span>
-    </div>
-  </div>
-</div> -->

@@ -1,172 +1,27 @@
 <app-breadcrumb></app-breadcrumb>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-9 col-12">
       <div class="row">
-        <div class="col-md-6 col-12 blog-item">
+        <div class="col-md-6 col-12 blog-item" *ngFor="let blog of blogContain">
           <div class="pb-3">
             <div class="img overflow-hidden">
               <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
+                src="{{ blog.thumbnail }}"
+                style="width: 450px; height: 320px"
                 alt=""
                 class="img-fluid"
               />
             </div>
             <div class="content mt-3">
               <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
+                {{ blog.date.seconds * 1000 | date : "dd-MM-YYYY" }}
               </h6>
               <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >Hướng dẫn mặc gì mùa hè ở đây Những điều con gái cần biết</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >Vaxim 33 hàng mới về tốt nhất tuần này cho mùa hè</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >Cách bán quần áo nam cho nữ và quần áo nữ cho nam</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >8 phụ kiện mùa hè đã lỗi thời và 8 phụ kiện rất hợp thời trang</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >10 trang phục đi chơi hoàn hảo cho bữa tiệc tại gia</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >Xu hướng bơi lội gây tranh cãi mà tôi rất thích ngay bây giờ</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >Sneaker lớn nhất năm 2021 đang khiến chúng ta háo hức cho mùa hè</a
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 blog-item">
-          <div class="pb-3">
-            <div class="img overflow-hidden">
-              <img
-                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog2.jpg"
-                alt=""
-                class="img-fluid"
-              />
-            </div>
-            <div class="content mt-3">
-              <h6 class="text-muted text-uppercase">
-                DESIGN - 13th June, 2023
-              </h6>
-              <h4>
-                <a class="text-decoration-none fw-bolder" href="#"
-                  >Năm nhà thiết kế tốt nghiệp Đại học Westminster</a
-                >
+                <a class="text-decoration-none fw-bolder" href="#">{{
+                  blog.title
+                }}</a>
               </h4>
             </div>
           </div>
@@ -177,15 +32,15 @@
       <div class="card text-center mb-4">
         <img
           class="card-img-top"
-          src="https://vaxim-ng.envytheme.com/assets/img/team/team1.jpg"
+          src="https://firebasestorage.googleapis.com/v0/b/streetwest-fdf41.appspot.com/o/images%2FFounder.jpg?alt=media&token=e7b12be5-3a18-4be1-be67-505acfa05e1a&_gl=1*yyjq80*_ga*MTQ4OTE0NjY2OS4xNjg1MzY3OTYw*_ga_CW55HF8NVT*MTY4NjQ0Nzc0Ni40OS4xLjE2ODY0NTIwMjguMC4wLjA"
           alt="Title"
         />
         <div class="card-body">
           <h4 class="card-title">Nguyen Tri</h4>
           <p class="card-text text-muted">StreetWest Founder</p>
           <p class="card-text text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod.
+            Tôi muốn đưa thương hiệu thời trang StreetWest đến với mọi người gần
+            hơn, không chỉ ở Gò Công mà thứ tôi hướng đến to lớn hơn nữa
           </p>
           <img
             src="https://vaxim-ng.envytheme.com/assets/img/signature.png"
@@ -199,86 +54,42 @@
         </h4>
         <ul class="list-unstyled d-flex align-items-center m-0">
           <li class="me-1">
-            <i
-              class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
-            ></i>
+            <a
+              href="https://www.facebook.com/streetwestclothing"
+              class="text-decoration-none"
+              ><i
+                class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
+              ></i
+            ></a>
           </li>
           <li class="me-1">
-            <i
-              class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
-            ></i>
+            <a
+              href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
+              class="text-decoration-none"
+              ><i
+                class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
+              ></i
+            ></a>
           </li>
         </ul>
       </div>
       <div class="widget my-4">
         <h4 class="fw-bolder title position-relative">
-          <span class="pe-3 bg-white">Bài viết phổ biến</span><span></span>
+          <span class="pe-3 bg-white">Bài viết mới nhất</span>
         </h4>
-        <div class="d-flex align-items-center my-3">
+        <div
+          class="d-flex align-items-center my-3"
+          *ngFor="let blogNew of blogNew"
+        >
           <div class="img">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
-              alt=""
-              class="img-fluid"
-            />
+            <img src="{{ blogNew.thumbnail }}" alt="" class="img-fluid" />
           </div>
           <div class="col-8">
             <div class="ps-3">
-              <h6 class="fw-bolder">
-                Là điện thoại thông minh bán chạy nhất trong năm nay
-              </h6>
-              <p class="text-muted m-0">Jan 15, 2023</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex align-items-center my-3">
-          <div class="img">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
-              alt=""
-              class="img-fluid"
-            />
-          </div>
-          <div class="col-8">
-            <div class="ps-3">
-              <h6 class="fw-bolder">
-                Những bản tình ca đã giúp tôi vượt qua nỗi đau
-              </h6>
-              <p class="text-muted m-0">Jan 15, 2023</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex align-items-center my-3">
-          <div class="img">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
-              alt=""
-              class="img-fluid"
-            />
-          </div>
-          <div class="col-8">
-            <div class="ps-3">
-              <h6 class="fw-bolder">
-                Hai NTK bận rộn với thời trang thu đông 2020
-              </h6>
-              <p class="text-muted m-0">Jan 15, 2023</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex align-items-center my-3">
-          <div class="img">
-            <img
-              src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
-              alt=""
-              class="img-fluid"
-            />
-          </div>
-          <div class="col-8">
-            <div class="ps-3">
-              <h6 class="fw-bolder">
-                Làm việc trong văn phòng là truyền thống của phụ nữ
-              </h6>
-              <p class="text-muted m-0">Jan 15, 2023</p>
+              <h6 class="fw-bolder">{{ blogNew.title | slice : 0 : 40 }}...</h6>
+              <p class="text-muted m-0">
+                {{ blogNew.date.seconds * 1000 | date : "dd-MM-YYYY" }}
+              </p>
             </div>
           </div>
         </div>
@@ -286,3 +97,6 @@
     </div>
   </div>
 </div>
+<!-- <div class="card">
+  <p-editor [(ngModel)]="text" (onTextChange)="huy($event)" [style]="{ height: '320px' }"></p-editor>
+</div> -->
