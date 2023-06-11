@@ -1,6 +1,7 @@
 .blog-item {
   img {
     transition: transform 0.4s ease-in-out;
+    object-fit: cover;
   }
 
   &:hover img {
