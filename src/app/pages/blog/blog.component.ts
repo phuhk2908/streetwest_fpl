@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BlogService } from 'src/app/core/services/blog.service';
+import { Blog } from 'src/app/interface/blog';
 
 @Component({
   selector: 'app-blog',
@@ -8,7 +9,7 @@ import { BlogService } from 'src/app/core/services/blog.service';
 })
 export class BlogComponent {
   blogContain: any;
-  blogNew: any;
+  blogNew: Blog[] = [];
   constructor(private blogService: BlogService) {}
   ngOnInit() {
     this.fetchData();
