@@ -52,6 +52,10 @@ export class ShopComponent {
     product.quantity = 1;
     product.sizeSelected = 'M';
     this.cartService.addToCart(product);
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Đã thêm vào giỏ hàng',
+    });
   }
 
   handleChangePrice(event: any) {
@@ -103,6 +107,11 @@ export class ShopComponent {
       this.messageService.add({
         severity: 'info',
         detail: 'Sản phẩm đã có trong danh sách',
+      });
+    } else {
+      this.messageService.add({
+        severity: 'success',
+        detail: 'Đã thêm vào wishlist',
       });
     }
   }

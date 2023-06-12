@@ -1,6 +1,9 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="wishlist-area ptb-100">
-  <div class="container" *ngIf="wishList && wishList.length > 0; else other_content">
+  <div
+    class="container"
+    *ngIf="wishList && wishList.length > 0; else other_content"
+  >
     <form class="">
       <div class="wishlist-table table-responsive">
         <table class="table table-bordered">
@@ -23,11 +26,14 @@
               </td>
               <td class="product-price">{{ item.price | vnd }}</td>
               <td>
-                <a class="default-btn shop" (click)="addToCart(item)"><i class="fas fa-shopping-bag px-2"></i> Thêm vào
-                  giỏ hàng</a>
+                <a class="default-btn shop" (click)="addToCart(item)"
+                  ><i class="fas fa-shopping-bag px-2"></i> Thêm vào giỏ hàng</a
+                >
               </td>
               <td>
-                <a class="remove" (click)="delWish(item.id)"><i class="far fa-trash-alt text-danger"></i></a>
+                <a class="remove" (click)="delWish(item.id)"
+                  ><i class="far fa-trash-alt text-danger"></i
+                ></a>
               </td>
             </tr>
           </tbody>
@@ -36,7 +42,7 @@
     </form>
   </div>
 </div>
-
+<p-toast [baseZIndex]="10000" life="1000"></p-toast>
 <ng-template #other_content>
   <div class="container">
     <div class="w-100 text-center ptb-100">Không tìm thấy sản phẩm nào</div>
