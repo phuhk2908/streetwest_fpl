@@ -1,12 +1,9 @@
 $color-main: #cf0018;
 //  transform: scale(1.08);
 
-
-
 .p-toast-detail {
   margin: 5px 0 0 0 !important;
 }
-
 
 .test {
   border: 1px solid red;
@@ -138,7 +135,7 @@ $color-main: #cf0018;
     color: grey;
     min-height: 50px;
 
-    &>div {
+    & > div {
       height: 50px;
       display: flex;
       justify-content: space-between;
@@ -177,7 +174,6 @@ $color-main: #cf0018;
 
     &:hover .products-button {
       visibility: visible;
-
     }
 
     a {
@@ -185,13 +181,9 @@ $color-main: #cf0018;
       margin: 0 auto;
       background: #fffcfc;
 
-
-
       img {
         width: 100%;
         object-fit: cover;
-
-
       }
     }
 
@@ -225,7 +217,7 @@ $color-main: #cf0018;
     }
 
     .content {
-      &>div {
+      & > div {
         width: 90%;
         margin: 0 auto;
 
@@ -295,4 +287,9 @@ $color-main: #cf0018;
 .ptb-100 {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+@media only screen and (max-width: 568px) {
+  .p-toast {
+    width: auto !important;
+  }
 }
