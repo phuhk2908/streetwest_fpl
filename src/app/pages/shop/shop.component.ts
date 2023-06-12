@@ -24,7 +24,7 @@ export class ShopComponent {
   ) {
     window.scrollTo(0, 0);
   }
-  maxPrice: number = 10000000;
+  maxPrice: number = 1000000;
   cat: any;
   search: string = '';
   filterCat: any;

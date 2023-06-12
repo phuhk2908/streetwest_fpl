@@ -87,10 +87,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { AuthGuard } from './core/guard/auth.guard';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
-import { ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
-import { APP_NAME, APP_VERSION, COLLECTION_ENABLED, DEBUG_MODE } from '@angular/fire/compat/analytics';
-// import * as firebase from 'firebase/app';
-// firebase.initializeApp(environment.firebase);
+
 
 @NgModule({
   declarations: [
