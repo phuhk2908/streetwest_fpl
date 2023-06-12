@@ -3,7 +3,6 @@ import { Component, inject } from '@angular/core';
 import { Analytics, logEvent } from '@angular/fire/analytics';
 
 @Component({
-
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
