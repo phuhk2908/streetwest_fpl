@@ -110,3 +110,9 @@ body::-webkit-scrollbar-thumb {
 .pointer-cus {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 568px) {
+  .p-toast {
+    width: auto !important;
+  }
+}
