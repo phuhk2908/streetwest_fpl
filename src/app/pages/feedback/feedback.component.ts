@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./feedback.component.scss']
 })
 export class FeedbackComponent {
-
+  constructor() {
+    window.scrollTo(0, 0);
+  }
 }

@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent {
-
+  constructor() {
+    window.scrollTo(0, 0);
+  }
 }

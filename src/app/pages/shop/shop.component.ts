@@ -33,7 +33,7 @@ export class ShopComponent {
   iShowComponent: boolean = false;
   page: number = 0;
   totalRecords: number = 0;
-  rows: number = 10;
+  rows: number = 9;
   sortPrice: OrderByDirection = 'asc';
   filterPrice: number[] = [0, this.maxPrice];
   ngOnInit(): void {
@@ -52,6 +52,10 @@ export class ShopComponent {
     product.quantity = 1;
     product.sizeSelected = 'M';
     this.cartService.addToCart(product);
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Đã thêm vào giỏ hàng',
+    });
   }
 
   handleChangePrice(event: any) {
@@ -68,7 +72,6 @@ export class ShopComponent {
 
   onPageChange(event: any) {
     this.page = event.first;
-    console.log(this.page);
     this.rows = event.rows;
     this.getData();
   }
@@ -104,6 +107,11 @@ export class ShopComponent {
       this.messageService.add({
         severity: 'info',
         detail: 'Sản phẩm đã có trong danh sách',
+      });
+    } else {
+      this.messageService.add({
+        severity: 'success',
+        detail: 'Đã thêm vào wishlist',
       });
     }
   }

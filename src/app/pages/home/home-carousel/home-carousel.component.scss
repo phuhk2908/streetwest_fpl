@@ -1,0 +1,11 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.custom {
+    margin-top: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .custom {
+        margin-top: 50px;
+    }
+}

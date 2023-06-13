@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private messageService: MessageService,
     private productService: ProductService
-  ) {}
+  ) { window.scrollTo(0, 0); }
 
   ngOnInit() {
     this.formCheckout = this._fb.group({

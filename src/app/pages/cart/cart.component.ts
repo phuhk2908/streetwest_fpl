@@ -12,7 +12,9 @@ export class CartComponent {
   listCartLength: number = 0;
   total: number = 0;
   private subscription: Subscription = new Subscription();
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {
+    window.scrollTo(0, 0);
+  }
   ngOnInit() {
     this.cartService.getCart().subscribe((data) => {
       this.listProduct = <Product[]>data;

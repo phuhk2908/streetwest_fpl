@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AuthService} from "../../../core/services/auth/auth.service";
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AuthService } from "../../../core/services/auth/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -7,8 +7,12 @@ import {AuthService} from "../../../core/services/auth/auth.service";
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
-  constructor(public authService: AuthService) {}
-  ngOnInit() {}
+  constructor(public authService: AuthService) {
+
+    window.scrollTo(0, 0);
+
+  }
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.addValueWithEnterButton();
@@ -19,8 +23,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     const passwordValue = document.querySelector('#userPwd') as HTMLInputElement
     const usernameValue = document.querySelector('#username') as HTMLInputElement
     window.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter') {
-        this.authService.SignUp(emailValue.value,passwordValue.value, usernameValue.value);
+      if (e.key === 'Enter') {
+        this.authService.SignUp(emailValue.value, passwordValue.value, usernameValue.value);
       }
     })
   }

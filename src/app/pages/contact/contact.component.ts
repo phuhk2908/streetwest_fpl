@@ -6,6 +6,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
+  constructor() {
+    window.scrollTo(0, 0);
+  }
   frm1!: FormGroup;
   ngOnInit() {
     this.frm1 = new FormGroup({

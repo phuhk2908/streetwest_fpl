@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./faq.component.scss']
 })
 export class FAQComponent {
-
+  constructor() {
+    window.scrollTo(0, 0);
+  }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -83,9 +83,12 @@ import { EditorModule } from 'primeng/editor';
 import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FieldsetModule } from 'primeng/fieldset';
-
 import { CalendarModule } from 'primeng/calendar';
 import { AuthGuard } from './core/guard/auth.guard';
+import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,6 +145,7 @@ import { AuthGuard } from './core/guard/auth.guard';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideAnalytics(() => getAnalytics()),
     ChipsModule,
     PasswordModule,
     ButtonModule,

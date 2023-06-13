@@ -40,13 +40,7 @@ export class AuthService {
     });
   }
 
-  getToast(severity: string, detail: string) {
-    this.messageService.add({
-      severity: severity,
-      summary: 'Thông báo',
-      detail: detail,
-    });
-  }
+
   async getRole(uid: string) {
     let user: any;
     const data = query(
@@ -77,9 +71,9 @@ export class AuthService {
         this.isLoading = false;
         this.ngZone.run(() => {
           this.router.navigate(['home']);
-          console.log('signin');
         });
         this.SetUserData(result.user);
+        return 'Đăng nhập thành công'
       })
       .catch((error) => {
         this.isLoading = false
@@ -152,7 +146,7 @@ export class AuthService {
       if (res.additionalUserInfo.isNewUser) {
         this.router.navigate(['register']);
       } else {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['home']);
       }
     });
   }
@@ -163,7 +157,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['home']);
         });
         this.SetUserData(result.user);
       })
