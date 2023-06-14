@@ -21,6 +21,8 @@ export class AppComponent {
     }
     if (name.startsWith('Checkout')) {
       this.showHeader = false;
+    } else {
+      this.showHeader = true;
     }
   }
 }
