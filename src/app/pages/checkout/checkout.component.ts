@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CartService } from 'src/app/core/services/cart.service';
+import { OrderService } from 'src/app/core/services/order.service';
 import { ProductService } from 'src/app/core/services/product.services';
 
 import { Product } from 'src/app/interface/product';
@@ -24,8 +25,11 @@ export class CheckoutComponent implements OnInit {
     private _fb: FormBuilder,
     private cartService: CartService,
     private messageService: MessageService,
-    private productService: ProductService
-  ) { window.scrollTo(0, 0); }
+    private productService: ProductService,
+    private orderService: OrderService
+  ) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit() {
     this.formCheckout = this._fb.group({
@@ -49,7 +53,6 @@ export class CheckoutComponent implements OnInit {
     this.cartService.getCart().subscribe(async (data) => {
       this.idOrder = await this.cartService.saveOrder(data);
       this.cartService.createOrder(this.formCheckout.value, this.idOrder);
-      this.cartDetail = data;
       data.forEach((el) => {
         for (const [sizeName, value] of Object.entries(el.size)) {
           if (sizeName === el.sizeSelected) {
@@ -60,6 +63,9 @@ export class CheckoutComponent implements OnInit {
         this.productService.updateProductByID(el);
       });
       this.isSubmit = true;
+      this.orderService.getIdDetailOrder(this.idOrder).subscribe((data) => {
+        this.cartDetail = data.cart;
+      });
     });
   }
 }

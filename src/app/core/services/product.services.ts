@@ -39,7 +39,7 @@ export class ProductService {
   constructor(
     private firestore: Firestore,
     private storage: AngularFireStorage
-  ) { }
+  ) {}
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
@@ -139,7 +139,6 @@ export class ProductService {
     let count = (
       await getDocs(query(baseRef, ...conditions, orderBy('price', sort)))
     ).docs.map((doc) => doc.data());
-    console.log(count.length);
     if (page === 0) {
       currentPageRef = query(
         baseRef,
