@@ -1,4 +1,5 @@
 <app-header *ngIf="showHeader"></app-header>
-<router-outlet (activate)="handleAdmin($event)"></router-outlet>
+<router-outlet></router-outlet>
 <app-footer *ngIf="showHeader"></app-footer>
 <p-toast [baseZIndex]="100000"></p-toast>
+<!-- (activate)="handleAdmin($event)" -->
