@@ -33,15 +33,15 @@ export class AppComponent implements OnInit {
       this.showHeader = true;
     }
   }
-  // handleAdmin(ComponentRef: Component) {
-  //   const name = ComponentRef.constructor.name;
-  //   if (name.startsWith('Admin')) {
-  //     this.showHeader = false;
-  //   }
-  //   if (name.startsWith('Checkout')) {
-  //     this.showHeader = false;
-  //   } else {
-  //     this.showHeader = true;
-  //   }
-  // }
+  handleAdmin(ComponentRef: Component) {
+    const name = ComponentRef.constructor.name;
+    if (name.startsWith('Admin')) {
+      this.showHeader = false;
+    }
+    if (name.startsWith('Checkout')) {
+      this.showHeader = false;
+    } else {
+      this.showHeader = true;
+    }
+  }
 }

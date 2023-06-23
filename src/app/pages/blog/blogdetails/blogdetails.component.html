@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-12">
-                <!-- Fouder -->
+                
                 <div class="card text-center mb-4">
                     <img class="card-img-top" src="https://vaxim-ng.envytheme.com/assets/img/team/team1.jpg"
                         alt="Title" />
@@ -16,7 +16,6 @@
                         <img src="https://vaxim-ng.envytheme.com/assets/img/signature.png" alt="" />
                     </div>
                 </div>
-                <!-- Theo dõi chúng tôi -->
                 <div class="widget my-4">
                     <h4 class="fw-bolder title position-relative">
                         <span class="pe-3 bg-white">Theo dõi chúng tôi</span><span></span>
@@ -97,37 +96,18 @@
             <div class="col-lg-8 col-md-12">
                 <div class="blog-details-desc">
                     <div class="post-thumb">
-                        <img src="	https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg" alt="">
+                        <img [src]="blog.thumbnail" >
                     </div>
                 </div>
-                <h3>Hướng dẫn mặc gì mùa hè ở đây Những điều con gái cần biết</h3>
+                <h3>{{ blog.title}}</h3>
                 <div class="post-meta">
-                    <font>14 Tháng Ba, 2021</font> &nbsp;
+                    <font> {{ date}}</font> &nbsp;
                     <font>4 binh luan</font>
                 </div>
-                <p class="mt-3">
-                    <font style="vertical-align: inherit;">Quuntur magni dolores eos qui ratione voluptatem sequi
-                        nesciunt. Neque porro quia non numquam eius modi tempora incidunt utlabore et dolore magnam
-                        dolor sit amet, consectetur adipisizing.</font>
-                </p>
-                <div class="block-img columns-3">
-                    <figure>
-                        <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog5.jpg" alt="">
-                    </figure>
-                    <figure>
-                        <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog5.jpg" alt="">
-                    </figure>
-                    <figure>
-                        <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog5.jpg" alt="">
-                    </figure>
+                <div class="render" >
+                    <div [innerHTML]="blog.content"></div>
                 </div>
-                <h3>Hướng dẫn mặc gì mùa hè ở đây Những điều con gái cần biết</h3>
-                <p class="mt-3">
-                    <font style="vertical-align: inherit;">Quuntur magni dolores eos qui ratione voluptatem sequi
-                        nesciunt. Neque porro quia non numquam eius modi tempora incidunt utlabore et dolore magnam
-                        dolor sit amet, consectetur adipisizing.</font>
-                </p>
-                <!-- Nhan xet -->
+                <!-- het -->
                 <hr>
                 <div class="comments-area">
                     <h3 class="commnets-title"><font>2 Nhan xet:</font></h3>

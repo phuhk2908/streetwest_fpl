@@ -19,6 +19,7 @@ import {
   addDoc,
   deleteDoc,
 } from '@angular/fire/firestore';
+import { Blog } from 'src/app/interface/blog';
 @Injectable({
   providedIn: 'root',
 })
@@ -36,5 +37,13 @@ export class BlogService {
       };
     });
     return documentData;
+  }
+  addBlog(data: Blog) {
+    const ref = collection(this.firestore, 'blog');
+    return addDoc(ref, data);
+  }
+  getId(id: string) {
+    const catRef = doc(this.firestore, `blog/${id}`);
+    return docData(catRef) as Observable<any>;
   }
 }
