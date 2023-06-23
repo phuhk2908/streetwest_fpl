@@ -51,10 +51,12 @@ export class CartService {
     this.productList.next(this.cartList);
   }
   async createOrder(data: any, idOrder: string) {
+    const user = JSON.parse(localStorage.getItem('user')!);
     const orderCollection = collection(this.firestore, 'order');
     const docRef = await addDoc(orderCollection, {
       status: 0,
       idOrder: idOrder,
+      userID: user.uid,
       ...data,
     });
     return docRef.id;

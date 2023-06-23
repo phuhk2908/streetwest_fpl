@@ -67,7 +67,6 @@ export class CheckoutComponent implements OnInit {
         this.isSubmit = true;
         this.orderService.getIdDetailOrder(this.idOrder).subscribe((data) => {
           this.cartDetail = data.cart;
-          console.log(this.cartDetail);
         });
       });
   }
