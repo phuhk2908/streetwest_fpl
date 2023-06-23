@@ -17,6 +17,7 @@ export class AppComponent {
   handleAdmin(ComponentRef: Component) {
     const name = ComponentRef.constructor.name;
     if (name.startsWith('Admin')) {
+      console.log(name.startsWith('Admin'));
       this.showHeader = false;
     }
     if (name.startsWith('Checkout')) {

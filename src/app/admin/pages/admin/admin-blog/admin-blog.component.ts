@@ -26,6 +26,7 @@ export class AdminBlogComponent implements OnInit {
   }
   getValEdit(event: any) {
     console.log(event.htmlValue);
+    
   }
   onUpload(event: any) {
     this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode' });
