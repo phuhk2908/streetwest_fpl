@@ -20,8 +20,7 @@ export class CartService {
   getCart() {
     return this.productList.asObservable();
   }
-  setCart(...product: Product[]) {
-    this.cartList.push(...product);
+  setCart() {
     this.productList.next(this.cartList);
   }
   addToCart(product: Product) {
@@ -31,7 +30,7 @@ export class CartService {
     if (isProduct == -1) {
       this.cartList.push({ ...product });
     } else {
-      this.cartList[isProduct].quantity! = product.quantity!;
+      this.cartList[isProduct].quantity! += product.quantity!;
     }
     this.productList.next(this.cartList);
     this.getTotalCart();

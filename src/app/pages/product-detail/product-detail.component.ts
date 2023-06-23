@@ -22,7 +22,9 @@ export class ProductDetailComponent {
     private route: ActivatedRoute,
     private cartService: CartService,
     private router: Router
-  ) { window.scrollTo(0, 0); }
+  ) {
+    window.scrollTo(0, 0);
+  }
   frm1!: FormGroup;
   private subscription: Subscription = new Subscription();
   id: string = this.route.snapshot.params['id'];
@@ -57,7 +59,7 @@ export class ProductDetailComponent {
     product.quantity = quantity;
     product.sizeSelected = sizeSelected;
     this.cartService.addToCart(product);
-    this.router.navigate(['/cart']);
+    // this.router.navigate(['/cart']);
   }
   plus(e: Event) {
     let value = this.frm1.controls['quantity'].value;
