@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CartService } from 'src/app/core/services/cart.service';
+import { OrderService } from 'src/app/core/services/order.service';
 import { ProductService } from 'src/app/core/services/product.services';
-
+import { take } from 'rxjs/operators';
 import { Product } from 'src/app/interface/product';
 
 @Component({
@@ -20,12 +21,14 @@ export class CheckoutComponent implements OnInit {
   cartDetail: Product[] = [];
 
   constructor(
-    private router: Router,
     private _fb: FormBuilder,
     private cartService: CartService,
     private messageService: MessageService,
-    private productService: ProductService
-  ) { window.scrollTo(0, 0); }
+    private productService: ProductService,
+    private orderService: OrderService
+  ) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit() {
     this.formCheckout = this._fb.group({
@@ -46,20 +49,31 @@ export class CheckoutComponent implements OnInit {
   }
 
   async order() {
-    this.cartService.getCart().subscribe(async (data) => {
-      this.idOrder = await this.cartService.saveOrder(data);
-      this.cartService.createOrder(this.formCheckout.value, this.idOrder);
-      this.cartDetail = data;
-      data.forEach((el) => {
-        for (const [sizeName, value] of Object.entries(el.size)) {
-          if (sizeName === el.sizeSelected) {
-            value.amount -= el.quantity!;
-            value.sold += el.quantity!;
+    this.cartService
+      .getCart()
+      .pipe(take(1))
+      .subscribe(async (data) => {
+        this.idOrder = await this.cartService.saveOrder(data);
+        this.cartService.createOrder(this.formCheckout.value, this.idOrder);
+        data.forEach((el) => {
+          for (const [sizeName, value] of Object.entries(el.size)) {
+            if (sizeName === el.sizeSelected) {
+              value.amount -= el.quantity!;
+              value.sold += el.quantity!;
+            }
           }
-        }
-        this.productService.updateProductByID(el);
+          this.productService.updateProductByID(el);
+        });
+        this.isSubmit = true;
+        this.orderService.getIdDetailOrder(this.idOrder).subscribe((data) => {
+          this.cartDetail = data.cart;
+          console.log(this.cartDetail);
+        });
       });
-      this.isSubmit = true;
-    });
+  }
+  ngOnDestroy() {
+    if (this.isSubmit) {
+      this.cartService.removeAllProduct();
+    }
   }
 }

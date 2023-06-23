@@ -39,7 +39,7 @@ export class ProductService {
   constructor(
     private firestore: Firestore,
     private storage: AngularFireStorage
-  ) { }
+  ) {}
   products: any[] = [];
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');

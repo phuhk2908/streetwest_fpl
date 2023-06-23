@@ -17,7 +17,9 @@
     font-size: 1rem;
     text-decoration: none;
   }
-
+  .remove {
+    cursor: pointer;
+  }
   table tbody tr td {
     min-width: 100px;
     vertical-align: middle;
