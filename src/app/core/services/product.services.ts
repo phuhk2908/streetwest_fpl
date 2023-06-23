@@ -139,7 +139,6 @@ export class ProductService {
     let count = (
       await getDocs(query(baseRef, ...conditions, orderBy('price', sort)))
     ).docs.map((doc) => doc.data());
-    console.log(count.length);
     if (page === 0) {
       currentPageRef = query(
         baseRef,
