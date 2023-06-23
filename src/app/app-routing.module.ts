@@ -50,7 +50,9 @@ const routes: Routes = [
     data: { breadcrumb: 'Sản phẩm' },
   },
   {
-    path: 'product/:id', component: ProductDetailComponent, data: { breadcrumb: 'Chi tiết sản phẩm' }
+    path: 'product/:id',
+    component: ProductDetailComponent,
+    data: { breadcrumb: 'Chi tiết sản phẩm' },
   },
   { path: 'blog', component: BlogComponent, data: { breadcrumb: 'Bài viết' } },
   { path: 'blog/:id', component: BlogdetailsComponent },
@@ -71,7 +73,11 @@ const routes: Routes = [
     data: { breadcrumb: 'Câu hỏi thường gặp' },
   },
   { path: 'cart', component: CartComponent, data: { breadcrumb: 'Giỏ hàng' } },
-  { path: 'wish', component: WishlistComponent, data: { breadcrumb: 'Danh sách yêu thích' } },
+  {
+    path: 'wish',
+    component: WishlistComponent,
+    data: { breadcrumb: 'Danh sách yêu thích' },
+  },
   {
     path: 'account',
     component: AccountComponent,
@@ -99,6 +105,7 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     data: { breadcrumb: 'Thanh toán' },
+    canActivate: [AuthGuard],
   },
   {
     path: 'admin/product',
@@ -121,7 +128,11 @@ const routes: Routes = [
     path: 'admin/register',
     component: AdminregisterComponent,
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AuthAdminGuard] },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard, AuthAdminGuard],
+  },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -129,4 +140,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

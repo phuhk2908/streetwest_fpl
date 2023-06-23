@@ -21,7 +21,6 @@ export class CheckoutComponent implements OnInit {
   cartDetail: Product[] = [];
 
   constructor(
-    private router: Router,
     private _fb: FormBuilder,
     private cartService: CartService,
     private messageService: MessageService,
@@ -73,6 +72,8 @@ export class CheckoutComponent implements OnInit {
       });
   }
   ngOnDestroy() {
-    this.cartService.removeAllProduct();
+    if (this.isSubmit) {
+      this.cartService.removeAllProduct();
+    }
   }
 }

@@ -37,9 +37,10 @@ export class CartService {
     this.getTotalCart();
   }
   getTotalCart() {
-    return this.cartList.reduce((acc, cur) => {
+    const cost = this.cartList.reduce((acc, cur) => {
       return acc + cur.price * cur.quantity!;
     }, 0);
+    return cost > 300000 ? cost : cost + 15000;
   }
   removeProduct(product: Product) {
     const index = this.cartList.findIndex((el) => el.id === product.id);
