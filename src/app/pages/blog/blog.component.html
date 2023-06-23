@@ -19,7 +19,7 @@
                 {{ blog.date.seconds * 1000 | date : "dd-MM-YYYY" }}
               </h6>
               <h4>
-                <a class="text-decoration-none fw-bolder" href="#">{{
+                <a class="text-decoration-none fw-bolder" [routerLink]="['/blog', blog?.id]">{{
                   blog.title
                 }}</a>
               </h4>

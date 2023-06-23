@@ -78,6 +78,7 @@ export class AdminproductComponent implements OnInit {
   onUpload(event: { files: any }) {
     for (let file of event.files) {
       this.uploadedFiles?.push(file);
+      console.log(this.uploadedFiles);
     }
     this.messageService.add({
       severity: 'info',
