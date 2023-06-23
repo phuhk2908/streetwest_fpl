@@ -10,6 +10,10 @@ export class WishListService {
     wishList = new BehaviorSubject<Product[]>([]);
     constructor(private firestore: Firestore) { }
     getWishList() {
+        let wi:Product[]  = JSON.parse(localStorage.getItem('wish')!);
+        if(wi){
+            this.wishList.next(wi);
+        }
         return this.wishList.asObservable();
     }
 
@@ -19,6 +23,7 @@ export class WishListService {
             const currentWishList = this.wishList.value;
             const updatedWishList = [...currentWishList, product];
             this.wishList.next(updatedWishList);
+            localStorage.setItem('wish',JSON.stringify(this.wishList.value));
             return ''
         } else {
             return 'Đã có trong danh sách'
@@ -27,6 +32,7 @@ export class WishListService {
     }
     delWish(id: string) {
         const currentWishList = this.wishList.value.filter(item => item.id !== id);
+        localStorage.setItem('wish',JSON.stringify(currentWishList));
         this.wishList.next(currentWishList);
     }
 }

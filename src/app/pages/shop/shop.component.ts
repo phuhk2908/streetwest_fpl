@@ -36,17 +36,37 @@ export class ShopComponent {
   rows: number = 9;
   sortPrice: OrderByDirection = 'asc';
   filterPrice: number[] = [0, this.maxPrice];
+  isKeyword: boolean = false
   ngOnInit(): void {
-    this.pd.getAllCategory().subscribe((res: any[]) => {
-      this.cat = res;
-      if (this.id?.length > 0) {
-        let cate = this.cat?.find((item: any) => item.slug === this.id);
-        this.filterCat = cate.id;
-        this.getData();
-      } else {
-        this.getData();
+    this.handleSearch()
+    if (this.isKeyword == false) {
+      this.pd.getAllCategory().subscribe((res: any[]) => {
+        this.cat = res;
+        if (this.id?.length > 0) {
+          let cate = this.cat?.find((item: any) => item.slug === this.id);
+          this.filterCat = cate.id;
+          this.getData();
+        } else {
+          this.getData();
+        }
+      });
+    }
+
+  }
+  handleSearch() {
+    this.pd.getKeySearch().subscribe(res => {
+      if (res.length > 0) {
+        let keyword = res.toLowerCase();
+        this.pd.getProduct().subscribe(res => {
+          this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
+          this.totalRecords = this.products.length;
+          this.pd.getAllCategory().subscribe((res: any[]) => {
+            this.cat = res;
+          });
+        })
+        this.isKeyword = true
       }
-    });
+    })
   }
   addToCart(product: Product) {
     product.quantity = 1;

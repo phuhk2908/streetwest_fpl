@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="col-lg-6 col-md-6 contact-img">
-      <img src="https://vaxim-ng.envytheme.com/assets/img/contact.png" alt="" />
+      <img src="https://vaxim-ng.envytheme.com/assets/img/contact.png" class="img-fluid" />
     </div>
   </div>
   <div class="contact-form">
@@ -21,40 +21,19 @@
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6 form-group">
                 <label>Tên của bạn</label>
-                <input
-                  formControlName="name"
-                  type="text"
-                  class="form-control"
-                />
-                <em *ngIf="frm1.controls['name'].errors" class="text-danger"
-                  >Bắt buộc nhập tên</em
-                >
+                <input formControlName="name" type="text" class="form-control" />
+                <em *ngIf="frm1.controls['name'].errors" class="text-danger">Bắt buộc nhập tên</em>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 form-group">
                 <label>Địa chỉ email</label>
-                <input
-                  formControlName="email"
-                  type="email"
-                  class="form-control"
-                />
-                <em
-                  *ngIf="frm1.controls['email'].errors?.['required']"
-                  class="text-danger"
-                  >Bắt buộc nhập email</em
-                >
+                <input formControlName="email" type="email" class="form-control" />
+                <em *ngIf="frm1.controls['email'].errors?.['required']" class="text-danger">Bắt buộc nhập email</em>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 form-group">
                 <label>Số điện thoại</label>
-                <input
-                  formControlName="number"
-                  type="text"
-                  class="form-control"
-                />
-                <em
-                  *ngIf="frm1.controls['number'].errors?.['required']"
-                  class="text-danger"
-                  >Bắt buộc nhập số điện thoại</em
-                >
+                <input formControlName="number" type="text" class="form-control" />
+                <em *ngIf="frm1.controls['number'].errors?.['required']" class="text-danger">Bắt buộc nhập số điện
+                  thoại</em>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 form-group">
                 <label>Chủ thể</label>
@@ -62,37 +41,18 @@
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                 <label>Tin nhắn</label>
-                <textarea
-                  formControlName="message"
-                  cols="30"
-                  rows="4"
-                  class="form-control"
-                ></textarea>
-                <em
-                  *ngIf="frm1.controls['message'].errors?.['required']"
-                  class="text-danger"
-                  >Phải điền nội dung</em
-                >
+                <textarea formControlName="message" cols="30" rows="4" class="form-control"></textarea>
+                <em *ngIf="frm1.controls['message'].errors?.['required']" class="text-danger">Phải điền nội dung</em>
               </div>
 
-              <div
-                class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap"
-              >
+              <div class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap">
                 <div class="form-check">
-                  <input
-                    type="checkbox"
-                    id="remember-me"
-                    class="form-check-input"
-                    formControlName="rule"
-                  />
-                  <label for="remember-me" class="form-check-label"
-                    >Chấp nhận Điều khoản dịch vụ và Chính sách bảo mật</label
-                  >
+                  <input type="checkbox" id="remember-me" class="form-check-input" formControlName="rule" />
+                  <label for="remember-me" class="form-check-label">Chấp nhận Điều khoản dịch vụ và Chính sách bảo
+                    mật</label>
                 </div>
               </div>
-              <div
-                class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap"
-              >
+              <div class="col-lg-12 col-md-12 col-sm-12 col-12 remember-me-wrap">
                 <button type="submit">Gửi tin nhắn</button>
               </div>
             </div>
@@ -119,9 +79,7 @@
             </li>
             <li>
               <a
-                href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
-                >Instagram</a
-              >
+                href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE">Instagram</a>
             </li>
           </ul>
         </div>
