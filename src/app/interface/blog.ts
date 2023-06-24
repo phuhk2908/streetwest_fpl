@@ -5,6 +5,6 @@ export interface Blog {
   date: Timestamp;
   thumbnail: string;
   title: string;
-  content:string;
-  block?:number;
+  content: string;
+  block?: boolean;
 }

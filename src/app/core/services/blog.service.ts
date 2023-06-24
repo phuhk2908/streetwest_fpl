@@ -12,10 +12,6 @@ import {
   query,
   where,
   orderBy,
-  startAfter,
-  limit,
-  startAt,
-  OrderByDirection,
   addDoc,
   deleteDoc,
 } from '@angular/fire/firestore';
@@ -45,5 +41,13 @@ export class BlogService {
   getId(id: string) {
     const catRef = doc(this.firestore, `blog/${id}`);
     return docData(catRef) as Observable<any>;
+  }
+  deleteBlog(id: string) {
+    const ref = doc(this.firestore, `blog/${id}`);
+    return deleteDoc(ref);
+  }
+  async updateBlog(data: Blog) {
+    const ref = doc(this.firestore, `blog/${data.id}`);
+    return updateDoc(ref, { ...data });
   }
 }
