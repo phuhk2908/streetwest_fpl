@@ -1,156 +1,207 @@
 <div class="blog-details-area pbt-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-12">
-                
-                <div class="card text-center mb-4">
-                    <img class="card-img-top" src="https://vaxim-ng.envytheme.com/assets/img/team/team1.jpg"
-                        alt="Title" />
-                    <div class="card-body">
-                        <h4 class="card-title">Nguyen Tri</h4>
-                        <p class="card-text text-muted">StreetWest Founder</p>
-                        <p class="card-text text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod.
-                        </p>
-                        <img src="https://vaxim-ng.envytheme.com/assets/img/signature.png" alt="" />
-                    </div>
-                </div>
-                <div class="widget my-4">
-                    <h4 class="fw-bolder title position-relative">
-                        <span class="pe-3 bg-white">Theo dõi chúng tôi</span><span></span>
-                    </h4>
-                    <ul class="list-unstyled d-flex align-items-center m-0">
-                        <li class="me-1">
-                            <i
-                                class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"></i>
-                        </li>
-                        <li class="me-1">
-                            <i class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"></i>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Bài viết phổ biến -->
-                <div class="widget my-4">
-                    <h4 class="fw-bolder title position-relative">
-                        <span class="pe-3 bg-white">Bài viết phổ biến</span><span></span>
-                    </h4>
-                    <div class="d-flex align-items-center my-3">
-                        <div class="img">
-                            <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg" alt=""
-                                class="img-fluid" />
-                        </div>
-                        <div class="col-8">
-                            <div class="ps-3">
-                                <h6 class="fw-bolder">
-                                    Là điện thoại thông minh bán chạy nhất trong năm nay
-                                </h6>
-                                <p class="text-muted m-0">Jan 15, 2023</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center my-3">
-                        <div class="img">
-                            <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg" alt=""
-                                class="img-fluid" />
-                        </div>
-                        <div class="col-8">
-                            <div class="ps-3">
-                                <h6 class="fw-bolder">
-                                    Những bản tình ca đã giúp tôi vượt qua nỗi đau
-                                </h6>
-                                <p class="text-muted m-0">Jan 15, 2023</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center my-3">
-                        <div class="img">
-                            <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg" alt=""
-                                class="img-fluid" />
-                        </div>
-                        <div class="col-8">
-                            <div class="ps-3">
-                                <h6 class="fw-bolder">
-                                    Hai NTK bận rộn với thời trang thu đông 2020
-                                </h6>
-                                <p class="text-muted m-0">Jan 15, 2023</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center my-3">
-                        <div class="img">
-                            <img src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg" alt=""
-                                class="img-fluid" />
-                        </div>
-                        <div class="col-8">
-                            <div class="ps-3">
-                                <h6 class="fw-bolder">
-                                    Làm việc trong văn phòng là truyền thống của phụ nữ
-                                </h6>
-                                <p class="text-muted m-0">Jan 15, 2023</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="blog-details-desc">
-                    <div class="post-thumb">
-                        <img [src]="blog.thumbnail" >
-                    </div>
-                </div>
-                <h3>{{ blog.title}}</h3>
-                <div class="post-meta">
-                    <font> {{ date}}</font> &nbsp;
-                    <font>4 binh luan</font>
-                </div>
-                <div class="render" >
-                    <div [innerHTML]="blog.content"></div>
-                </div>
-                <!-- het -->
-                <hr>
-                <div class="comments-area">
-                    <h3 class="commnets-title"><font>2 Nhan xet:</font></h3>
-                    <ol class="comment-list">
-                        <div class="img-user">
-                            <img src="https://vaxim-ng.envytheme.com/assets/img/user/user1.jpg" alt="">
-                           <h5>Huy Pham</h5>
-                        </div>
-                        <div class="time-comment">
-                            <span>
-                                <p class="text-muted">Tháng Một 01, 2021 lúc 10:59 sáng</p>
-                            </span>
-                        </div>
-                        <div class="comment-content">
-                            <p>
-                                Lorem Ipsum đã trở thành văn bản giả tiêu chuẩn của ngành công nghiệp kể từ những năm 1500, khi một nhà in không xác định lấy một mẫu chữ và xáo trộn nó để tạo thành một mẫu chữ.
-                            </p>
-                        </div>
-                    </ol>
-                    <div class="comment-respond">
-                        <h3 class="comment-reply-title">
-                            <p>Để lại một câu trả lời</p>
-                        </h3>
-                        <form action="">
-                            <p class="comment-note"><span>Địa chỉ email của bạn sẽ không được công bố.</span><span class="text-danger">*</span></p>
-                            <p class="comment-username">
-                                <input type="text" class="input-comments" placeholder="Tên của bạn">
-                            </p>
-                            <p class="comment-username">
-                                <input type="text" class="input-comments" placeholder="Email của bạn">
-                            </p>
-                            <p class="comment-form-content">
-                                <textarea name="comment" id="comment" cols="45" rows="5" placeholder="Bình luận của bạn" maxlength="65525"></textarea>
-                            </p>
-                            <span class="form-submit">
-                                <!-- <button type="submit" value="Đăng bình luận" id="submit" class="submit" > -->
-                                <button>Đăng bình luận</button>
-                            </span>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12">
+        <div class="card text-center mb-4">
+          <img
+            class="card-img-top"
+            src="https://vaxim-ng.envytheme.com/assets/img/team/team1.jpg"
+            alt="Title"
+          />
+          <div class="card-body">
+            <h4 class="card-title">Nguyen Tri</h4>
+            <p class="card-text text-muted">StreetWest Founder</p>
+            <p class="card-text text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod.
+            </p>
+            <img
+              src="https://vaxim-ng.envytheme.com/assets/img/signature.png"
+              alt=""
+            />
+          </div>
         </div>
+        <div class="widget my-4">
+          <h4 class="fw-bolder title position-relative">
+            <span class="pe-3 bg-white">Theo dõi chúng tôi</span><span></span>
+          </h4>
+          <ul class="list-unstyled d-flex align-items-center m-0">
+            <li class="me-1">
+              <i
+                class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
+              ></i>
+            </li>
+            <li class="me-1">
+              <i
+                class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
+              ></i>
+            </li>
+          </ul>
+        </div>
+        <!-- Bài viết phổ biến -->
+        <div class="widget my-4">
+          <h4 class="fw-bolder title position-relative">
+            <span class="pe-3 bg-white">Bài viết phổ biến</span><span></span>
+          </h4>
+          <div class="d-flex align-items-center my-3">
+            <div class="img">
+              <img
+                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-8">
+              <div class="ps-3">
+                <h6 class="fw-bolder">
+                  Là điện thoại thông minh bán chạy nhất trong năm nay
+                </h6>
+                <p class="text-muted m-0">Jan 15, 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center my-3">
+            <div class="img">
+              <img
+                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-8">
+              <div class="ps-3">
+                <h6 class="fw-bolder">
+                  Những bản tình ca đã giúp tôi vượt qua nỗi đau
+                </h6>
+                <p class="text-muted m-0">Jan 15, 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center my-3">
+            <div class="img">
+              <img
+                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-8">
+              <div class="ps-3">
+                <h6 class="fw-bolder">
+                  Hai NTK bận rộn với thời trang thu đông 2020
+                </h6>
+                <p class="text-muted m-0">Jan 15, 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center my-3">
+            <div class="img">
+              <img
+                src="https://vaxim-ng.envytheme.com/assets/img/blog/blog1.jpg"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-8">
+              <div class="ps-3">
+                <h6 class="fw-bolder">
+                  Làm việc trong văn phòng là truyền thống của phụ nữ
+                </h6>
+                <p class="text-muted m-0">Jan 15, 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="blog-details-desc">
+          <div class="post-thumb">
+            <img [src]="blog.thumbnail" />
+          </div>
+        </div>
+        <h3>{{ blog.title }}</h3>
+        <div class="post-meta">
+          <font> {{ date }}</font> &nbsp;
+          <font>{{ allComment.length }} bình luận</font>
+        </div>
+        <div class="render">
+          <div [innerHTML]="blog.content"></div>
+        </div>
+        <!-- het -->
+        <hr />
+        <div class="comments-area">
+          <h3 class="commnets-title">Bình luận:</h3>
+          <ol class="comment-list" *ngFor="let cmt of allComment">
+            <div class="img-user">
+              <img
+                class=""
+                src="https://firebasestorage.googleapis.com/v0/b/streetwest-fdf41.appspot.com/o/z4459103602205_0a5c0cc952dd8e7b627208cf9af136ec.jpg?alt=media&token=f932f7b6-86ae-431b-8d1a-bb94de586f51"
+                alt=""
+              />
+              <h5 class="m-0">{{ cmt.name }}</h5>
+            </div>
+            <div class="time-comment">
+              <span>
+                <p class="text-muted mb-2">
+                  {{ +cmt.date * 1000 | date : "dd/MM/YYYY" }}
+                </p>
+              </span>
+            </div>
+            <div class="comment-content">
+              <p>
+                {{ cmt.content }}
+              </p>
+            </div>
+          </ol>
+          <div *ngIf="isLogin == false">
+            <a href="#" routerLink="/sign-in" class="login text-decoration-none"
+              >Đăng nhập để bình luận</a
+            >
+          </div>
+          <div class="comment-respond" *ngIf="isLogin">
+            <h3 class="comment-reply-title">
+              <p>Để lại một câu trả lời</p>
+            </h3>
+            <form action="" [formGroup]="frmCmt" (ngSubmit)="handlePostCmt()">
+              <p class="comment-note">
+                <span>Bạn đang bình luận dưới tên abc</span
+                ><span class="text-danger">*</span>
+              </p>
+              <p class="comment-username">
+                <input
+                  type="text"
+                  class="input-comments"
+                  placeholder="Tên của bạn"
+                  formControlName="name"
+                />
+              </p>
+              <p class="comment-form-content">
+                <textarea
+                  name="comment"
+                  id="comment"
+                  cols="45"
+                  rows="5"
+                  placeholder="Bình luận của bạn"
+                  maxlength="65525"
+                  formControlName="content"
+                ></textarea>
+                <em
+                  class="text-danger"
+                  *ngIf="frmCmt.controls['content'].errors"
+                  >Vui lòng nhập nội dung</em
+                >
+              </p>
+              <span class="form-submit">
+                <!-- <button type="submit" value="Đăng bình luận" id="submit" class="submit" > -->
+                <button type="submit" [disabled]="!frmCmt.valid">
+                  Đăng bình luận
+                </button>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <app-newsletter></app-newsletter>
