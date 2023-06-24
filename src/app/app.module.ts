@@ -62,7 +62,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { AccordionModule } from 'primeng/accordion';
-
+import { ProgressBarModule } from 'primeng/progressbar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TagModule } from 'primeng/tag';
@@ -171,7 +171,8 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     InputMaskModule,
     DynamicDialogModule,
     FieldsetModule,
-    CalendarModule
+    CalendarModule,
+    ProgressBarModule
   ],
   providers: [
     AuthService,

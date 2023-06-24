@@ -2,7 +2,6 @@
     position: relative;
     left: 250px;
     background-color: var(--panel-color);
-    /* min-height: 100vh; */
     width: calc(100% - 250px);
     padding: 10px 14px;
     transition: var(--tran-05);
@@ -11,6 +10,20 @@
 .nav img {
     width: 50%;
     border-radius: 50%;
+}
+
+.btnAddBlog {
+    padding: 7px 25px;
+    border: 1px solid blue;
+    border-radius: 3px;
+    background: blue;
+    color: rgb(255, 255, 255);
+    font-size: large;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
 }
 
 .form-control:focus {
