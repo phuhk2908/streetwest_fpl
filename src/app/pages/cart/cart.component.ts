@@ -31,7 +31,7 @@ export class CartComponent {
     let value = Number(inputQuantity.value);
     inputQuantity.value = (++value).toString();
     product.quantity = value;
-    this.cartService.addToCart(product);
+    this.cartService.setCart();
   }
   minus(product: Product) {
     let inputQuantity = document.querySelector(
@@ -41,7 +41,7 @@ export class CartComponent {
     if (value <= 1) return;
     inputQuantity.value = (--value).toString();
     product.quantity = value;
-    this.cartService.addToCart(product);
+    this.cartService.setCart();
   }
   removeProduct(product: Product) {
     this.cartService.removeProduct(product);

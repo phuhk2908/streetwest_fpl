@@ -20,8 +20,7 @@ export class CartService {
   getCart() {
     return this.productList.asObservable();
   }
-  setCart(...product: Product[]) {
-    this.cartList.push(...product);
+  setCart() {
     this.productList.next(this.cartList);
   }
   addToCart(product: Product) {
@@ -31,7 +30,7 @@ export class CartService {
     if (isProduct == -1) {
       this.cartList.push({ ...product });
     } else {
-      this.cartList[isProduct].quantity! = product.quantity!;
+      this.cartList[isProduct].quantity! += product.quantity!;
     }
     this.productList.next(this.cartList);
     this.getTotalCart();
@@ -52,10 +51,12 @@ export class CartService {
     this.productList.next(this.cartList);
   }
   async createOrder(data: any, idOrder: string) {
+    const user = JSON.parse(localStorage.getItem('user')!);
     const orderCollection = collection(this.firestore, 'order');
     const docRef = await addDoc(orderCollection, {
       status: 0,
       idOrder: idOrder,
+      userID: user.uid,
       ...data,
     });
     return docRef.id;
