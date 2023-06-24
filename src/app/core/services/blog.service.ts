@@ -24,14 +24,14 @@ import { Blog } from 'src/app/interface/blog';
   providedIn: 'root',
 })
 export class BlogService {
-  constructor(private http: HttpClient, private firestore: Firestore) {}
+  constructor(private http: HttpClient, private firestore: Firestore) { }
   async getAllBlog() {
     const ref = collection(this.firestore, 'blog');
     const currentPageQuerySnapshot = await getDocs(
       query(ref, orderBy('date', 'desc'))
     );
     const documentData = currentPageQuerySnapshot.docs.map((doc) => {
-      return {
+      return <Blog>{
         id: doc.id,
         ...doc.data(),
       };

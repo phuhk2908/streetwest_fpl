@@ -22,9 +22,11 @@ import {
   BehaviorSubject,
   Observable,
   Subject,
+  distinctUntilChanged,
   finalize,
   from,
   map,
+  takeUntil,
   tap,
 } from 'rxjs';
 import { Product } from 'src/app/interface/product';
@@ -39,8 +41,20 @@ export class ProductService {
   constructor(
     private firestore: Firestore,
     private storage: AngularFireStorage
-  ) {}
+  ) { }
   products: any[] = [];
+  getKeySearch() {
+    return this.keysearch.asObservable();
+  }
+  setKeySearch(key: string) {
+    if (key !== this.keysearch.value) {
+      console.log('ko');
+      this.keysearch.next(key);
+    }
+  }
+  resetKeySearch() {
+    this.keysearch.next('');
+  }
   getAllCategory(): Observable<any[]> {
     const data = collection(this.firestore, 'category');
     return collectionData(data, { idField: 'id' }) as Observable<any[]>;
@@ -96,12 +110,7 @@ export class ProductService {
     }
   }
 
-  getKeySearch() {
-    return this.keysearch.asObservable();
-  }
-  setKeySearch(key: string) {
-    this.keysearch.next(key);
-  }
+
   // async themcot() {
   //   const data = {
   //     img: []

@@ -7,6 +7,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
 import { WishListService } from 'src/app/core/services/wishlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, Subscription, finalize, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -24,6 +25,8 @@ export class ShopComponent {
   ) {
     window.scrollTo(0, 0);
   }
+  private subscriptions = new Subscription();
+  private unsubscribe$ = new Subject<void>();
   maxPrice: number = 1000000;
   cat: any;
   search: string = '';
@@ -51,22 +54,31 @@ export class ShopComponent {
         }
       });
     }
-
   }
   handleSearch() {
-    this.pd.getKeySearch().subscribe(res => {
+    this.pd.getKeySearch().pipe(
+      takeUntil(this.unsubscribe$)
+    ).subscribe(res => {
       if (res.length > 0) {
+        console.log(res);
         let keyword = res.toLowerCase();
-        this.pd.getProduct().subscribe(res => {
+        this.pd.getProduct().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
           this.products = res.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()));
           this.totalRecords = this.products.length;
-          this.pd.getAllCategory().subscribe((res: any[]) => {
+          this.pd.getAllCategory().pipe(takeUntil(this.unsubscribe$)).subscribe((res: any[]) => {
             this.cat = res;
           });
-        })
-        this.isKeyword = true
+        });
+        this.isKeyword = true;
+      } else {
+        this.getData();
       }
-    })
+    });
+  }
+  ngOnDestroy() {
+    this.pd.resetKeySearch();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
   addToCart(product: Product) {
     product.quantity = 1;
@@ -135,4 +147,5 @@ export class ShopComponent {
       });
     }
   }
+
 }

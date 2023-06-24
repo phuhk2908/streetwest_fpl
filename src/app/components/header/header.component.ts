@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
     key.value = '';
     this.router.navigate(['/shop']);
   }
-  ngDestroy() {
+  ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

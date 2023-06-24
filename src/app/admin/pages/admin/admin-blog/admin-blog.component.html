@@ -11,7 +11,7 @@
                 <ng-template pTemplate="caption">
                     <div class="row my-2 justify-content-between">
                         <div class="col-lg-2">
-                            <div pButton class="btn btn-outline-secondary" (click)="sidebarVisible = true">
+                            <div pButton class="btn btn-outline-secondary" (click)="sidebarVisibleAdd = true">
                                 Thêm mới
                             </div>
                         </div>
@@ -29,55 +29,78 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 10%" scope="col">Ảnh</th>
-                        <th style="width: 20%" scope="col" pSortableColumn="name">
-                            Tên sản phẩm <p-sortIcon field="name"></p-sortIcon>
+                        <th style="width: 20%" scope="col" pSortableColumn="title">
+                            Tên bài viết <p-sortIcon field="title"></p-sortIcon>
                         </th>
-                        <th class="w-th" scope="col" pSortableColumn="idCategory">
-                            Loại <p-sortIcon field="idCategory"></p-sortIcon>
+                        <th scope="col" pSortableColumn="date">
+                            Ngày đăng <p-sortIcon field="date"></p-sortIcon>
                         </th>
-                        <th class="w-th" scope="col" pSortableColumn="price">
-                            Giá <p-sortIcon field="price"></p-sortIcon>
-                        </th>
-                        <th class="w-th">Số lượng</th>
-                        <th class="w-th" scope="col">Thao tác</th>
+                        <th>Hiện</th>
+                        <th scope="col">Thao tác</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-item>
                     <tr>
+                        <td><img [src]="item.thumbnail" width="50"></td>
+                        <td>{{ item.title.slice(0,20)}}...</td>
+                        <td>{{ item.date.seconds * 1000 | date : "dd-MM-YYYY" }}</td>
+                        <td><ng-template [ngIf]="item.block === 1" [ngIfElse]="an">
+                                <div>
+                                    <p-tag icon="pi pi-check" severity="success" value="Hiện"></p-tag>
+                                </div>
+                            </ng-template></td>
+                        <td> <button class="btn btn-outline-primary">
+                                <i class="bi bi-pencil-square"></i></button>&nbsp;
+                            <button class="btn btn-outline-danger">
+                                <i class="bi bi-trash-fill"></i></button>
+                        </td>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="paginatorleft">
-                    <p-button (click)="sidebarVisible = true" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                    <p-button (click)="sidebarVisibleAdd = true" icon="pi pi-plus"
+                        styleClass="p-button-text"></p-button>
                 </ng-template>
                 <ng-template pTemplate="paginatorright"> </ng-template>
             </p-table>
         </div>
     </div>
 </section>
-<p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true">
-    <ng-template pTemplate="header" >  <h1>Streetwest</h1>
-         </ng-template>
-    <ng-template pTemplate="content" >
-        <div class="container">
-            <div class="d-flex justify-content-between"><div class="h3">Tạo blog</div> <div class="btn btn-primary py-2 px-5 " (click)="submitAddBlog(file)"  >Đăng</div></div>
-        
-        <div class="h-100">
-            <div class="row">
-                <div class="col-12 my-3">Tiêu đề<input class="w-100" placeholder="Nhập tiêu đề" type="text" pInputText
-                        [(ngModel)]="title" /></div>
-                <div class="col-auto">Ảnh đại diện <p-fileUpload mode="basic" chooseLabel="Choose" name="uploadedFiles[]"
-                        url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [maxFileSize]="1000000"
-                         #file></p-fileUpload></div>
-                <div class="col-3"> Ngày đăng<p-calendar [(ngModel)]="date" [showIcon]="true"></p-calendar></div>
+<p-sidebar [(visible)]="sidebarVisibleAdd" [fullScreen]="true">
+    <p-progressBar *ngIf="isLoading" mode="indeterminate"
+        [style]="{'height': '6px','margin-bottom': '10px'}"></p-progressBar>
+    <ng-template pTemplate="header">
+        <h1>Streetwest</h1>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <form class="container" [formGroup]="formAddBlog" (ngSubmit)="submitAddBlog(file)">
+            <div class="d-flex justify-content-between">
+                <div class="h3">Tạo blog</div>
+                <button class="btnAddBlog" type="submit" [disabled]="formAddBlog.invalid">Đăng</button>
             </div>
+            <div class="h-100">
+                <div class="row">
+                    <div class="col-12 my-3">Tiêu đề<input class="w-100" placeholder="Nhập tiêu đề" type="text"
+                            pInputText formControlName="title" /></div>
+                    <div class="col-auto">Ảnh đại diện <p-fileUpload mode="basic" chooseLabel="Choose"
+                            name="uploadedFiles[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*"
+                            [maxFileSize]="1000000" #file></p-fileUpload></div>
+                    <div class="col-3"> Ngày đăng<p-calendar formControlName="date" [showIcon]="true"></p-calendar>
+                    </div>
+                </div>
+                <div class=" mt-3">
+                    <p-editor formControlName="content" [style]="{ height: '420px' }"></p-editor>
+                </div>
 
-            <div class=" mt-3">
-                <p-editor [(ngModel)]="content" [style]="{ height: '420px' }"></p-editor>
             </div>
-            
-        </div>
-        </div>
-        
+        </form>
     </ng-template>
 </p-sidebar>
 <p-toast></p-toast>
+
+
+<ng-template #an>
+    <div>
+        <p-tag icon="pi pi-info-circle" severity="info" value="Ẩn"></p-tag>
+    </div>
+</ng-template>
