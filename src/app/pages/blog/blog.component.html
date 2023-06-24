@@ -19,9 +19,11 @@
                 {{ blog.date.seconds * 1000 | date : "dd-MM-YYYY" }}
               </h6>
               <h4>
-                <a class="text-decoration-none fw-bolder" [routerLink]="['/blog', blog?.id]">{{
-                  blog.title
-                }}</a>
+                <a
+                  class="text-decoration-none fw-bolder"
+                  [routerLink]="['/blog', blog?.id]"
+                  >{{ blog.title }}</a
+                >
               </h4>
             </div>
           </div>
@@ -81,12 +83,24 @@
           class="d-flex align-items-center my-3"
           *ngFor="let blogNew of blogNew"
         >
-          <div class="img">
-            <img src="{{ blogNew.thumbnail }}" alt="" class="img-fluid" />
+          <div class="img overflow-hidden">
+            <img
+              src="{{ blogNew.thumbnail }}"
+              alt=""
+              style="width: 102px; height: 68px; object-fit: cover"
+              alt=""
+              class="img-fluid"
+            />
           </div>
           <div class="col-8">
             <div class="ps-3">
-              <h6 class="fw-bolder">{{ blogNew.title | slice : 0 : 40 }}...</h6>
+              <h6 class="fw-bolder">
+                <a
+                  class="text-decoration-none text-dark"
+                  [routerLink]="['/blog', blogNew?.id]"
+                  >{{ blogNew.title | slice : 0 : 40 }}...</a
+                >
+              </h6>
               <p class="text-muted m-0">
                 {{ blogNew.date.seconds * 1000 | date : "dd-MM-YYYY" }}
               </p>

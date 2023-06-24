@@ -55,7 +55,8 @@ export class BlogService {
     let comment: any[] = [];
     const data = query(
       collection(this.firestore, 'comments'),
-      where('blogID', '==', blogID)
+      where('blogID', '==', blogID),
+      orderBy('date', 'desc')
     );
     const querySnapshot = await getDocs(data);
     querySnapshot.forEach((doc) => {
