@@ -86,7 +86,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { CalendarModule } from 'primeng/calendar';
 import { AuthGuard } from './core/guard/auth.guard';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
-
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 
 @NgModule({
@@ -153,6 +153,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     ProgressSpinnerModule,
     DividerModule,
     ToastModule,
+    ToggleButtonModule,
     ReactiveFormsModule,
     ListboxModule,
     StyleClassModule,
