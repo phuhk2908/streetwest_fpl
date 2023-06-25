@@ -163,8 +163,7 @@ export class ProductService {
         limit(page)
       );
       const lastVisibleQuerySnapshot = await getDocs(lastVisibleRef);
-      const lastVisiblePost =
-        lastVisibleQuerySnapshot.docs[lastVisibleQuerySnapshot.docs.length - 1];
+      const lastVisiblePost = lastVisibleQuerySnapshot.docs[lastVisibleQuerySnapshot.docs.length - 1];
       currentPageRef = query(
         baseRef,
         ...conditions,
