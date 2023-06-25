@@ -1,121 +1,122 @@
 .pbt-100 {
-    margin-top: 100px;
-    margin-bottom: 100px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .widget {
-    .bi-instagram {
-        background-image: linear-gradient(45deg, #ff8a00, #e1306c, #405de6);
-    }
+  .bi-instagram {
+    background-image: linear-gradient(45deg, #ff8a00, #e1306c, #405de6);
+  }
 
-    .title>span:after {
-        z-index: -1;
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 100%;
-        height: 1px;
-        background: #e4e4e4;
-    }
+  .title > span:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: #e4e4e4;
+  }
 }
 .render {
-    img{
-        width: 20%;
-    }
+  img {
+    width: 20%;
+  }
 }
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 h3 {
-    font-weight: 700;
-    color: #000000;
-    margin-top: 25px;
-    font-size: 26px;
-    margin-bottom: 18px;
+  font-weight: 700;
+  color: #000000;
+  margin-top: 25px;
+  font-size: 26px;
+  margin-bottom: 18px;
 }
 
 ul .block-img .columns-3 {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.comments-area .commets-title{
-    font-size: 22px;
-    margin-bottom: 30px;
-    line-height: initial;
+.comments-area .commets-title {
+  font-size: 22px;
+  margin-bottom: 30px;
+  line-height: initial;
 }
 .comment-list {
-    border-bottom: 1px dashed #eeeeee;
-    color: #000000;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    padding-left: 98px;
-    position: relative;
+  border-bottom: 1px dashed #eeeeee;
+  color: #000000;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  padding-left: 98px;
+  position: relative;
 }
-.comment-list .img-user img{
-    top: 4px;
-    width: 80px;
-    left: -8px;
-    position: absolute;
+.comment-list .img-user img {
+  top: 4px;
+  width: 80px;
+  left: -8px;
+  position: absolute;
 }
-.comment-note{
-    font-style: italic;
-    margin-bottom: 20px;
-    margin-top: 10px;
+.comment-note {
+  font-style: italic;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
-.comment-username{
-    float: left;
-    width: 50%;
-    padding-right: 10px;
-    margin-bottom: 20px;
+.comment-username {
+  float: left;
+  width: 50%;
+  padding-right: 10px;
+  margin-bottom: 20px;
 }
-.comment-respond form p input{
-    outline: 0;
-    width: 100%;
-    border: none;
-    height: 50px;
-    display: block;
-    border-radius: 3px;
-    padding: 0 15px;
-    color: #000000;
-    font-size: 16px;
-    background-color: #f9f9f9;
+.comment-respond form p input {
+  outline: 0;
+  width: 100%;
+  border: none;
+  height: 50px;
+  display: block;
+  border-radius: 3px;
+  padding: 0 15px;
+  color: #000000;
+  font-size: 16px;
+  background-color: #f9f9f9;
 }
-.comment-form-content{
-    float: left;
-    width: 100%;
+.comment-form-content {
+  float: left;
+  width: 100%;
 }
-.comment-respond form p textarea{
-    outline: 0;
-    width: 100%;
-    border: none;
-    display: block;
-    border-radius: 3px;
-    padding: 0 15px;
-    color: #000000;
-    font-size: 16px;
-    background-color: #f9f9f9;
+.comment-respond form p textarea {
+  outline: 0;
+  width: 100%;
+  border: none;
+  display: block;
+  border-radius: 3px;
+  padding: 0 15px;
+  color: #000000;
+  font-size: 16px;
+  background-color: #f9f9f9;
 }
-.comment-respond .comment-form-content textarea{
-    height: auto;
-    padding-top: 15px;
+.comment-respond .comment-form-content textarea {
+  height: auto;
+  padding-top: 15px;
 }
-.comment-respond .form-submit{
-    float: left;
-    width: 100%;
+.comment-respond .form-submit {
+  float: left;
+  width: 100%;
 }
-.comment-respond .form-submit button{
-    border: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    display: inline-block;
-    color: #ffffff;
-    background: #CF0018;
-    transition: calc(.5s);
-    font-weight: 600;
-    font-size: 16px;
+.comment-respond .form-submit button,
+a.login {
+  border: none;
+  cursor: pointer;
+  padding: 10px 30px;
+  display: inline-block;
+  color: #ffffff;
+  background: #cf0018;
+  transition: calc(0.5s);
+  font-weight: 600;
+  font-size: 16px;
 }

@@ -39,7 +39,6 @@ export class ProductDetailComponent {
   }
   async fetchData() {
     this.product = await this.dataService.getProductBySlug(this.id);
-    console.log(this.product);
     for (const [sizeName, value] of Object.entries(this.product.size)) {
       this.availableQuantity += value.amount;
     }
