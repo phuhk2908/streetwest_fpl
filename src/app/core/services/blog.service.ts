@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 import {
   Firestore,
   collection,
@@ -14,14 +14,19 @@ import {
   orderBy,
   addDoc,
   deleteDoc,
+  startAfter,
+  limit,
 } from '@angular/fire/firestore';
 import { Blog } from 'src/app/interface/blog';
 import { CommentI } from 'src/app/interface/comment';
+import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
-  constructor(private http: HttpClient, private firestore: Firestore) { }
+  constructor(private http: HttpClient, private firestore: Firestore) {
+
+  }
   async getAllBlog() {
     const ref = collection(this.firestore, 'blog');
     const currentPageQuerySnapshot = await getDocs(
@@ -63,6 +68,47 @@ export class BlogService {
       });
     });
     return comment;
+  }
+
+
+
+
+  async getItems(blogID: string, page: number): Promise<Observable<any[]>> {
+    let currentPageRef;
+    if (page === 0) {
+      currentPageRef = query(
+        collection(this.firestore, 'comments'),
+        where('blogID', '==', blogID),
+        orderBy('date', 'desc'),
+        limit(5)
+      );
+    } else {
+      let current = query(
+        collection(this.firestore, 'comments'),
+        where('blogID', '==', blogID),
+        orderBy('date', 'desc'),
+        limit(page))
+      const documentSnapshots = await getDocs(current);
+      const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+      currentPageRef = query(
+        collection(this.firestore, 'comments'),
+        where('blogID', '==', blogID),
+        orderBy("date", 'desc'),
+        startAfter(lastVisible),
+        limit(page));
+    }
+
+    let total = (await getDocs(query(collection(this.firestore, 'comments'), where('blogID', '==', blogID)))).docs.map((doc) => doc.data());
+
+    const currentPageQuerySnapshot = await getDocs(currentPageRef);
+    const documentData = currentPageQuerySnapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
+    const data = [documentData, total.length];
+    return from([data]) as Observable<any>;
   }
   deleteBlog(id: string) {
     const ref = doc(this.firestore, `blog/${id}`);
