@@ -6,8 +6,9 @@
         <h5 class="text-uppercase mt-3">Danh sách đơn hàng</h5>
         <hr>
         <div>
-            <p-table #tablePd dataKey="id" [value]="orders" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-                [tableStyle]="{ 'min-width': '50rem' }" [globalFilterFields]="['fullName', 'phone','address']">
+            <p-table #tablePd dataKey="id" editMode="row" [value]="orders" [paginator]="true" [rows]="5"
+                [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+                [globalFilterFields]="['fullName', 'phone','address']">
                 <ng-template pTemplate="caption">
                     <div class="row  my-2 justify-content-between">
                         <div class="col-lg-2">
@@ -40,20 +41,42 @@
                         <th style="width: 15%;" scope="col">Thao tác</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-item>
-                    <tr>
+                <ng-template pTemplate="body" let-item let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="item">
                         <td>
                             <div class="text-secondary pointer-cus " (click)="showDetail(item)">Chi tiết</div>
                         </td>
                         <td>{{item.fullName}}</td>
                         <td>{{item.phone}}</td>
-                        <td>{{item.address + item.city}}</td>
-                        <td><ng-container *ngTemplateOutlet="status;context:{status: item.status}"></ng-container></td>
+                        <td>{{item.address + ' '+ item.city}}</td>
+                        <td><p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="statuses" appendTo="body" [(ngModel)]="item.status"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <ng-container
+                                        *ngTemplateOutlet="status;context:{status: item.status}"></ng-container>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <!-- <td><ng-container *ngTemplateOutlet="status;context:{status: item.status}"></ng-container></td> -->
                         <td>
-                            <button class="btn btn-outline-primary" (click)="handelEdit(item)"><i
-                                    class="bi bi-pencil-square"></i></button>&nbsp;
-                            <button class="btn btn-outline-danger " (click)="handleDel(item.id)"><i
-                                    class="bi bi-trash-fill"></i></button>
+                            <div class="flex align-items-center justify-content-center gap-2">
+                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow
+                                    icon="pi pi-pencil" (click)="onRowEditInit(item,ri)"
+                                    class="p-button-rounded p-button-text"></button>
+                                <button *ngIf="!editing" pButton pRipple type="button" icon="pi pi-trash"
+                                    (click)="handleDel(item.id)"
+                                    class="p-button-rounded p-button-text p-button-danger"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow
+                                    icon="pi pi-check" (click)="onRowEditSave(item)"
+                                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow
+                                    icon="pi pi-times" (click)="onRowEditCancel(item, ri)"
+                                    class="p-button-rounded p-button-text p-button-danger"></button>
+                            </div>
                         </td>
                     </tr>
                 </ng-template>
@@ -108,6 +131,24 @@
             </tr>
         </tbody>
     </table>
+    <h3>Khách hàng</h3>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between p-2">
+            <div class="col-6">Tên người dùng : {{ ordersDetail?.fullName }}</div>
+            <div class="col-6"> Số điện thoại: {{ordersDetail?.phone}}</div>
+        </div>
+        <div class="col-12 p-2 d-flex justify-content-between">
+            <div class="col-6">Địa chỉ : {{ordersDetail?.address + ' '+ ordersDetail?.city}}</div>
+            <div class="col-6">Thành tiền : {{ ordersDetail?.total |vnd}}</div>
+        </div>
+    </div>
+</p-sidebar>
+<p-sidebar [(visible)]="sidebarEdit" (onHide)="onHide()" position="right" [style]="{width: '50vw'}"
+    [blockScroll]="true">
+    <ng-template pTemplate="header">
+        <h3>Chỉnh sửa đơn hàng</h3>
+    </ng-template>
+
     <h3>Khách hàng</h3>
     <div class="row">
         <div class="col-12 d-flex justify-content-between p-2">

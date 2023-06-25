@@ -35,4 +35,8 @@ export class OrderService {
         const Ref = doc(this.firestore, `orderDetail/${id}`);
         return docData(Ref, { idField: 'id' }) as Observable<any>;
     }
+    updateDoc(data: any) {
+        const collectionRef = doc(this.firestore, "order", data.id);
+        return updateDoc(collectionRef, { status: data.status });
+    }
 }

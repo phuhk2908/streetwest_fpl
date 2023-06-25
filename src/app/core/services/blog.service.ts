@@ -21,7 +21,7 @@ import { CommentI } from 'src/app/interface/comment';
   providedIn: 'root',
 })
 export class BlogService {
-  constructor(private http: HttpClient, private firestore: Firestore) {}
+  constructor(private http: HttpClient, private firestore: Firestore) { }
   async getAllBlog() {
     const ref = collection(this.firestore, 'blog');
     const currentPageQuerySnapshot = await getDocs(
@@ -63,7 +63,7 @@ export class BlogService {
       });
     });
     return comment;
-
+  }
   deleteBlog(id: string) {
     const ref = doc(this.firestore, `blog/${id}`);
     return deleteDoc(ref);
@@ -73,3 +73,4 @@ export class BlogService {
     return updateDoc(ref, { ...data });
   }
 }
+
