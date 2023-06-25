@@ -43,14 +43,15 @@
                 <ng-template pTemplate="body" let-item>
                     <tr>
                         <td>
-                            <div class="text-secondary" (click)="showDetail(item.idOrder)">Chi tiết</div>
+                            <div class="text-secondary pointer-cus " (click)="showDetail(item)">Chi tiết</div>
                         </td>
                         <td>{{item.fullName}}</td>
                         <td>{{item.phone}}</td>
                         <td>{{item.address + item.city}}</td>
                         <td><ng-container *ngTemplateOutlet="status;context:{status: item.status}"></ng-container></td>
                         <td>
-                            <button class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></button>&nbsp;
+                            <button class="btn btn-outline-primary" (click)="handelEdit(item)"><i
+                                    class="bi bi-pencil-square"></i></button>&nbsp;
                             <button class="btn btn-outline-danger " (click)="handleDel(item.id)"><i
                                     class="bi bi-trash-fill"></i></button>
                         </td>
@@ -71,7 +72,7 @@
     <p-tag value="Xác nhận" [rounded]="true" severity="info" *ngIf="+status === 2"></p-tag>
     <p-tag value="Hoàn tât" severity="success" [rounded]="true" *ngIf="+status === 3"></p-tag>
 </ng-template>
-<p-toast></p-toast>
+
 <p-confirmDialog #cd [style]="{width: '50vw'}">
     <ng-template pTemplate="header">
         <h3>Đơn hàng</h3>
@@ -82,16 +83,20 @@
     </ng-template>
 </p-confirmDialog>
 
-<p-sidebar [(visible)]="sidebar" position="right" [style]="{width: '50vw'}" [blockScroll]="true">
+<p-sidebar [(visible)]="sidebar" (onHide)="onHide()" position="right" [style]="{width: '50vw'}" [blockScroll]="true">
     <ng-template pTemplate="header">
         <h3>Đơn hàng và thông tin người dùng</h3>
     </ng-template>
     <table class="table" style="height: 100px;">
         <thead>
+            <h4 class="w-100">Giỏ hàng</h4>
+        </thead>
+        <thead>
             <tr>
                 <th scope="col">Ảnh</th>
                 <th scope="col">Tên sản phẩm</th>
                 <th scope="col">Số lượng</th>
+                <th scope="col">Giá</th>
             </tr>
         </thead>
         <tbody>
@@ -99,7 +104,19 @@
                 <td class="w-25 align-middle"> <img width="70" [src]="item.img[0]"> </td>
                 <td class="w-25 align-middle"> {{item.name}}</td>
                 <td class="w-25 align-middle">{{item.quantity}}</td>
+                <td class="w-25 align-middle">{{ item.price |vnd}}</td>
             </tr>
         </tbody>
     </table>
+    <h3>Khách hàng</h3>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between p-2">
+            <div class="col-6">Tên người dùng : {{ ordersDetail?.fullName }}</div>
+            <div class="col-6"> Số điện thoại: {{ordersDetail?.phone}}</div>
+        </div>
+        <div class="col-12 p-2 d-flex justify-content-between">
+            <div class="col-6">Địa chỉ : {{ordersDetail?.address + ' '+ ordersDetail?.city}}</div>
+            <div class="col-6">Thành tiền : {{ ordersDetail?.total |vnd}}</div>
+        </div>
+    </div>
 </p-sidebar>
