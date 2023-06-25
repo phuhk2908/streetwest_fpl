@@ -16,11 +16,12 @@ import {
   deleteDoc,
 } from '@angular/fire/firestore';
 import { Blog } from 'src/app/interface/blog';
+import { CommentI } from 'src/app/interface/comment';
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
-  constructor(private http: HttpClient, private firestore: Firestore) { }
+  constructor(private http: HttpClient, private firestore: Firestore) {}
   async getAllBlog() {
     const ref = collection(this.firestore, 'blog');
     const currentPageQuerySnapshot = await getDocs(
@@ -42,6 +43,27 @@ export class BlogService {
     const catRef = doc(this.firestore, `blog/${id}`);
     return docData(catRef) as Observable<any>;
   }
+
+  postComment(data: CommentI) {
+    const cmtCollection = collection(this.firestore, 'comments');
+    return addDoc(cmtCollection, data);
+  }
+  async getComments(blogID: string) {
+    let comment: any[] = [];
+    const data = query(
+      collection(this.firestore, 'comments'),
+      where('blogID', '==', blogID),
+      orderBy('date', 'desc')
+    );
+    const querySnapshot = await getDocs(data);
+    querySnapshot.forEach((doc) => {
+      comment.push({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+    return comment;
+
   deleteBlog(id: string) {
     const ref = doc(this.firestore, `blog/${id}`);
     return deleteDoc(ref);
