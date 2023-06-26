@@ -40,6 +40,7 @@ export class BlogService {
     });
     return documentData;
   }
+
   addBlog(data: Blog) {
     const ref = collection(this.firestore, 'blog');
     return addDoc(ref, data);
@@ -69,8 +70,18 @@ export class BlogService {
     });
     return comment;
   }
-
-
+  getCommentsAll(): Observable<any[]> {
+    const data = collection(this.firestore, 'comments');
+    return collectionData(data, { idField: 'id' }) as Observable<any[]>;
+  }
+  async updateComment(data: Blog) {
+    const ref = doc(this.firestore, `comments/${data.id}`);
+    return updateDoc(ref, { ...data });
+  }
+  deleteComments(id: string) {
+    const ref = doc(this.firestore, `comments/${id}`);
+    return deleteDoc(ref);
+  }
 
 
   async getItems(blogID: string, page: number): Promise<Observable<any[]>> {
@@ -79,6 +90,7 @@ export class BlogService {
       currentPageRef = query(
         collection(this.firestore, 'comments'),
         where('blogID', '==', blogID),
+        where('block', '==', true),
         orderBy('date', 'desc'),
         limit(5)
       );
@@ -86,6 +98,7 @@ export class BlogService {
       let current = query(
         collection(this.firestore, 'comments'),
         where('blogID', '==', blogID),
+        where('block', '==', true),
         orderBy('date', 'desc'),
         limit(page))
       const documentSnapshots = await getDocs(current);
@@ -93,12 +106,13 @@ export class BlogService {
       currentPageRef = query(
         collection(this.firestore, 'comments'),
         where('blogID', '==', blogID),
+        where('block', '==', true),
         orderBy("date", 'desc'),
         startAfter(lastVisible),
         limit(page));
     }
 
-    let total = (await getDocs(query(collection(this.firestore, 'comments'), where('blogID', '==', blogID)))).docs.map((doc) => doc.data());
+    let total = (await getDocs(query(collection(this.firestore, 'comments'), where('blogID', '==', blogID), where('block', '==', true)))).docs.map((doc) => doc.data());
 
     const currentPageQuerySnapshot = await getDocs(currentPageRef);
     const documentData = currentPageQuerySnapshot.docs.map((doc) => {

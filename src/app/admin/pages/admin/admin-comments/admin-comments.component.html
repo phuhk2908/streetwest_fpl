@@ -1,0 +1,96 @@
+<app-sidebar-admin></app-sidebar-admin>
+<section class="dashboard container mx-0">
+    <app-header-admin></app-header-admin>
+
+    <div class="background border shadow p-2 rounded content mt-5 row overflow-hidden">
+        <h5 class="text-uppercase mt-3">Danh sách bình luận bài viết</h5>
+        <hr>
+        <div>
+            <p-table #tablePd dataKey="id" editMode="row" [value]="comments" [paginator]="true" [rows]="5"
+                [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+                [globalFilterFields]="['name', 'block','date']">
+                <ng-template pTemplate="caption">
+                    <div class="row  my-2 justify-content-between">
+                        <div class="col-lg-2">
+                            <div pButton label="Clear" class="p-button-outlined " icon="pi pi-filter-slash"
+                                (click)=" tablePd.clear();"></div>
+                        </div>
+                        <div class="col-lg-8 ">
+                            <span class="p-input-icon-left ml-auto col-lg-10">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" class="w-100"
+                                    (input)="tablePd.filterGlobal($any($event.target).value, 'contains')"
+                                    placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 15%;" scope="col">Bài viết</th>
+                        <th style="width: 15%" scope="col">Họ và tên</th>
+                        <th style="width: 15%" scope="col" pSortableColumn="content">Nội dung</th>
+                        <th scope="col" pSortableColumn="date" field="date">Ngày đăng <p-sortIcon
+                                field="date"></p-sortIcon></th>
+                        <th scope="col" pSortableColumn="like" field="like">Lượt like <p-sortIcon
+                                field="like"></p-sortIcon></th>
+                        <th scope="col" pSortableColumn="block" field="block"> Ẩn hiện <p-sortIcon
+                                field="block"></p-sortIcon></th>
+
+                        <th style="width: 15%;" scope="col">Thao tác</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="item">
+                        <td> {{getNameBlog(item.blogID)}}
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>
+                            {{item.content}}
+                        </td>
+                        <td>{{ +item.date * 1000 | date : "dd/MM/YYYY" }}</td>
+                        <td>{{item.like }}</td>
+                        <td><p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-selectButton [options]="stateOptions" [(ngModel)]="item.block" appendTo="body"
+                                        optionLabel="label" optionValue="value"></p-selectButton>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div *ngIf="item.block; else elseBlock">
+                                        <p-tag value="Hiện"></p-tag>
+                                    </div>
+                                    <ng-template #elseBlock>
+                                        <p-tag value="Ẩn" severity="danger"></p-tag>
+                                    </ng-template>
+
+
+                                </ng-template>
+                            </p-cellEditor></td>
+                        <td>
+                            <div class="flex align-items-center justify-content-center gap-2">
+                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow
+                                    icon="pi pi-pencil" class="p-button-rounded p-button-text"
+                                    (click)="onRowEditInit(item)"></button>
+                                <button *ngIf="!editing" pButton pRipple type="button" icon="pi pi-trash"
+                                    (click)="handleDel(item.id)"
+                                    class="p-button-rounded p-button-text p-button-danger"></button>
+
+                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow
+                                    icon="pi pi-check" (click)="onRowEditSave(item)"
+                                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow
+                                    icon="pi pi-times" (click)="onRowEditCancel(item,ri)"
+                                    class="p-button-rounded p-button-text p-button-danger"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</section>
