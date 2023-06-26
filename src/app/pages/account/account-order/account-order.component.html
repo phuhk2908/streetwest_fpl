@@ -1,1 +1,119 @@
-<p>account-order works!</p>
+<h2 class="text-uppercase text-center my-3">Thông tin đơn hàng của bạn</h2>
+<table class="table table-primary table-responsive">
+  <thead>
+    <tr>
+      <th scope="col" class="align-middle">#</th>
+      <th scope="col" class="align-middle">Mã đơn hàng</th>
+      <th scope="col" class="text-center align-middle">Tổng tiền</th>
+      <th scope="col" class="text-center align-middle">Ngày mua</th>
+      <th scope="col" class="text-center align-middle">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orderList; let i = index">
+      <th scope="row" class="align-middle">{{ i + 1 }}</th>
+      <td class="align-middle">{{ order.id }}</td>
+      <td class="text-center align-middle">{{ order.total }}</td>
+      <td class="text-center align-middle">
+        {{ order.date * 1000 | date : "dd/MM/YYYY" }}
+      </td>
+      <td class="text-center align-middle">
+        <button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          class="btn btn-info"
+          (click)="getDetailOrder(order.idOrder)"
+        >
+          Xem chi tiết
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" *ngIf="orderItem != undefined">
+      <div class="modal-header">
+        <h1
+          class="modal-title fs-5 text-center fw-bolder"
+          id="staticBackdropLabel"
+        >
+          Hóa đơn
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="cartInfo p-3 mt-2">
+          <table class="table table-responsive table-bordered text-center">
+            <thead>
+              <tr>
+                <th scope="col" class="bg-custom-secondary align-middle">
+                  Ảnh
+                </th>
+                <th scope="col" class="bg-custom-secondary align-middle">
+                  Tên
+                </th>
+                <th scope="col" class="bg-custom-secondary align-middle">
+                  Giá
+                </th>
+                <th scope="col" class="bg-custom-secondary align-middle">
+                  Số lượng
+                </th>
+                <th scope="col" class="bg-custom-secondary align-middle">
+                  Tổng
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of orderItem.cart">
+                <th class="align-middle text-center">
+                  <img
+                    src="{{ item.img[0] }}"
+                    alt=""
+                    class="img-fluid-custom"
+                  />
+                </th>
+                <th scope="row" class="text-nowrap align-middle text-center">
+                  {{ item.name }} - {{ item.sizeSelected }}
+                </th>
+                <td class="align-middle text-center">{{ item.price | vnd }}</td>
+                <td class="text-end align-middle text-center">
+                  {{ item.quantity }}
+                </td>
+                <td class="align-middle text-center">
+                  {{ item.price * item.quantity | vnd }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Tổng tiền( bao gồm cả phí vận chuyển):
+            <b>{{ orderItem.total | vnd }}</b>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template *ngIf="orderList.length < 1">
+  <h3>Bạn không có đơn hàng nào !</h3>
+</ng-template>

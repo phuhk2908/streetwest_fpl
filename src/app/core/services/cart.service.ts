@@ -10,6 +10,7 @@ import {
   docData,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 @Injectable({
   providedIn: 'root',
 })
@@ -54,6 +55,7 @@ export class CartService {
     const user = JSON.parse(localStorage.getItem('user')!);
     const orderCollection = collection(this.firestore, 'order');
     const docRef = await addDoc(orderCollection, {
+      date: moment().unix(),
       status: 0,
       idOrder: idOrder,
       userID: user.uid,
