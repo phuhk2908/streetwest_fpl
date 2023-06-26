@@ -35,6 +35,7 @@ import { AccountOrderComponent } from './pages/account/account-order/account-ord
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { AdminBlogComponent } from './admin/pages/admin/admin-blog/admin-blog.component';
 import { AuthGuard } from './core/guard/auth.guard';
+import { AdminCommentsComponent } from './admin/pages/admin/admin-comments/admin-comments.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -129,6 +130,10 @@ const routes: Routes = [
     component: AdminregisterComponent,
   },
   {
+    path: 'admin/comments',
+    component: AdminCommentsComponent,
+  },
+  {
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard, AuthAdminGuard],
@@ -140,4 +145,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

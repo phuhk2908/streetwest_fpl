@@ -7,4 +7,5 @@ export interface CommentI {
   date: string;
   like: number;
   dislike: number;
+  block: boolean;
 }

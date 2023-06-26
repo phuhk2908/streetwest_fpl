@@ -46,6 +46,7 @@ export class BlogdetailsComponent implements OnInit {
       date: moment().unix().toString(),
       like: 0,
       dislike: 0,
+      block: true
     };
     this.blogService.postComment(data);
     this.frmCmt.reset();
@@ -57,7 +58,6 @@ export class BlogdetailsComponent implements OnInit {
       this.date = moment().format('DD/MM/YYYY');
     });
     (await this.blogService.getItems(this.id, this.page)).subscribe(res => {
-
       if (res.length > 0) {
         this.allComment = res[0];
         this.totalRecords = Math.ceil(res[1]);
