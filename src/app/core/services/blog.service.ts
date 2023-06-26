@@ -63,7 +63,7 @@ export class BlogService {
       });
     });
     return comment;
-
+  }
   deleteBlog(id: string) {
     const ref = doc(this.firestore, `blog/${id}`);
     return deleteDoc(ref);
