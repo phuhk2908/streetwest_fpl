@@ -4,26 +4,18 @@
   <div class="row">
     <div class="col-lg-9 col-12">
       <div class="row">
-        <div class="col-md-6 col-12 blog-item" *ngFor="let blog of blogContain">
+        <div class="col-md-6 col-12 blog-item " *ngFor="let blog of blogContain">
           <div class="pb-3">
             <div class="img overflow-hidden">
-              <img
-                src="{{ blog.thumbnail }}"
-                style="width: 450px; height: 320px"
-                alt=""
-                class="img-fluid"
-              />
+              <img src="{{ blog.thumbnail }}" style="width: 450px; height: 320px" alt="" class="img-fluid" />
             </div>
             <div class="content mt-3">
               <h6 class="text-muted text-uppercase">
                 {{ blog.date.seconds * 1000 | date : "dd-MM-YYYY" }}
               </h6>
-              <h4>
-                <a
-                  class="text-decoration-none fw-bolder"
-                  [routerLink]="['/blog', blog?.id]"
-                  >{{ blog.title }}</a
-                >
+              <h4 class="overflow-hidden text-break">
+                <a class="text-decoration-none  fw-bolder text-wrap" [routerLink]="['/blog', blog?.id]">{{ blog.title
+                  }}</a>
               </h4>
             </div>
           </div>
@@ -32,11 +24,9 @@
     </div>
     <div class="col-lg-3 col-12">
       <div class="card text-center mb-4">
-        <img
-          class="card-img-top"
+        <img class="card-img-top"
           src="https://firebasestorage.googleapis.com/v0/b/streetwest-fdf41.appspot.com/o/images%2FFounder.jpg?alt=media&token=e7b12be5-3a18-4be1-be67-505acfa05e1a&_gl=1*yyjq80*_ga*MTQ4OTE0NjY2OS4xNjg1MzY3OTYw*_ga_CW55HF8NVT*MTY4NjQ0Nzc0Ni40OS4xLjE2ODY0NTIwMjguMC4wLjA"
-          alt="Title"
-        />
+          alt="Title" />
         <div class="card-body">
           <h4 class="card-title">Nguyen Tri</h4>
           <p class="card-text text-muted">StreetWest Founder</p>
@@ -44,10 +34,7 @@
             Tôi muốn đưa thương hiệu thời trang StreetWest đến với mọi người gần
             hơn, không chỉ ở Gò Công mà thứ tôi hướng đến to lớn hơn nữa
           </p>
-          <img
-            src="https://vaxim-ng.envytheme.com/assets/img/signature.png"
-            alt=""
-          />
+          <img src="https://vaxim-ng.envytheme.com/assets/img/signature.png" alt="" />
         </div>
       </div>
       <div class="widget my-4">
@@ -56,22 +43,13 @@
         </h4>
         <ul class="list-unstyled d-flex align-items-center m-0">
           <li class="me-1">
-            <a
-              href="https://www.facebook.com/streetwestclothing"
-              class="text-decoration-none"
-              ><i
-                class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"
-              ></i
-            ></a>
+            <a href="https://www.facebook.com/streetwestclothing" class="text-decoration-none"><i
+                class="bi bi-facebook text-primary rounded-circle d-flex align-items-center fs-2"></i></a>
           </li>
           <li class="me-1">
-            <a
-              href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
-              class="text-decoration-none"
-              ><i
-                class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"
-              ></i
-            ></a>
+            <a href="https://www.instagram.com/streetwestclothing/?hl=vi&fbclid=IwAR34UNjBpJRXuuiz1PZ4kBqTaKdEDDIe_xa0jyevgdNS_7-AbpjPxuKIoHE"
+              class="text-decoration-none"><i
+                class="bi bi-instagram text-white rounded-circle d-flex align-items-center fs-1"></i></a>
           </li>
         </ul>
       </div>
@@ -79,27 +57,16 @@
         <h4 class="fw-bolder title position-relative">
           <span class="pe-3 bg-white">Bài viết mới nhất</span>
         </h4>
-        <div
-          class="d-flex align-items-center my-3"
-          *ngFor="let blogNew of blogNew"
-        >
+        <div class="d-flex align-items-center my-3" *ngFor="let blogNew of blogNew">
           <div class="img overflow-hidden">
-            <img
-              src="{{ blogNew.thumbnail }}"
-              alt=""
-              style="width: 102px; height: 68px; object-fit: cover"
-              alt=""
-              class="img-fluid"
-            />
+            <img src="{{ blogNew.thumbnail }}" alt="" style="width: 102px; height: 68px; object-fit: cover" alt=""
+              class="img-fluid" />
           </div>
           <div class="col-8">
             <div class="ps-3">
               <h6 class="fw-bolder">
-                <a
-                  class="text-decoration-none text-dark"
-                  [routerLink]="['/blog', blogNew?.id]"
-                  >{{ blogNew.title | slice : 0 : 40 }}...</a
-                >
+                <a class="text-decoration-none text-dark" [routerLink]="['/blog', blogNew?.id]">{{ blogNew.title | slice
+                  : 0 : 40 }}...</a>
               </h6>
               <p class="text-muted m-0">
                 {{ blogNew.date.seconds * 1000 | date : "dd-MM-YYYY" }}

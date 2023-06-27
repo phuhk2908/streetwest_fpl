@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeFeaturedProductModule } from './pages/home/home-featured-product/home-featured-product.module';
-
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -87,6 +87,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { AuthGuard } from './core/guard/auth.guard';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { AdminCommentsComponent } from './admin/pages/admin/admin-comments/admin-comments.component';
 
 
 @NgModule({
@@ -132,6 +133,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     AccountOrderComponent,
     HeaderAdminComponent,
     AdminBlogComponent,
+    AdminCommentsComponent,
 
 
   ],
@@ -149,6 +151,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     ChipsModule,
     PasswordModule,
     ButtonModule,
+    SelectButtonModule,
     FormsModule,
     ProgressSpinnerModule,
     DividerModule,

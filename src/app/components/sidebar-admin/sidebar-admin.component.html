@@ -34,9 +34,9 @@
         </a>
       </li>
       <li class="mb-2">
-        <a (click)="authService.SignOut()" style="cursor: pointer;">
-          <i class="bi bi-chat-dots-fill"></i>
-          <span class="link-name">Đăng xuất</span>
+        <a href="#" [routerLink]="['/admin/comments']">
+          <i class="pi pi-comment"></i>
+          <span class="link-name">Bình luận</span>
         </a>
       </li>
       <li class="mb-2">
@@ -45,6 +45,13 @@
           <span class="link-name">Tài khoản</span>
         </a>
       </li>
+      <li class="mb-2">
+        <a (click)="authService.SignOut()" style="cursor: pointer;">
+          <i class="pi pi-sign-in"></i>
+          <span class="link-name">Đăng xuất</span>
+        </a>
+      </li>
+
     </ul>
   </div>
 </nav>
