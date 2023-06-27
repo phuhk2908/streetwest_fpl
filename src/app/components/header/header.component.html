@@ -2,19 +2,35 @@
   <div class="container-fluid container-menu">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-xl container-fluid p-0">
-        <a class="navbar-brand ms-5 logo" [routerLink]="['']"><img src="assets/images/logo.jpg" />
+        <a class="navbar-brand ms-5 logo" [routerLink]="['']"
+          ><img src="assets/images/logo.jpg" />
         </a>
-        <div class="navbar-toggler border-0 me-4" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false">
+        <div
+          class="navbar-toggler border-0 me-4"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+        >
           <i class="fa-solid fa-bars fa-xl"></i>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" [routerLink]="['home']">Trang chủ</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                [routerLink]="['home']"
+                >Trang chủ</a
+              >
             </li>
             <li class="nav-item box_menu">
-              <a class="nav-link active" [routerLink]="['shop']" href="#" aria-expanded="false">
+              <a
+                class="nav-link active"
+                [routerLink]="['shop']"
+                href="#"
+                aria-expanded="false"
+              >
                 Sản phẩm
               </a>
               <!-- <ul class="box_menu_sub">
@@ -26,16 +42,40 @@
               </ul> -->
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" [routerLink]="['blog']" href="#">Bài viết</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                [routerLink]="['blog']"
+                href="#"
+                >Bài viết</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" [routerLink]="['contact']" href="#">Liên hệ</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                [routerLink]="['contact']"
+                href="#"
+                >Liên hệ</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" [routerLink]="['about-us']" href="#">Về chúng tôi</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                [routerLink]="['about-us']"
+                href="#"
+                >Về chúng tôi</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" [routerLink]="['faq']" href="#">FAQ</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                [routerLink]="['faq']"
+                href="#"
+                >FAQ</a
+              >
             </li>
           </ul>
           <div class="d-flex order-option me-md-4 gap-3">
@@ -50,19 +90,29 @@
             <div class="option-item position-relative">
               <a class="fa fa-cart-shopping badge-box" [routerLink]="['cart']">
               </a>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
                 {{ listCartLength }}
               </span>
             </div>
             <div class="option-item position-relative">
-              <a class="fa-regular fa-heart badge-box" [routerLink]="['wish']"></a>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {{ wishList.length > 0 ?wishList.length: 0}}
+              <a
+                class="fa-regular fa-heart badge-box"
+                [routerLink]="['wish']"
+              ></a>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                {{ wishList.length > 0 ? wishList.length : 0 }}
               </span>
             </div>
 
             <div class="option-item-user">
-              <i (click)="this.visible = !this.visible" class="fa-regular fa-user user">
+              <i
+                (click)="this.visible = !this.visible"
+                class="fa-regular fa-user user"
+              >
                 <div class="box-user" [hidden]="visible">
                   <ul *ngIf="!authService.userData as user; else haveUser">
                     <li><a routerLink="sign-in">Đăng nhập</a></li>
@@ -73,20 +123,27 @@
                       <li>
                         <div class="d-flex align-items-center">
                           <div>
-                            <img [src]="
+                            <img
+                              [src]="
                                 authService.userData.photoURL === null
-                                  ? 'assets/images/profile.png'
+                                  ? 'https://firebasestorage.googleapis.com/v0/b/streetwest-fdf41.appspot.com/o/z4459103602205_0a5c0cc952dd8e7b627208cf9af136ec.jpg?alt=media&token=f932f7b6-86ae-431b-8d1a-bb94de586f51'
                                   : authService.userData.photoURL
-                              " alt="" width="20" height="20" />
+                              "
+                              alt=""
+                              width="20"
+                              height="20"
+                            />
                           </div>
-                          <span class="ms-3"><strong>{{
+                          <span class="ms-3"
+                            ><strong>{{
                               authService.userData.displayName
-                              }}</strong></span>
+                            }}</strong></span
+                          >
                         </div>
                       </li>
-                      <!-- <li>
+                      <li>
                         <a routerLink="/account">Thông tin tài khoản</a>
-                      </li> -->
+                      </li>
                       <hr />
                       <li><a (click)="authService.SignOut()">Đăng xuất</a></li>
                     </ul>

@@ -91,7 +91,11 @@
                   </tr>
                   <tr>
                     <td class="order-shipping"><span>Phí giao hàng</span></td>
-                    <td class="shipping-price"><span>Miễn phí</span></td>
+                    <td class="shipping-price">
+                      <span>{{
+                        total > 314999 ? (0 | vnd) : (15000 | vnd)
+                      }}</span>
+                    </td>
                   </tr>
                   <tr>
                     <td class="total-price"><span>Tổng đơn hàng:</span></td>
@@ -177,7 +181,7 @@
             </tr>
             <tr>
               <td colspan="3" class="text-end">Phí vận chuyển</td>
-              <td>Free</td>
+              <td>{{ total > 314999 ? (0 | vnd) : (15000 | vnd) }}</td>
             </tr>
             <tr>
               <td colspan="3" class="text-end">Tổng tiền + phí vận chuyển</td>

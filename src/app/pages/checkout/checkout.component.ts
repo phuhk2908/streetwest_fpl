@@ -7,6 +7,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 import { ProductService } from 'src/app/core/services/product.services';
 import { take } from 'rxjs/operators';
 import { Product } from 'src/app/interface/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -19,7 +20,7 @@ export class CheckoutComponent implements OnInit {
   idOrder: string = '';
   isSubmit: boolean = false;
   cartDetail: Product[] = [];
-
+  private subscription = new Subscription();
   constructor(
     private _fb: FormBuilder,
     private cartService: CartService,
@@ -36,12 +37,16 @@ export class CheckoutComponent implements OnInit {
       phone: ['', [Validators.required]],
       address: ['', Validators.required],
       city: ['', Validators.required],
+      total: 0,
     });
     this.fetchCart();
   }
 
   fetchCart() {
     this.total = this.cartService.getTotalCart();
+    this.formCheckout.patchValue({
+      total: this.total,
+    });
   }
 
   get f() {
@@ -73,6 +78,7 @@ export class CheckoutComponent implements OnInit {
   ngOnDestroy() {
     if (this.isSubmit) {
       this.cartService.removeAllProduct();
+      this.subscription.unsubscribe();
     }
   }
 }
